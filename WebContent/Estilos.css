@@ -1,12 +1,12 @@
 @charset "ISO-8859-1";
 body {
 	margin: 0;
-	font-family:sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 header {
 	width:100%;
-	background:	#000000 ;
+	background:	#3a506b ;
 }
 
 #chc_menu {
@@ -35,7 +35,6 @@ header label:hover{
 	display:flex;
 	
 	
-	
 }
 .menu li {
 	border-right:1px solid #fff;
@@ -57,7 +56,7 @@ header label:hover{
 	}
 	.menu {
 	position:absolute;
-	background:	#000000;
+	background:	#1C2541;
 	width:70x;
 	margin-left: -70%;
 	border-bottom:1px solid rgba(255,255,255,0.3)
@@ -80,4 +79,15 @@ header label:hover{
 	margin :0;
 	
 	}
+}
+
+.material-icons {
+  color: white;
+  }
+  
+.contenedor{
+	width: auto;
+	height: 100px;
+	background-image: url("image/Tecnologia.jpg");
+	
 }
