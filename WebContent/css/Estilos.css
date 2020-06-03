@@ -89,7 +89,7 @@ header label:hover{
 	height:100vh;
 	background-position:center center;
 	background-size:cover;
-	background-image: url("image/Estudiantes.jpg");
+	background-image: url("../image/Estudiantes.jpg");
 	
 }
 
