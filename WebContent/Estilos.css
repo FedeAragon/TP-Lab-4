@@ -57,7 +57,7 @@ header label:hover{
 	.menu {
 	position:absolute;
 	background:	#1C2541;
-	width:70x;
+	width:70px;
 	margin-left: -70%;
 	border-bottom:1px solid rgba(255,255,255,0.3)
 	
@@ -86,8 +86,10 @@ header label:hover{
   }
   
 .contenedor{
-	width: auto;
-	height: 100px;
+	width: 100%;
+	height:100vh;
+	background-position:center center;
+	background-size:cover;
 	background-image: url("image/Tecnologia.jpg");
 	
 }
