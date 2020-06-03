@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -15,10 +15,10 @@
 	  
 	  <nav class="menu">
 	  <ul>
-	  <li><a href="">Fede</a></li>
-	  <li><a href="">Puto</a></li>
-	  <li><a href="">Gato</a></li>
-	  <li><a href="">Ortiba</a></li>
+	  <li><a href="">Item 1</a></li>
+	  <li><a href="">Item 2</a></li>
+	  <li><a href="">Item 3</a></li>
+	  <li><a href="">Item 4</a></li>
 	  
 	
 	  </ul>
@@ -26,6 +26,9 @@
   </header>
   
   <div class="contenedor">
+  </div>
+  
+  <div class="footer">
   </div>
   
 </body>
