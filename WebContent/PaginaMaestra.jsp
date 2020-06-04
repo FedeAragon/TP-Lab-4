@@ -15,8 +15,19 @@
 	  
 	  <nav class="menu">
 	  <ul>
-	  <li><a href="">Item 1</a></li>
-	  <li><a href="">Item 2</a></li>
+	  <li><a href="">Item 1</a>
+	    <ul> 
+	    <li><a href="">Subitem</a></li> 
+	    <li><a href="">Subitem</a></li>
+	     </ul></li>
+	  <li><a href="">Item 2</a>
+	  
+	  <ul> 
+	    <li><a href="">Subitem</a></li> 
+	    <li><a href="">Subitem</a></li>
+	    <li><a href="">Subitem</a></li>
+	    <li><a href="">Subitem</a></li>
+	     </ul></li>
 	  <li><a href="">Item 3</a></li>
 	  <li><a href="">Item 4</a></li>
 	  
