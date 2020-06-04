@@ -4,37 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="CSS/Estilos.css">
+<link rel="stylesheet" href="css/Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-	 <input type="checkbox" id="chc_menu" >
-	 <label for="chc_menu"><i class="material-icons" alt="">list</i></label>
-	  
-	  <nav class="menu">
-	  <ul>
-	  <li><a href="">Item 1</a>
-	    <ul> 
-	    <li><a href="">Subitem</a></li> 
-	    <li><a href="">Subitem</a></li>
-	     </ul></li>
-	  <li><a href="">Item 2</a>
-	  
-	  <ul> 
-	    <li><a href="">Subitem</a></li> 
-	    <li><a href="">Subitem</a></li>
-	    <li><a href="">Subitem</a></li>
-	    <li><a href="">Subitem</a></li>
-	     </ul></li>
-	  <li><a href="">Item 3</a></li>
-	  <li><a href="">Item 4</a></li>
-	  
-	
-	  </ul>
-	  </nav>
-  </header>
+
+  <jsp:include page="Menu.html"></jsp:include>
   
   <div class="contenedor">
  
