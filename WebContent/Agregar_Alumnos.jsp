@@ -9,21 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-	 <input type="checkbox" id="chc_menu" >
-	 <label for="chc_menu"><i class="material-icons" alt="">list</i></label>
-	  
-	  <nav class="menu">
-	  <ul>
-	  <li><a href="">Item 1</a></li>
-	  <li><a href="">Item 2</a></li>
-	  <li><a href="">Item 3</a></li>
-	  <li><a href="">Item 4</a></li>
-	  
-	
-	  </ul>
-	  </nav>
-  </header>
+  
+	<jsp:include page="Menu.html"></jsp:include>
   
   <div class="contenedor">
   <br><br>
@@ -102,8 +89,7 @@
   
    <!--<input type="text" name="txtNombre" style="width: 165px; ">  -->
   
-  <div class="footer">
-  </div>
+	<jsp:include page="Footer.html"></jsp:include>
   
 </body>
 </html>

@@ -13,14 +13,10 @@
   <jsp:include page="Menu.html"></jsp:include>
   
   <div class="contenedor">
- 
+ 	
   </div>
   
-  <div class="footer">
-  <p>UBICACION</p>
-  <p>REDES SOCIALES</p>
-  <p>SOBRE INSTITUTO</p>
-  </div>
+ <jsp:include page="Footer.html"></jsp:include>
   
 </body>
 </html>

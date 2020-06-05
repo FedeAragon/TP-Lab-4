@@ -63,9 +63,10 @@ body {
 	width : 130px;
 	height : 45px;
 	border-radius : 6px;
-	background : blue;
+	background : #671451;
 	color : white;
 	font-size: 15px;
+	opacity: 1;
 }
 
 .Ddls{
@@ -93,11 +94,6 @@ body {
 	font-family: fantasy;
 }
 
-.footer{
-	width: 100%;
-	height:15vh;
-	background-color: #D2C8CA;
-}
 
 .footer{
     width: 100%;

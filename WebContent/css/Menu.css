@@ -16,14 +16,14 @@ header{
 	background:	#1D445F;
 }
 
-header label {
+header > label {
 	display:none;
 	width:30px;
 	height:30px;
 	padding:10px;
 }
 
-header label:hover{
+header > label:hover{
 	cursor: pointer;
 	background:rgba(0,0,0,0.5);
 }
@@ -35,9 +35,6 @@ header label:hover{
 	display:table;
 	width:100%;
 	background:	#1D445F;
-	
-	
-	
 	}
 	
 .menu li:hover {
@@ -49,38 +46,50 @@ header label:hover{
 .menu li a{
 	display:block;
 	padding:15px 20px;
-	
 	color: #E7F2F8;
 	text-decoration:none;
 }
 
 
 .menu li{
-	
 	float:left;
 	position:relative;
-	
-	}
+}
 
 .menu li ul{
   	position:absolute;
     display:none;
     width:auto;
-    
- 	
 }
-
 
 .menu li li{
 	background:#1D445F;
 	border-bottom:1px solid rgba(255,255,255,1);
 	border-top: 1px solid #fff;
-	
 }
-
 
 .menu li:hover ul{
 	display:block;
+}
+
+
+.logout{
+	display:flex;
+	align-items: center;
+	margin-right: 20px;
+	color:white;
+}
+
+.logout label{
+	margin-right: 20px;
+}
+
+.logout a{
+	color:white;
+}
+
+.logout a:hover{
+	color:#5B7E9D;
 }
 
 
@@ -104,10 +113,7 @@ header label:hover{
 	
 	.menu ul {
 	display:flex;
-	
 	flex-direction:column;
-	
-	
 	}
 	 
 	 .menu ul ul{
