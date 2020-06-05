@@ -14,6 +14,7 @@ header{
 	flex-direction:row;
 	justify-content: space-between;
 	background:	#1D445F;
+	
 }
 
 header > label {
@@ -35,6 +36,7 @@ header > label:hover{
 	display:table;
 	width:100%;
 	background:	#1D445F;
+	z-index: 1;
 	}
 	
 .menu li:hover {
@@ -97,18 +99,15 @@ header > label:hover{
 	header label {
 	display:block;
 	}
-	
-	header{	
-	display:block;
-	}
 	.menu {
 	position:absolute;
 	display:flex;
 	background:	#1D445F;
 	margin-left: -700%;
 	border-bottom:1px solid rgba(255,255,255,1);
-	
 	transition:all 1;
+	top: 50px;
+	left: 0px;
 	}
 	
 	.menu ul {
@@ -123,12 +122,10 @@ header > label:hover{
 	 }
 	.menu li {
 	border-top: 1px solid #fff;
-	
 	}
 	
 	#chc_menu:checked ~ .menu {
 	margin :0;
-	
 	}
 }
 
