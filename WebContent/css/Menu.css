@@ -127,6 +127,7 @@ header > label:hover{
 	#chc_menu:checked ~ .menu {
 	margin :0;
 	}
+	
 }
 
 .material-icons {

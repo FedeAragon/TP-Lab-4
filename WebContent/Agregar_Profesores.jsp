@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-<title>Agregar Alumno</title>
+<title>Agregar Profesor</title>
 </head>
 <body>
 <jsp:include page="Menu.html"></jsp:include>
@@ -15,7 +15,7 @@
 <div class="fondo">
 
 <div class="titulo_div">
-  <label id="titulo" class ="titulos" >Agregar Alumnos</label>
+  <label id="titulo" class ="titulos" >Agregar Profesores</label>
   </div>
   <hr>
 <div class="cuadrado">

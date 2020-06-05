@@ -11,6 +11,9 @@ body {
 
   
 .contenedor{
+	display: flex;
+	justify-content: center;
+	align-items:center;
 	width: 100%;
 	height:100vh;
 	background-position:center center;
@@ -19,20 +22,38 @@ body {
 	
 }
 
-.cuadro{
-	width : 500px;
-	background: #090909;
-	color : white;
-	margin : auto;
-	margin-top : 0px;
-	padding: 5px 5px 30px 5px;
-	border-top : 35px solid #141414;
-	border-right : 35px solid #141414;
-	border-left : 35px solid #141414;
-	border-radius: 6px;
-	opacity : 0.7;
+.fondo{
+	display:flex;
+    
+    justify-content:center;
+    flex-direction: column;
+    background: #090909;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
+    -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
+    box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
+    
+    color : white;
+    opacity : 0.8;
+    padding:15px 15px 15px 15px;
+    
+}
+.cuadrado{
+	display:flex;
+	flex-direction:row;
+}
+.contenido{
+	
+    padding: 10px 10px 10px 10px;
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
 }
 
+.boton{
+	display:flex;
+	justify-content: center;
+}
 .texts{
 	margin : auto;
 	margin-left : 0px;
@@ -43,19 +64,15 @@ body {
 	font-weight: 900;
 	
 }
-.texts2{
-	margin : auto;
-	margin-left :25px;
-	width : 200px;
-	height : 25px;
-	border-radius : 6px;
-	font-family: verdana;
-	font-weight: 900;
-	
+
+.titulo_div{
+	display:flex;
+	justify-content: center;
 }
-.subtitulos2{
+
+.subtitulos{
 	margin : auto;
-	margin-left : 85px;
+	margin-left : 0;
 		
 }
 
@@ -71,15 +88,7 @@ body {
 
 .Ddls{
 	margin : auto;
-	width : 200px;
-	height : 25px;
-	border-radius : 6px;
-	font-family: verdana;
-	font-weight: 900;
-}
-.Ddls2{
-	margin : auto;
-	margin-left : 25px;
+	margin-left: 0;
 	width : 200px;
 	height : 25px;
 	border-radius : 6px;
@@ -87,11 +96,15 @@ body {
 	font-weight: 900;
 }
 
+
 .titulos{
+	display:flex;
+	justify-content: center;
 	margin : auto;
-	margin-left : 200px;
+	margin-left :150px;
 	font-size: 30px;
 	font-family: fantasy;
+	
 }
 
 
@@ -103,4 +116,17 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     align-items:center;
+}
+@media (max-width: 768px){
+	.cuadrado{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	.titulo_div{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	
+	}
 }
