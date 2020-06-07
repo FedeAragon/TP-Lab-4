@@ -53,7 +53,7 @@
 	<div class="contenedor">
 		<div class="fondo">
  <div class="titulo_div">
-  <label id="titulo" class ="titulos" >Tabla Alumnos</label>
+  <label id="titulo" class ="titulos" >Tabla Profesores</label>
   </div>
   <hr>
   <br>

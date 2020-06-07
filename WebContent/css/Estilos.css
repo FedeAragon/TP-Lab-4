@@ -24,7 +24,6 @@ body {
 
 .fondo{
 	display:flex;
-    
     justify-content:center;
     flex-direction: column;
     background: #090909;
@@ -32,6 +31,10 @@ body {
     -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
     -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
     box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.89);
+    border-top : 35px solid #141414;
+    border-right : 35px solid #141414;
+    border-left : 35px solid #141414;
+    border-bottom : 35px solid #141414;
     
     color : white;
     opacity : 0.8;
@@ -100,7 +103,7 @@ body {
 	display:flex;
 	justify-content: center;
 	margin : auto;
-	margin-left :150px;
+	margin-left :0px;
 	font-size: 30px;
 	font-family: fantasy;
 	
