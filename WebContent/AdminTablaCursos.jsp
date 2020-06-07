@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>ABM Cursos</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
@@ -53,37 +53,28 @@
 	<div class="contenedor">
 		<div class="fondo">
  <div class="titulo_div">
-  <label id="titulo" class ="titulos" >Tabla Profesores</label>
+  <label id="titulo" class ="titulos" >Tabla Cursos</label>
   </div>
   <hr>
   <br>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
-		            <th>Nº Legajo</th>
-		            <th>Nombre</th>
-		            <th>DNI</th>
-		            <th>Nacimiento</th>
-		            <th>Direccion</th>
-		            <th>Localidad</th>
-		            <th>Provincia</th>
-		            <th>Telefono</th>
-		            <th>Email</th>
-		            
+		            <th>Materia</th>
+		            <th>Cuatrimestre</th>
+		            <th>Año</th>
+		            <th>Docente</th>
+		            <th>Alumnos</th>    
 		            <th><th>
 		        </tr>
 		    </thead>
 		    <tbody style="color:black">
 		        <tr>
-		            <td>22220</td>
-		            <td>Federico Aragon</td>
-		            <td>42197455</td>
-		            <td>03/11/1999</td>
-		            <td>Row 1 Data 5</td>
-		            <td>Row 1 Data 6</td>
-		            <td>Row 1 Data 7</td>
-		            <td>Row 1 Data 8</td>
-		            <td>Row 1 Data 9</td>
+		            <td>Programacion III</td>
+		            <td>Segundo Cuatrimestre</td>
+		            <td>2019</td>
+		            <td>Claudio Fernandez</td>
+		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
@@ -92,11 +83,7 @@
 		            <td>Row 2 Data 2</td>
 		            <td>Row 2 Data 3</td>
 		            <td>Row 2 Data 4</td>
-		            <td>Row 2 Data 5</td>
-		            <td>Row 2 Data 6</td>
-		            <td>Row 2 Data 7</td>
-		            <td>Row 2 Data 8</td>
-		            <td>Row 2 Data 9</td>
+		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
@@ -106,11 +93,7 @@
 		            <td>Row 3 Data 2</td>
 		            <td>Row 3 Data 3</td>
 		            <td>Row 3 Data 4</td>
-		            <td>Row 3 Data 5</td>
-		            <td>Row 3 Data 6</td>
-		            <td>Row 3 Data 7</td>
-		            <td>Row 3 Data 8</td>
-		            <td>Row 3 Data 9</td>
+		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>

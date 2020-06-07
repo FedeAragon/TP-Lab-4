@@ -35,7 +35,6 @@ body {
     border-right : 35px solid #141414;
     border-left : 35px solid #141414;
     border-bottom : 35px solid #141414;
-    
     color : white;
     opacity : 0.8;
     padding:15px 15px 15px 15px;
@@ -71,6 +70,7 @@ body {
 .titulo_div{
 	display:flex;
 	justify-content: center;
+	
 }
 
 .subtitulos{
