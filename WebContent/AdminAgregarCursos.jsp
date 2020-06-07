@@ -24,13 +24,18 @@
  
   <form class="contenido">
  <label id ="lblMateria" class="subtitulos">Materia</label>
- <input type="text" name="txtMateria" class= "texts">
+ <select name="ddlMaterias" class = "Ddls">
+ </select> 
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
- <input type="text" name="txtCuatrimestre" class= "texts">
+ <select name="ddlCuatrimestre" class = "Ddls">
+                        <option value="1">Primer Cuatrimestre</option>
+						<option value="2">Segundo Cuatrimestre</option>
+ </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
  <input type="text" name="txtAnio" class= "texts">
   <label id ="lblDocente" class="subtitulos">Docente</label>
-  <input type="text" name="txtDocente" class= "texts">
+   <select name="ddlDocentes" class = "Ddls">
+ </select> 
   <br>
   <input type="submit" name="btnAgregar" value="Agregar" class= "botones">
   </form>
