@@ -6,42 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
-<script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready( function () {
-	    $('#table_id').DataTable({
-	    	"language":{
-	    	    "sProcessing":     "Procesando...",
-	    	    "sLengthMenu":     "Mostrar _MENU_ registros",
-	    	    "sZeroRecords":    "No se encontraron resultados",
-	    	    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-	    	    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-	    	    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-	    	    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-	    	    "sInfoPostFix":    "",
-	    	    "sSearch":         "Buscar:",
-	    	    "sUrl":            "",
-	    	    "sInfoThousands":  ",",
-	    	    "sLoadingRecords": "Cargando...",
-	    	    "oPaginate": {
-	    	        "sFirst":    "Primero",
-	    	        "sLast":     "Último",
-	    	        "sNext":     "Siguiente",
-	    	        "sPrevious": "Anterior"
-	    	    },
-	    	    "oAria": {
-	    	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	    	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	    	    },
-	    	    "buttons": {
-	    	        "copy": "Copiar",
-	    	        "colvis": "Visibilidad"
-	    	    }
-	    	}
-	    });
+		 var table = $('#table_id').DataTable({
+	        dom: 'Bfrtip',
+	        select: true,
+	        buttons: [
+	            {
+	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
+	            	action: function(){
+	            		
+	            	}
+	            }
+	        ]
+	    } );
 	} );
 	</script>
 </head>
@@ -83,8 +67,15 @@
 		            <td>Row 1 Data 7</td>
 		            <td>Row 1 Data 8</td>
 		            <td>Row 1 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
+		            	</button>
+		            <td>
+		            	<button type="submit">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+		            </td>
 		        </tr>
 		        <tr>
 		            <td>Row 2 Data 1</td>
@@ -96,8 +87,15 @@
 		            <td>Row 2 Data 7</td>
 		            <td>Row 2 Data 8</td>
 		            <td>Row 2 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
+		            	</button>
+		            <td>
+		            	<button type="submit">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+		            </td>
 		        </tr>
 		        
 		        <tr>
@@ -110,8 +108,15 @@
 		            <td>Row 3 Data 7</td>
 		            <td>Row 3 Data 8</td>
 		            <td>Row 3 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
+		            	</button>
+		            <td>
+		            	<button type="submit">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+		            </td>
 		        </tr>
 		    </tbody>
 		</table>

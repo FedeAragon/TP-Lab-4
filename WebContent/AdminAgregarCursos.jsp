@@ -37,7 +37,7 @@
    <select name="ddlDocentes" class = "Ddls">
  </select> 
   <br>
-  <input type="submit" name="btnAgregar" value="Agregar" class= "botones">
+  <input type="submit" name="btnAgregar" value="Agregar Alumnos" class= "botones">
   </form>
   
   

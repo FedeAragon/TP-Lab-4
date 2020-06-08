@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ABM Cursos</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
-<script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
@@ -74,7 +73,11 @@
 		            <td>Segundo Cuatrimestre</td>
 		            <td>2019</td>
 		            <td>Claudio Fernandez</td>
-		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
+		            	</button>
+	            	</td>
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
@@ -83,7 +86,11 @@
 		            <td>Row 2 Data 2</td>
 		            <td>Row 2 Data 3</td>
 		            <td>Row 2 Data 4</td>
-		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
+		            	</button>
+	            	</td>
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
@@ -93,8 +100,12 @@
 		            <td>Row 3 Data 2</td>
 		            <td>Row 3 Data 3</td>
 		            <td>Row 3 Data 4</td>
-		            <td><input type="submit" class="botones" value="Ver Alumnos"></td>
-		            <td><input type="submit" class="botones" value="Modificar">
+		            <td>
+		            	<button type="submit">
+		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
+		            	</button>
+	            	</td>
+	            	<td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
 		    </tbody>
