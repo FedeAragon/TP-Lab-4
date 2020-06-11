@@ -42,30 +42,30 @@
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
   <input type="text" name="txtNacimiento" class= "texts" >
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
-  <select name="pais" class = "Ddls">
-						<option value="1">Buenos Aires</option>
-						<option value="2">Catamarca</option>
-						<option value="3">Chaco</option>
-						<option value="4">Chubut</option>
-						<option value="5">Córdoba</option>
-						<option value="6">Corrientes</option>
-						<option value="7">Entre rios</option>
-						<option value="8">Formosa</option>
-						<option value="9">Jujuy</option>
-						<option value="10">La Pampa</option>
-						<option value="11">La Rioja</option>
-						<option value="12">Mendoza</option>
-						<option value="13">Misiones</option>
-						<option value="14">Neuquén</option>
-						<option value="15">Rio Negro</option>
-						<option value="16">Salta</option>
-						<option value="17">San Juan</option>
-						<option value="18">San Luis</option>
-						<option value="19">Santa Cruz</option>
-						<option value="20">Santa Fe</option>
-						<option value="21">Santiago del Estero</option>
-						<option value="22">Tierra del Fuego</option>
-						<option value="23">Tucuman</option>
+ <select name="ddlProvincias" class = "Ddls">
+						<option value="Buenos Aires">Buenos Aires</option>
+						<option value="Catamarca">Catamarca</option>
+						<option value="Chaco">Chaco</option>
+						<option value="Chubut">Chubut</option>
+						<option value="Córdoba">Córdoba</option>
+						<option value="Corrientes">Corrientes</option>
+						<option value="Entre rios">Entre rios</option>
+						<option value="Formosa">Formosa</option>
+						<option value="Jujuy">Jujuy</option>
+						<option value="La Pampa">La Pampa</option>
+						<option value="La Rioja">La Rioja</option>
+						<option value="Mendoza">Mendoza</option>
+						<option value="Misiones">Misiones</option>
+						<option value="Neuquén">Neuquén</option>
+						<option value="Rio Negro">Rio Negro</option>
+						<option value="Salta">Salta</option>
+						<option value="San Juan">San Juan</option>
+						<option value="San Luis">San Luis</option>
+						<option value="Santa Cruz">Santa Cruz</option>
+						<option value="Santa Fe">Santa Fe</option>
+						<option value="Santiago del Estero">Santiago del Estero</option>
+						<option value="Tierra del Fuego">Tierra del Fuego</option>
+						<option value="Tucuman">Tucuman</option>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
   <input type="text" name="txtEmail" class= "texts">
