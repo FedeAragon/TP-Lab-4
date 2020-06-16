@@ -12,10 +12,11 @@ public class Alumno {
 	String Provincia;
 	String Email;
 	int Telefono;
+	Boolean Estado;
 	
 	//Constructores
 	public Alumno(int legajo, int dNI, String nombreyAp, String fechaNacimiento, String direccion, String localidad,
-			String provincia, String email, int telefono) {
+			String provincia, String email, int telefono , Boolean estado) {
 		Legajo = legajo;
 		DNI = dNI;
 		NombreyAp = nombreyAp;
@@ -25,6 +26,7 @@ public class Alumno {
 		Provincia = provincia;
 		Email = email;
 		Telefono = telefono;
+		Estado = estado;
 	}	
 	
 	public Alumno() {
@@ -103,13 +105,20 @@ public class Alumno {
 	public void setTelefono(int telefono) {
 		Telefono = telefono;
 	}
+	
+	public Boolean getEstado() {
+		return Estado;
+	}
+	
+	public void setEstado(Boolean estado) {
+		Estado = estado;
+	}
 
 	//toString();
 	@Override
 	public String toString() {
 		return "Alumno [Legajo=" + Legajo + ", DNI=" + DNI + ", NombreyAp=" + NombreyAp + ", FechaNacimiento="
 				+ FechaNacimiento + ", Direccion=" + Direccion + ", Localidad=" + Localidad + ", Provincia=" + Provincia
-				+ ", Email=" + Email + ", Telefono=" + Telefono + "]";
-	}
-	
+				+ ", Email=" + Email + ", Telefono=" + Telefono + ", Estado=" + Estado + "]";
+	}	
 }
