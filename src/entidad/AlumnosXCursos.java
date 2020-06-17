@@ -9,12 +9,12 @@ public class AlumnosXCursos {
 	int SegundoParcial;
 	int Recuperatorio1;
 	int Recuperatorio2;
-	Boolean Estado;
-	Boolean EstadoCurso;
+	int Estado;
+	int EstadoCurso;
 	
 	//Constructores
 	public AlumnosXCursos(int codigoCurso, int legajoAlumno, int primerParcial, int segundoParcial, int recuperatorio1,
-			int recuperatorio2, Boolean estado, Boolean estadoCurso) {
+			int recuperatorio2, int estado, int estadoCurso) {
 		super();
 		CodigoCurso = codigoCurso;
 		LegajoAlumno = legajoAlumno;
@@ -79,19 +79,19 @@ public class AlumnosXCursos {
 		Recuperatorio2 = recuperatorio2;
 	}
 
-	public Boolean getEstado() {
+	public int getEstado() {
 		return Estado;
 	}
 
-	public void setEstado(Boolean estado) {
+	public void setEstado(int estado) {
 		Estado = estado;
 	}
 
-	public Boolean getEstadoCurso() {
+	public int getEstadoCurso() {
 		return EstadoCurso;
 	}
 
-	public void setEstadoCurso(Boolean estadoCurso) {
+	public void setEstadoCurso(int estadoCurso) {
 		EstadoCurso = estadoCurso;
 	}
 

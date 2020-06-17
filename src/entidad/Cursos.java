@@ -8,10 +8,10 @@ public class Cursos {
 	String Cuatrimeste;
 	int Anio;
 	Docente docente = new Docente();
-	Boolean Estado;
+	int Estado;
 	
 	//Constructores	
-	public Cursos(int comision, Materias materia, String cuatrimeste, int anio, Docente docente, Boolean estado) {
+	public Cursos(int comision, Materias materia, String cuatrimeste, int anio, Docente docente, int estado) {
 		super();
 		Comision = comision;
 		this.materia = materia;
@@ -66,11 +66,11 @@ public class Cursos {
 		this.docente = docente;
 	}
 	
-	public Boolean getEstado() {
+	public int getEstado() {
 		return Estado;
 	}
 	
-	public void setEstado(Boolean estado) {
+	public void setEstado(int estado) {
 		Estado = estado;
 	}
 

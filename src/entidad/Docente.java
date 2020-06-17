@@ -12,11 +12,11 @@ public class Docente {
 	String Provincia;
 	String Email;
 	int Telefono;
-	Boolean Estado;
+	int Estado;
 	
 	//Constructores
 	public Docente(int legajo, int dNI, String nombreyAp, String fechaNacimiento, String direccion, String localidad,
-			String provincia, String email, int telefono , Boolean estado) {
+			String provincia, String email, int telefono , int estado) {
 		Legajo = legajo;
 		DNI = dNI;
 		NombreyAp = nombreyAp;
@@ -106,11 +106,11 @@ public class Docente {
 		Telefono = telefono;
 	}
 
-	public Boolean getEstado() {
+	public int getEstado() {
 		return Estado;
 	}
 	
-	public void setEstado(Boolean estado) {
+	public void setEstado(int estado) {
 		Estado = estado;
 	}
 	
