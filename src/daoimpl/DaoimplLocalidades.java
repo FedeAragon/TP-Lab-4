@@ -41,9 +41,9 @@ public class DaoimplLocalidades implements DaoLocalidades
 	
 	private Localidades getLocalidad(ResultSet resultSet) throws SQLException
 	{
-		int CodLocalidad = resultSet.getInt("CodLocalidad");
-		int CodProvincia = resultSet.getInt("CodProvincia");
-		String NombreLocalidad = resultSet.getString("Localidad");
+		String CodLocalidad = resultSet.getString ("IDLocalidad_loc");
+		String CodProvincia = resultSet.getString("IDProvincia_loc");
+		String NombreLocalidad = resultSet.getString("Descripcion_loc");
 		return new Localidades(CodLocalidad, CodProvincia, NombreLocalidad);
 	}
 	

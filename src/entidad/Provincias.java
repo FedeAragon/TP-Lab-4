@@ -3,11 +3,11 @@ package entidad;
 public class Provincias {
 
 	//Atributos
-	int CodProvincia;
+	String CodProvincia;
 	String NombreProvincia;
 	
 	//Constructores 
-	public Provincias(int codProvincia, String nombreProvincia) {
+	public Provincias(String codProvincia, String nombreProvincia) {
 		super();
 		CodProvincia = codProvincia;
 		NombreProvincia = nombreProvincia;
@@ -18,11 +18,11 @@ public class Provincias {
 	}
 
 	//Gets y Sets
-	public int getCodProvincia() {
+	public String getCodProvincia() {
 		return CodProvincia;
 	}
 
-	public void setCodProvincia(int codProvincia) {
+	public void setCodProvincia(String codProvincia) {
 		CodProvincia = codProvincia;
 	}
 

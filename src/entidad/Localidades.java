@@ -3,12 +3,12 @@ package entidad;
 public class Localidades {
 
 	//Atributos
-	int CodLocalidad;
-	int CodProvincia;
+	String CodLocalidad;
+	String CodProvincia;
 	String NombreLocalidad;
 	
 	//Constructores
-	public Localidades(int codLocalidad, int codProvincia, String nombreLocalidad) {
+	public Localidades(String codLocalidad, String codProvincia, String nombreLocalidad) {
 		super();
 		CodLocalidad = codLocalidad;
 		CodProvincia = codProvincia;
@@ -20,19 +20,19 @@ public class Localidades {
 	}
 
 	//Gets y Sets
-	public int getCodLocalidad() {
+	public String getCodLocalidad() {
 		return CodLocalidad;
 	}
 
-	public void setCodLocalidad(int codLocalidad) {
+	public void setCodLocalidad(String codLocalidad) {
 		CodLocalidad = codLocalidad;
 	}
 
-	public int getCodProvincia() {
+	public String getCodProvincia() {
 		return CodProvincia;
 	}
 
-	public void setCodProvincia(int codProvincia) {
+	public void setCodProvincia(String codProvincia) {
 		CodProvincia = codProvincia;
 	}
 

@@ -38,8 +38,8 @@ public class DaoimplProvincias implements DaoProvincias
 	
 	private Provincias getProvincia(ResultSet resultSet) throws SQLException
 	{
-		int CodProvincia = resultSet.getInt("CodProvincia");
-		String NombreProvincia = resultSet.getString("Provincia");
+		String CodProvincia = resultSet.getString("IDProvincia_p");
+		String NombreProvincia = resultSet.getString("NombreProvincia_p");
 		return new Provincias(CodProvincia, NombreProvincia);
 	}
 }

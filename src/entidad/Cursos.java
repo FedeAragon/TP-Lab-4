@@ -3,7 +3,7 @@ package entidad;
 public class Cursos {
 
 	//Atributos
-	int CodigoCurso;
+	int Comision;
 	Materias materia = new Materias();
 	String Cuatrimeste;
 	int Anio;
@@ -11,9 +11,9 @@ public class Cursos {
 	Boolean Estado;
 	
 	//Constructores	
-	public Cursos(int codigoCurso, Materias materia, String cuatrimeste, int anio, Docente docente, Boolean estado) {
+	public Cursos(int comision, Materias materia, String cuatrimeste, int anio, Docente docente, Boolean estado) {
 		super();
-		CodigoCurso = codigoCurso;
+		Comision = comision;
 		this.materia = materia;
 		Cuatrimeste = cuatrimeste;
 		Anio = anio;
@@ -26,12 +26,12 @@ public class Cursos {
 	}
 		
 	//Gets y Sets
-	public int getCodigoCurso() {
-		return CodigoCurso;
+	public int getComision() {
+		return Comision;
 	}
 	
-	public void setCodigoCurso(int codigo) {
-		CodigoCurso = codigo;
+	public void setComision(int comision) {
+		Comision = comision;
 	}
 	
 	public Materias getMateria() {
@@ -77,7 +77,7 @@ public class Cursos {
 	//toString();
 	@Override
 	public String toString() {
-		return "Cursos [CodigoCurso=" + CodigoCurso + ", materia=" + materia + ", Cuatrimeste=" + Cuatrimeste
+		return "Cursos [CodigoCurso=" + Comision + ", materia=" + materia + ", Cuatrimeste=" + Cuatrimeste
 				+ ", Anio=" + Anio + ", docente=" + docente + ", Estado=" + Estado + "]";
 	}	
 }

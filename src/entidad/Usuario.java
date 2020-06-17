@@ -3,15 +3,12 @@ package entidad;
 public class Usuario {
 
 	//Atributos
-	int ID;
 	int TipoCuenta;
 	String NombreUsuario;
 	String Password;
 	
 	//Constructores
-	public Usuario(int iD, int tipoCuenta, String nombreUsuario, String password) {
-		super();
-		ID = iD;
+	public Usuario(int tipoCuenta, String nombreUsuario, String password) {
 		TipoCuenta = tipoCuenta;
 		NombreUsuario = nombreUsuario;
 		Password = password;
@@ -22,14 +19,6 @@ public class Usuario {
 	}
 
 	//Gets y Sets
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
-
 	public int getTipoCuenta() {
 		return TipoCuenta;
 	}
@@ -57,7 +46,7 @@ public class Usuario {
 	//toString();
 	@Override
 	public String toString() {
-		return "Usuario [ID=" + ID + ", TipoCuenta=" + TipoCuenta + ", NombreUsuario=" + NombreUsuario + ", Password="
+		return "Usuario [TipoCuenta=" + TipoCuenta + ", NombreUsuario=" + NombreUsuario + ", Password="
 				+ Password + "]";
 	}
 			
