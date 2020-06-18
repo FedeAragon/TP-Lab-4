@@ -3,14 +3,14 @@ package entidad;
 public class Usuario {
 
 	//Atributos
+	String Usuario;
+	int Password;
 	int TipoCuenta;
-	String NombreUsuario;
-	String Password;
 	
 	//Constructores
-	public Usuario(int tipoCuenta, String nombreUsuario, String password) {
+	public Usuario(int tipoCuenta, String nombreUsuario, int password) {
 		TipoCuenta = tipoCuenta;
-		NombreUsuario = nombreUsuario;
+		Usuario = nombreUsuario;
 		Password = password;
 	}
 	
@@ -27,26 +27,27 @@ public class Usuario {
 		TipoCuenta = tipoCuenta;
 	}
 
-	public String getNombreUsuario() {
-		return NombreUsuario;
+	public String getUsuario() {
+		return Usuario;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		NombreUsuario = nombreUsuario;
+	public void setUsuario(String usuario) {
+		Usuario = usuario;
 	}
-
-	public String getPassword() {
+	
+	public int getPassword() {
 		return Password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(int password) {
 		Password = password;
 	}
+
 
 	//toString();
 	@Override
 	public String toString() {
-		return "Usuario [TipoCuenta=" + TipoCuenta + ", NombreUsuario=" + NombreUsuario + ", Password="
+		return "Usuario [TipoCuenta=" + TipoCuenta + ", NombreUsuario=" + Usuario + ", Password="
 				+ Password + "]";
 	}
 			

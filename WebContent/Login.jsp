@@ -12,8 +12,8 @@
 
   <div class="contenedor">
  <br><br><br><br><br><br><br><br>
- <div class="cuadro">
- <form>
+ <div class="fondo">
+ <form method ="post" action="ServletLogin">
  <p id="titulo" class ="titulos" >Login</p>
   <hr>
   <br>
@@ -30,7 +30,8 @@
   <input type="password" name="passContra" class = "texts" style="width: 400px; ">
   <br><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input type="submit" name="btnIngresar" value="Ingresar" class ="botones" style="width: 403px; "> </form>
+  <input type="submit" name="btnIngresar" value="Ingresar" class ="botones" style="width: 403px; "> 
+  </form>
  </div>
  
   </div>

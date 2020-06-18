@@ -11,7 +11,7 @@ import entidad.Provincias;
 
 public class DaoimplProvincias implements DaoProvincias
 {
-	private static final String readall = "SELECT * FROM Provincias";
+	private static final String readall = "SELECT * FROM provincias";
 
 	public List<Provincias> readAll() {
 		

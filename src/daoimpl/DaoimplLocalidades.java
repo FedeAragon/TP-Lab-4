@@ -13,7 +13,7 @@ import entidad.Localidades;
 
 public class DaoimplLocalidades implements DaoLocalidades
 {
-	private static final String readall = "SELECT * FROM Localidades";
+	private static final String readall = "SELECT * FROM localidades";
 
 	public List<Localidades> readAll() {
 	
