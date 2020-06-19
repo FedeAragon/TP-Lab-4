@@ -48,7 +48,14 @@ public class ServletLogin extends HttpServlet {
 				if( negociousuario.ComprobarUsuario (nombreU, password) == 1)  
 				{
 					RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
-			        rd.forward(request, response);
+			                rd.forward(request, response);
+				}
+				else{
+					String cartel = "Los datos de usuario son invalidos";
+					request.setAttribute("Cartel", cartel);
+				    	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   
+			                rd.forward(request, response);
+					
 				}
 			}
 				
