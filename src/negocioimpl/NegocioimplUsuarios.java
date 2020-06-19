@@ -13,7 +13,7 @@ public class NegocioimplUsuarios implements NegocioUsuarios {
     return daousuario.readAll();
 	}
 
-	public int ComprobarUsuario(String nombreUsuario, int password) {
+	public int ComprobarUsuario(String nombreUsuario, Float password) {
     return daousuario.ComprobarUsuario(nombreUsuario, password);
 	}
 

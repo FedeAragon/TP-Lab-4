@@ -8,9 +8,9 @@ public class Usuario {
 	int TipoCuenta;
 	
 	//Constructores
-	public Usuario(int tipoCuenta, String nombreUsuario, int password) {
+	public Usuario(int tipoCuenta, String usuario, int password) {
 		TipoCuenta = tipoCuenta;
-		Usuario = nombreUsuario;
+		Usuario = usuario;
 		Password = password;
 	}
 	

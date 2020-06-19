@@ -37,13 +37,19 @@ public class ServletLogin extends HttpServlet {
 	{
 		
 		if(request.getParameter("btnIngresar")!=null)
-		{
-			
+		{   
+			NegocioimplUsuarios negociousuario = new NegocioimplUsuarios();
 			if(request.getParameter("txtUsuario") != null &&
 			   request.getParameter("passContra") != null)
 			{ 	
+				String nombreU = request.getParameter("txtUsuario").toString();
+				Float password = Float.parseFloat( request.getParameter("passContra"));
 				
-				
+				if( negociousuario.ComprobarUsuario (nombreU, password) == 1)  
+				{
+					RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
+			        rd.forward(request, response);
+				}
 			}
 				
 			

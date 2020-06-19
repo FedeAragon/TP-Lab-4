@@ -1,5 +1,7 @@
 package daoimpl;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +14,7 @@ import entidad.Usuario;
 public class DaoimplUsuarios implements DaoUsuarios
 {
 	private static final String readall = "SELECT * FROM usuarios";
+	private static final String comprobar = "SELECT * FROM usuarios WHERE Usuario =? AND Contraseña =?";
 
 public List<Usuario> readAll() {
 	
@@ -54,32 +57,46 @@ public List<Usuario> readAll() {
 			e.printStackTrace();
 		}
 		  
-		String Nombre = resultSet.getString(1);
+		String Nombreu = resultSet.getString(1);
 		int Contra = resultSet.getInt(2);
 		int tipoCuenta = resultSet.getInt(3); 
-		return new Usuario (tipoCuenta , Nombre , Contra);
+		return new Usuario(tipoCuenta , Nombreu , Contra);
 	}  
-	  
-	public int ComprobarUsuario(String nombreUsuario , int password)
-	{ 
+		
+	public int ComprobarUsuario(String nombre , Float password)
+	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
-	    int comprobado = 0;
-		for(Usuario usuario : this.readAll()) 
-		{
+		   int comprobado = 0;
+		   PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		
+		try{
 			
-		 if(usuario.getUsuario()==nombreUsuario && usuario.getPassword() == password)
-		 {
-			 comprobado = 1;
-		 } 
-		 
-		}					 	 
+			statement = conexion.getSQLConexion().prepareStatement(comprobar);
+			statement.setString(1, nombre);
+			statement.setFloat(2, password);
+			resultSet = statement.executeQuery();
+
+			if(resultSet.next())
+			{ 
+				comprobado ++;
+			}
+		    
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(); 
+		}
 		return comprobado;
 	}
+	
+	
+	
 	
 }
