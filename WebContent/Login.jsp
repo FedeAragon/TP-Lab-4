@@ -17,19 +17,17 @@
  <p id="titulo" class ="titulos" >Login</p>
   <hr>
   <br>
-  <label id ="lblUsuario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label id ="lblUsuario">
   Numero de Usuario</label>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
   <input type="text" name="txtUsuario" class= "texts" style="width: 400px; ">
   <br>
-  <label id ="lblContra">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label id ="lblContra">
   Contraseña</label>
   <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <input type="password" name="passContra" class = "texts" style="width: 400px; ">
   <br><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <input type="submit" name="btnIngresar" value="Ingresar" class ="botones" style="width: 403px; "> 
   </form>
  </div>
