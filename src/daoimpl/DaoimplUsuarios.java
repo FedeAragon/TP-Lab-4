@@ -14,7 +14,7 @@ import entidad.Usuario;
 public class DaoimplUsuarios implements DaoUsuarios
 {
 	private static final String readall = "SELECT * FROM usuarios";
-	private static final String comprobar = "SELECT * FROM usuarios WHERE Usuario =? AND Contraseña =?";
+	private static final String comprobar = "SELECT * FROM usuarios WHERE Usuario =? AND Contraseña =? AND Estado = true";
 
 public List<Usuario> readAll() {
 	
@@ -63,7 +63,7 @@ public List<Usuario> readAll() {
 		return new Usuario(tipoCuenta , Nombreu , Contra);
 	}  
 		
-	public int ComprobarUsuario(String nombre , Float password)
+	public int ComprobarUsuario(String nombre , String password)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -80,7 +80,7 @@ public List<Usuario> readAll() {
 			
 			statement = conexion.getSQLConexion().prepareStatement(comprobar);
 			statement.setString(1, nombre);
-			statement.setFloat(2, password);
+			statement.setString(2, password);
 			resultSet = statement.executeQuery();
 
 			if(resultSet.next())

@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <div class="contenedor">
  <br><br><br><br><br><br><br><br>
  <div class="fondo">
@@ -20,15 +19,26 @@
   <label id ="lblUsuario">
   Numero de Usuario</label>
   <br>
-
   <input type="text" name="txtUsuario" class= "texts" style="width: 400px; ">
   <br>
   <label id ="lblContra">
   Contraseña</label>
   <br>
   <input type="password" name="passContra" class = "texts" style="width: 400px; ">
-  <br><br>
+  <br>
+  <br>
   <input type="submit" name="btnIngresar" value="Ingresar" class ="botones" style="width: 403px; "> 
+  <%
+	if(request.getAttribute("error")!=null){
+		%>
+		 <div style="display:flex; margin-top:10px;">
+		 <i class="material-icons" style="font-size:24px; color:red">highlight_off</i>
+		 &nbsp;
+		 <p>Usuario o Contraseña incorrecta</p>
+		 </div>
+		 <%
+	}
+  %>
   </form>
  </div>
  

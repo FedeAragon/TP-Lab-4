@@ -23,6 +23,7 @@ public class ServletLogin extends HttpServlet {
     public ServletLogin() {
         super();
         // TODO Auto-generated constructor stub
+        
     }
 
     
@@ -43,7 +44,7 @@ public class ServletLogin extends HttpServlet {
 			   request.getParameter("passContra") != null)
 			{ 	
 				String nombreU = request.getParameter("txtUsuario").toString();
-				Float password = Float.parseFloat( request.getParameter("passContra"));
+				String password = request.getParameter("passContra").toString();
 				
 				if( negociousuario.ComprobarUsuario (nombreU, password) == 1)  
 				{
@@ -51,11 +52,10 @@ public class ServletLogin extends HttpServlet {
 			                rd.forward(request, response);
 				}
 				else{
-					String cartel = "Los datos de usuario son invalidos";
-					request.setAttribute("Cartel", cartel);
-				    	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   
-			                rd.forward(request, response);
-					
+					boolean error = true;
+					request.setAttribute("error", error);
+				    RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   
+			        rd.forward(request, response);
 				}
 			}
 				

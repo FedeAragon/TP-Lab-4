@@ -7,5 +7,5 @@ import entidad.Usuario;
 public interface DaoUsuarios {
 
 	public List<Usuario> readAll(); 
-	public int ComprobarUsuario(String usuario , Float password);
+	public int ComprobarUsuario(String usuario , String password);
 }

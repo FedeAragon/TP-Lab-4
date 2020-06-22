@@ -7,6 +7,6 @@ import entidad.Usuario;
 public interface NegocioUsuarios {
 
 	public List<Usuario> readAll(); 
-	public int ComprobarUsuario(String usuario , Float password);
+	public int ComprobarUsuario(String usuario , String password);
 	
 }
