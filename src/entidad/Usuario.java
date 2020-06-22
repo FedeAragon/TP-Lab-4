@@ -6,12 +6,14 @@ public class Usuario {
 	String Usuario;
 	int Password;
 	int TipoCuenta;
+	int Estado;
 	
 	//Constructores
-	public Usuario(int tipoCuenta, String usuario, int password) {
+	public Usuario(int tipoCuenta, String usuario, int password , int estado) {
 		TipoCuenta = tipoCuenta;
 		Usuario = usuario;
 		Password = password;
+		Estado = estado;
 	}
 	
 	public Usuario() {
@@ -43,12 +45,18 @@ public class Usuario {
 		Password = password;
 	}
 
+	public int getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(int estado) {
+		Estado = estado;
+	}
 
 	//toString();
 	@Override
 	public String toString() {
-		return "Usuario [TipoCuenta=" + TipoCuenta + ", NombreUsuario=" + Usuario + ", Password="
-				+ Password + "]";
-	}
-			
+		return "Usuario [Usuario=" + Usuario + ", Password=" + Password + ", TipoCuenta=" + TipoCuenta + ", Estado="
+				+ Estado + "]";
+	}		
 }

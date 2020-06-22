@@ -1,12 +1,14 @@
 package entidad;
 
+import java.sql.Date;
+
 public class Docente {
 	
 	//Atributos
     int Legajo;
 	int DNI;
 	String NombreyAp;
-	String FechaNacimiento;
+	Date FechaNacimiento;
 	String Direccion;
 	String Localidad;
 	String Provincia;
@@ -15,7 +17,7 @@ public class Docente {
 	int Estado;
 	
 	//Constructores
-	public Docente(int legajo, int dNI, String nombreyAp, String fechaNacimiento, String direccion, String localidad,
+	public Docente(int legajo, int dNI, String nombreyAp, Date fechaNacimiento, String direccion, String localidad,
 			String provincia, String email, int telefono , int estado) {
 		Legajo = legajo;
 		DNI = dNI;
@@ -58,11 +60,11 @@ public class Docente {
 		NombreyAp = nombreyAp;
 	}
 
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return FechaNacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		FechaNacimiento = fechaNacimiento;
 	}
 

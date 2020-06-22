@@ -1,7 +1,5 @@
 package daoimpl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,7 +58,8 @@ public List<Usuario> readAll() {
 		String Nombreu = resultSet.getString(1);
 		int Contra = resultSet.getInt(2);
 		int tipoCuenta = resultSet.getInt(3); 
-		return new Usuario(tipoCuenta , Nombreu , Contra);
+		int Estado = resultSet.getInt(4);
+		return new Usuario(tipoCuenta , Nombreu , Contra , Estado);
 	}  
 		
 	public int ComprobarUsuario(String nombre , String password)
