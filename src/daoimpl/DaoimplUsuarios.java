@@ -15,7 +15,7 @@ public class DaoimplUsuarios implements DaoUsuarios
 {
 	private static final String readall = "SELECT * FROM usuarios";
 	private static final String comprobar = "SELECT * FROM usuarios WHERE Usuario =? AND Contraseña =? AND Estado = true";
-
+	private static final String tipo = "SELECT * FROM usuarios WHERE Usuario =? AND TipoCuenta = true";
 public List<Usuario> readAll() {
 	
 	try {
@@ -68,7 +68,6 @@ public List<Usuario> readAll() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		   int comprobado = 0;
@@ -96,7 +95,34 @@ public List<Usuario> readAll() {
 		return comprobado;
 	}
 	
-	
+	public boolean TipoCuenta(String usuario) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		   PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		
+		try{
+			
+			statement = conexion.getSQLConexion().prepareStatement(tipo);
+			statement.setString(1, usuario);
+			resultSet = statement.executeQuery();
+
+			if(resultSet.next())
+			{ 
+				return true;
+			}
+		    
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(); 
+		}
+		return false;
+	}
 	
 	
 }

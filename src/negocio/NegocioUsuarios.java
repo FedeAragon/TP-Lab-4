@@ -8,5 +8,5 @@ public interface NegocioUsuarios {
 
 	public List<Usuario> readAll(); 
 	public int ComprobarUsuario(String usuario , String password);
-	
+	public boolean TipoCuenta(String usuario);
 }

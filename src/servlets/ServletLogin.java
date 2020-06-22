@@ -48,8 +48,15 @@ public class ServletLogin extends HttpServlet {
 				
 				if( negociousuario.ComprobarUsuario (nombreU, password) == 1)  
 				{
-					RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
-			                rd.forward(request, response);
+					if(negociousuario.TipoCuenta(nombreU)) {
+						boolean admin = true;
+						request.setAttribute("admin", admin);
+						RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
+		                rd.forward(request, response);
+					}else {
+						RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaCursos.jsp");   
+		                rd.forward(request, response);
+					}		
 				}
 				else{
 					boolean error = true;

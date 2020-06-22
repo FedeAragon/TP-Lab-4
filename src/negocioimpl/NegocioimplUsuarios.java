@@ -16,6 +16,9 @@ public class NegocioimplUsuarios implements NegocioUsuarios {
 	public int ComprobarUsuario(String nombreUsuario, String password) {
     return daousuario.ComprobarUsuario(nombreUsuario, password);
 	}
-
+	
+	public boolean TipoCuenta(String usuario){
+	return daousuario.TipoCuenta(usuario);
+	}
 }
  
