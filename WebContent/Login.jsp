@@ -19,12 +19,12 @@
   <label id ="lblUsuario">
   Numero de Usuario</label>
   <br>
-  <input type="text" name="txtUsuario" class= "texts" style="width: 400px; ">
+  <input type="text" name="txtUsuario" class= "texts" style="width: 400px; " required >
   <br>
   <label id ="lblContra">
   Contraseña</label>
   <br>
-  <input type="password" name="passContra" class = "texts" style="width: 400px; ">
+  <input type="password" name="passContra" class = "texts" style="width: 400px; " required>
   <br>
   <br>
   <input type="submit" name="btnIngresar" value="Ingresar" class ="botones" style="width: 403px; "> 
