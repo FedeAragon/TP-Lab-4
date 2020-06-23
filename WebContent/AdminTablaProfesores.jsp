@@ -13,36 +13,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 	<script type="text/javascript">
 	$(document).ready( function () {
-	    $('#table_id').DataTable({
-	    	"language":{
-	    	    "sProcessing":     "Procesando...",
-	    	    "sLengthMenu":     "Mostrar _MENU_ registros",
-	    	    "sZeroRecords":    "No se encontraron resultados",
-	    	    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-	    	    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-	    	    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-	    	    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-	    	    "sInfoPostFix":    "",
-	    	    "sSearch":         "Buscar:",
-	    	    "sUrl":            "",
-	    	    "sInfoThousands":  ",",
-	    	    "sLoadingRecords": "Cargando...",
-	    	    "oPaginate": {
-	    	        "sFirst":    "Primero",
-	    	        "sLast":     "Último",
-	    	        "sNext":     "Siguiente",
-	    	        "sPrevious": "Anterior"
-	    	    },
-	    	    "oAria": {
-	    	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	    	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	    	    },
-	    	    "buttons": {
-	    	        "copy": "Copiar",
-	    	        "colvis": "Visibilidad"
-	    	    }
-	    	}
-	    });
+        $('#table_id').DataTable( );
 	} );
 	</script>
 </head>
@@ -58,20 +29,14 @@
   </div>
   <hr>
   <br>
-  
-  <form method="post" action="ServletAdminTablaProfesores" >
-  <input type="submit" name="fedeputo" value="fedeputo">
-  </form>
+
   <%   
   
    List<Docente> listadocentes = null;
-  
-       if(request.getAttribute("Docentes")!= null )
+ 
+       if(request.getAttribute("docentes")!= null )
        {
-    	   
-    	   
-    	  
-    	   listadocentes = (List<Docente>)request.getAttribute("Docentes");
+    	   listadocentes = (List<Docente>)request.getAttribute("docentes");
        }
   
   
@@ -88,18 +53,14 @@
 		            <th>Provincia</th>
 		            <th>Telefono</th>
 		            <th>Email</th>
-		            
 		            <th><th>
-		            
-		            
-		          
 		        </tr>
-		       
-		        
-		          <%   if(listadocentes != null)
+		    </thead>
+		    <tbody style="color:black">
+		        <%   if(listadocentes != null)
 		        	  for(Docente d : listadocentes){
 		        		 %>  <tr><form method="post" action="servletAdminTablaProfesores"> 
-		        		 <td><%= d.getLegajo() %> <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>"> </td>
+		        		 <td><%= d.getLegajo() %> <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>"></td>
 		        		 <td><%= d.getNombreyAp() %>   </td>
 		        		 <td><%= d.getDNI() %>   </td>
 		        		 <td><%= d.getFechaNacimiento() %>   </td>
@@ -111,21 +72,14 @@
 		        		  <td><input type="submit" class="botones" value="Modificar">
 		                  <td><input type="submit" class="botones" value="Eliminar">
 		        		 </form> 
-		        		      <tr>
+		        		<tr>
 		        	<%  } %>
-		    </thead>
-		    <tbody style="color:black">
-		        
 		    </tbody>
 		</table>
 		</div>
 	</div>
 	
 	<jsp:include page="Footer.html"></jsp:include>
-	
-	 
-	 	
-	
 	
 </body>
 </html>
