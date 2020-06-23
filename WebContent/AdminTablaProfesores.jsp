@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>   
+<%@ page import="entidad.Docente" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,6 +58,24 @@
   </div>
   <hr>
   <br>
+  
+  <form method="post" action="ServletAdminTablaProfesores" >
+  <input type="submit" name="fedeputo" value="fedeputo">
+  </form>
+  <%   
+  
+   List<Docente> listadocentes = null;
+  
+       if(request.getAttribute("Docentes")!= null )
+       {
+    	   
+    	   
+    	  
+    	   listadocentes = (List<Docente>)request.getAttribute("Docentes");
+       }
+  
+  
+  %>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -70,49 +90,32 @@
 		            <th>Email</th>
 		            
 		            <th><th>
+		            
+		            
+		          
 		        </tr>
+		       
+		        
+		          <%   if(listadocentes != null)
+		        	  for(Docente d : listadocentes){
+		        		 %>  <tr><form method="post" action="servletAdminTablaProfesores"> 
+		        		 <td><%= d.getLegajo() %> <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>"> </td>
+		        		 <td><%= d.getNombreyAp() %>   </td>
+		        		 <td><%= d.getDNI() %>   </td>
+		        		 <td><%= d.getFechaNacimiento() %>   </td>
+		        		 <td><%= d.getDireccion() %>   </td>
+		        		 <td><%= d.getLocalidad() %>   </td>
+		        		 <td><%= d.getProvincia() %>   </td>
+		        		 <td><%= d.getTelefono() %>   </td>
+		        		 <td><%= d.getEmail() %>   </td>
+		        		  <td><input type="submit" class="botones" value="Modificar">
+		                  <td><input type="submit" class="botones" value="Eliminar">
+		        		 </form> 
+		        		      <tr>
+		        	<%  } %>
 		    </thead>
 		    <tbody style="color:black">
-		        <tr>
-		            <td>22220</td>
-		            <td>Federico Aragon</td>
-		            <td>42197455</td>
-		            <td>03/11/1999</td>
-		            <td>Row 1 Data 5</td>
-		            <td>Row 1 Data 6</td>
-		            <td>Row 1 Data 7</td>
-		            <td>Row 1 Data 8</td>
-		            <td>Row 1 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
-		        </tr>
-		        <tr>
-		            <td>Row 2 Data 1</td>
-		            <td>Row 2 Data 2</td>
-		            <td>Row 2 Data 3</td>
-		            <td>Row 2 Data 4</td>
-		            <td>Row 2 Data 5</td>
-		            <td>Row 2 Data 6</td>
-		            <td>Row 2 Data 7</td>
-		            <td>Row 2 Data 8</td>
-		            <td>Row 2 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
-		        </tr>
 		        
-		        <tr>
-		            <td>Row 3 Data 1</td>
-		            <td>Row 3 Data 2</td>
-		            <td>Row 3 Data 3</td>
-		            <td>Row 3 Data 4</td>
-		            <td>Row 3 Data 5</td>
-		            <td>Row 3 Data 6</td>
-		            <td>Row 3 Data 7</td>
-		            <td>Row 3 Data 8</td>
-		            <td>Row 3 Data 9</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
-		        </tr>
 		    </tbody>
 		</table>
 		</div>
