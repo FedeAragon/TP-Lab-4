@@ -45,17 +45,6 @@ public class ServletAdminTablaProfesores extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		if(request.getParameter("fedeputo")!= null) {
-		NegocioimplProfesores negocioprofesores = new NegocioimplProfesores();
-		Docente docente = new Docente();
-		List<Docente> docentes = negocioprofesores.readAll();
-		
-		request.setAttribute("docentes", docentes);
-		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaProfesores.jsp");   
-        rd.forward(request, response);
-		}
-		
 	}
 
 }

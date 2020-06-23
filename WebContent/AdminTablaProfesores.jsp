@@ -13,7 +13,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 	<script type="text/javascript">
 	$(document).ready( function () {
-        $('#table_id').DataTable( );
+        $('#table_id').DataTable();
 	} );
 	</script>
 </head>
@@ -72,7 +72,7 @@
 		        		  <td><input type="submit" class="botones" value="Modificar">
 		                  <td><input type="submit" class="botones" value="Eliminar">
 		        		 </form> 
-		        		<tr>
+		        		</tr>
 		        	<%  } %>
 		    </tbody>
 		</table>
