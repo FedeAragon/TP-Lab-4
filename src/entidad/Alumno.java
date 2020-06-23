@@ -10,22 +10,22 @@ public class Alumno {
 	String NombreyAp;
 	Date FechaNacimiento;
 	String Direccion;
-	String Localidad;
-	String Provincia;
+	Localidades Localidad;
+	Provincias Provincia;
 	String Email;
 	int Telefono;
 	int Estado;
 	
 	//Constructores
-	public Alumno(int legajo, int dNI, String nombreyAp, Date fechaNacimiento, String direccion, String localidad,
-			String provincia, String email, int telefono , int estado) {
+	public Alumno(int legajo, int dNI, String nombreyAp, Date fechaNacimiento, String direccion, Localidades localidad,
+			Provincias provincia, String email, int telefono , int estado) {
 		Legajo = legajo;
 		DNI = dNI;
 		NombreyAp = nombreyAp;
 		FechaNacimiento = fechaNacimiento;
 		Direccion = direccion;
-		Localidad = localidad;
-		Provincia = provincia;
+		Localidad=localidad;
+		Provincia= provincia;
 		Email = email;
 		Telefono = telefono;
 		Estado = estado;
@@ -76,19 +76,23 @@ public class Alumno {
 		Direccion = direccion;
 	}
 
-	public String getLocalidad() {
+	public Localidades getLocalidad() {
 		return Localidad;
 	}
 
-	public void setLocalidad(String localidad) {
-		Localidad = localidad;
-	}
+	
 
-	public String getProvincia() {
+	public Provincias getProvincia() {
 		return Provincia;
 	}
 
-	public void setProvincia(String provincia) {
+	
+
+	public void setLocalidad(Localidades localidad) {
+		Localidad = localidad;
+	}
+
+	public void setProvincia(Provincias provincia) {
 		Provincia = provincia;
 	}
 
@@ -120,7 +124,7 @@ public class Alumno {
 	@Override
 	public String toString() {
 		return "Alumno [Legajo=" + Legajo + ", DNI=" + DNI + ", NombreyAp=" + NombreyAp + ", FechaNacimiento="
-				+ FechaNacimiento + ", Direccion=" + Direccion + ", Localidad=" + Localidad + ", Provincia=" + Provincia
+				+ FechaNacimiento + ", Direccion=" + Direccion + ", Localidad=" + Localidad.getNombreLocalidad() + ", Provincia=" + Provincia.getNombreProvincia()
 				+ ", Email=" + Email + ", Telefono=" + Telefono + ", Estado=" + Estado + "]";
 	}	
 }

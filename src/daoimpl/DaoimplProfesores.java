@@ -10,10 +10,12 @@ import java.util.List;
 
 import dao.DaoProfesores;
 import entidad.Docente;
+import entidad.Localidades;
+import entidad.Provincias;
 
 public class DaoimplProfesores implements DaoProfesores {
 	
-	private static final String readall = "SELECT * FROM profesores";
+	private static final String readall = "SELECT * FROM profesores ";
 
 public List<Docente> readAll() {
 		
@@ -66,7 +68,20 @@ public List<Docente> readAll() {
 	 	int telefono = resultSet.getInt(9);
 		int estado = resultSet.getInt(10);
 		
-	 	return new Docente(legajo, DNI, nombreyApellido, nacimiento, direccion, codLocalidad, codProvincia, email, telefono, estado);	
+		
+		DaoimplLocalidades daoimplocalidades = new DaoimplLocalidades();
+		Localidades loca = new Localidades();
+         if (daoimplocalidades.obtenerLocalidad(codLocalidad) != null) {
+        
+        	  loca =  daoimplocalidades.obtenerLocalidad(codLocalidad);
+         }
+        DaoimplProvincias daoimplprov = new DaoimplProvincias();
+        Provincias prov = new Provincias();
+         if(daoimplprov.obtenerProvincia(codProvincia) != null) {
+        prov = daoimplprov.obtenerProvincia(codProvincia);
+         }
+         
+	 	return new Docente(legajo, DNI, nombreyApellido, nacimiento, direccion, loca, prov, email, telefono, estado);	
 	}   
 	
 	public void spAgregarProfesor(Docente docente)
@@ -79,8 +94,8 @@ public List<Docente> readAll() {
 	            proc.setString("UNombreApellido", docente.getNombreyAp());
 	            proc.setDate("UNacimiento", docente.getFechaNacimiento());
 	            proc.setString("UDireccion", docente.getDireccion());
-	            proc.setString("UCodLocalidad", docente.getLocalidad());
-	            proc.setString("UCodProvincia", docente.getProvincia());
+	            proc.setString("UCodLocalidad", docente.getLocalidad().getCodLocalidad());
+	            proc.setString("UCodProvincia", docente.getProvincia().getCodProvincia());
 	            proc.setString("UEmail", docente.getEmail());
 	            proc.setInt("UTelefono", docente.getTelefono());
 	            proc.execute();             
@@ -102,8 +117,8 @@ public List<Docente> readAll() {
 	            proc.setString("UNombreApellido", docente.getNombreyAp());
 	            proc.setDate("UNacimiento", docente.getFechaNacimiento());
 	            proc.setString("UDireccion", docente.getDireccion());
-	            proc.setString("UCodLocalidad", docente.getLocalidad());
-	            proc.setString("UCodProvincia", docente.getProvincia());
+	            proc.setString("UCodLocalidad", docente.getLocalidad().getCodLocalidad());
+	            proc.setString("UCodProvincia", docente.getProvincia().getCodProvincia());
 	            proc.setString("UEmail", docente.getEmail());
 	            proc.setInt("UTelefono", docente.getTelefono());
 	            proc.execute();             

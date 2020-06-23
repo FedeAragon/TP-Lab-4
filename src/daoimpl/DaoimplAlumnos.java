@@ -9,6 +9,8 @@ import java.util.List;
 
 import dao.DaoAlumnos;
 import entidad.Alumno;
+import entidad.Localidades;
+import entidad.Provincias;
 
 
 
@@ -66,7 +68,13 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	 	int telefono = resultSet.getInt(9);
 		int estado = resultSet.getInt(10);
 		
-	 	return new Alumno(legajo, DNI, nombreyApellido, nacimiento, direccion, codLocalidad, codProvincia, email, telefono, estado);	
+       DaoimplLocalidades daoimplocalidades = new DaoimplLocalidades();
+        
+        Localidades loca =  daoimplocalidades.obtenerLocalidad(codLocalidad);
+        DaoimplProvincias daoimplprov = new DaoimplProvincias();
+        Provincias prov = daoimplprov.obtenerProvincia(codProvincia);
+		
+	 	return new Alumno(legajo, DNI, nombreyApellido, nacimiento, direccion, loca,prov , email, telefono, estado);	
 	}  
 	
 	public void spAgregarAlumno(Alumno alumno)
@@ -79,8 +87,8 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	            proc.setString("UNombreApellido", alumno.getNombreyAp());
 	            proc.setDate("UNacimiento", alumno.getFechaNacimiento());
 	            proc.setString("UDireccion", alumno.getDireccion());
-	            proc.setString("UCodLocalidad", alumno.getLocalidad());
-	            proc.setString("UCodProvincia", alumno.getProvincia());
+	            proc.setString("UCodLocalidad", alumno.getLocalidad().getCodLocalidad());
+	            proc.setString("UCodProvincia", alumno.getProvincia().getCodProvincia());
 	            proc.setString("UEmail", alumno.getEmail());
 	            proc.setInt("UTelefono", alumno.getTelefono());
 	            proc.execute();             
@@ -102,8 +110,8 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	            proc.setString("UNombreApellido_a", alumno.getNombreyAp());
 	            proc.setDate("UNacimiento_a", alumno.getFechaNacimiento());
 	            proc.setString("UDireccion_a", alumno.getDireccion());
-	            proc.setString("UCodLocalidad_a", alumno.getLocalidad());
-	            proc.setString("UCodProvincia_a", alumno.getProvincia());
+	            proc.setString("UCodLocalidad_a", alumno.getLocalidad().getCodLocalidad());
+	            proc.setString("UCodProvincia_a", alumno.getProvincia().getCodProvincia());
 	            proc.setString("UEmail_a", alumno.getEmail());
 	            proc.setInt("UTelefono_a", alumno.getTelefono());
 	            proc.execute();             

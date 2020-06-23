@@ -14,6 +14,7 @@ import entidad.Localidades;
 public class DaoimplLocalidades implements DaoLocalidades
 {
 	private static final String readall = "SELECT * FROM localidades";
+	private static final String Completa = "SELECT * FROM localidades WHERE IDLocalidad_loc = ?";
 
 	public List<Localidades> readAll() {
 	
@@ -47,5 +48,42 @@ public class DaoimplLocalidades implements DaoLocalidades
 		return new Localidades(CodLocalidad, CodProvincia, NombreLocalidad);
 	}
 	
+	public Localidades obtenerLocalidad(String id_localidad) {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		   
+		Localidades loca = new Localidades();
+		   PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		
+		try{
+			
+			statement = conexion.getSQLConexion().prepareStatement(Completa);
+			statement.setString(1,id_localidad);
+			
+			resultSet = statement.executeQuery();
+			if(resultSet.next())
+			{ 
+				
+				loca.setCodLocalidad(resultSet.getString(1));
+				loca.setNombreLocalidad(resultSet.getString(2));
+				loca.setCodProvincia(resultSet.getString(3));
+				return loca;
+			}
+
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(); 
+		}
+	
+		
+		return null;
+	}
 	
 }

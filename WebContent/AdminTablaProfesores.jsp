@@ -65,8 +65,8 @@
 		        		 <td><%= d.getDNI() %>   </td>
 		        		 <td><%= d.getFechaNacimiento() %>   </td>
 		        		 <td><%= d.getDireccion() %>   </td>
-		        		 <td><%= d.getLocalidad() %>   </td>
-		        		 <td><%= d.getProvincia() %>   </td>
+		        		 <td><%= d.getLocalidad().getNombreLocalidad() %>   </td>
+		        		 <td><%= d.getProvincia().getNombreProvincia() %>   </td>
 		        		 <td><%= d.getTelefono() %>   </td>
 		        		 <td><%= d.getEmail() %>   </td>
 		        		  <td><input type="submit" class="botones" value="Modificar">
