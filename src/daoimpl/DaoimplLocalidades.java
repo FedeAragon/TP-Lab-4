@@ -15,7 +15,8 @@ public class DaoimplLocalidades implements DaoLocalidades
 {
 	private static final String readall = "SELECT * FROM localidades";
 	private static final String Completa = "SELECT * FROM localidades WHERE IDLocalidad_loc = ?";
-
+	private static final String LocalidadXProv = "SELECT * FROM localidades WHERE IDProvincia_loc = ? ";
+	
 	public List<Localidades> readAll() {
 	
 		PreparedStatement statement;
@@ -84,6 +85,31 @@ public class DaoimplLocalidades implements DaoLocalidades
 	
 		
 		return null;
+	}
+	
+	
+	public List<Localidades> LocalidadesXProv(String codProvincia){
+		
+		PreparedStatement statement;
+		ResultSet resultSet; 
+		ArrayList<Localidades> localidades = new ArrayList<Localidades>();
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(LocalidadXProv);
+			statement.setString(1,codProvincia);
+			
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				localidades.add(getLocalidad(resultSet));
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return localidades;
 	}
 	
 }

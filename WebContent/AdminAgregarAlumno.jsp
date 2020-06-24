@@ -1,3 +1,9 @@
+<%@page import="entidad.Provincias"%>
+<%@page import="entidad.Localidades"%>
+<%@page import="negocio.NegocioProvincias"%>
+<%@page import="negocioimpl.NegocioimplProvincias"%>
+<%@page import="negocioimpl.NegocioimplLocalidades"%>
+<%@ page import="java.util.List"%>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +18,7 @@
 <body>
 <jsp:include page="Menu.html"></jsp:include>
 <div class="contenedor">
-<div class="fondo">
+<form class="fondo" method="post" action="">
 
 <div class="titulo_div">
   <label id="titulo" class ="titulos" >Agregar Alumnos</label>
@@ -22,7 +28,7 @@
   
   
   <br>
-  <form class="contenido">
+  <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
   <input type="text" name="txtLegajo" class= "texts" disabled="disabled">
   <label id ="lblDNI" class="subtitulos">DNI </label>
@@ -30,46 +36,65 @@
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
   <input type="text" name="txtDireccion" class= "texts" >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-   <input type="text" name="txtLocalidad" class="texts">
+  <select name="ddlLocalidades" class="Ddls">
+  
+  	<option value="0"> Seleccione una localidad </option>
+  	
+  	<%
+  	
+  	NegocioimplLocalidades negLoc = new NegocioimplLocalidades();
+		List<Localidades> localidades =  negLoc.LocalidadesXProv(request.getParameter("provincia"));
+		for(Localidades loc : localidades){
+			%> <option value="<%=loc.getCodLocalidad() %>"> <%= loc.getNombreLocalidad()  %></option> <%
+		}
+	  	
+  	%>
+  
+  </select>
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
     <input type="text" name="txtTelefono" class= "texts">
   
-  </form>
-  <form class="contenido">
+  </div>
+  <div class="contenido">
   
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
   <input type="text" name="txtNombre" class="texts">
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
   <input type="text" name="txtNacimiento" class= "texts" >
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
- <select name="ddlProvincias" class = "Ddls">
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Catamarca">Catamarca</option>
-						<option value="Chaco">Chaco</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Corrientes">Corrientes</option>
-						<option value="Entre rios">Entre rios</option>
-						<option value="Formosa">Formosa</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="La Pampa">La Pampa</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="Misiones">Misiones</option>
-						<option value="Neuquén">Neuquén</option>
-						<option value="Rio Negro">Rio Negro</option>
-						<option value="Salta">Salta</option>
-						<option value="San Juan">San Juan</option>
-						<option value="San Luis">San Luis</option>
-						<option value="Santa Cruz">Santa Cruz</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Tucuman">Tucuman</option>
+ 
+
+ 
+ <select name="provincia" id="provincia" class = "Ddls" onchange="this.form.submit();">
+ 						<option value="0">Seleccione una provincia</option>
+						
+						<%
+							NegocioimplProvincias negProv = new NegocioimplProvincias();
+							List<Provincias> provincias =  negProv.readAll();
+							for(Provincias prov : provincias){
+								%> <option value="<%=prov.getCodProvincia() %>"
+								
+								
+								<%
+
+								if(request.getParameter("provincia")!=null){
+									
+									if( Integer.parseInt(prov.getCodProvincia()) == Integer.parseInt(request.getParameter("provincia")))
+									{
+										out.print("selected");
+									}
+								}
+								
+								%>
+								
+								
+								> <%=prov.getNombreProvincia()  %></option> <%
+							}
+						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
   <input type="text" name="txtEmail" class= "texts">
-  </form>
+  </div>
   
 
    </div>
@@ -78,7 +103,7 @@
  </div>
   
 
-</div>
+</form>
  
     </div>
 

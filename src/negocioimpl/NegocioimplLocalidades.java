@@ -15,4 +15,8 @@ public class NegocioimplLocalidades implements NegocioLocalidades{
 		return daolocalidad.readAll();
 	}
 	
+	public List<Localidades> LocalidadesXProv(String codProvincia){
+		return daolocalidad.LocalidadesXProv(codProvincia);
+	}
+	
 }
