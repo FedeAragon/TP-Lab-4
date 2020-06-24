@@ -9,4 +9,5 @@ public interface DaoAlumnos {
 	public void spAgregarAlumno(Alumno alumno);
 	public void spModificarAlumno(Alumno alumno);
 	public void spEliminarAlumno(Alumno alumno); 
+	public Alumno obtenerAlumno(int leg_alumno);
 }

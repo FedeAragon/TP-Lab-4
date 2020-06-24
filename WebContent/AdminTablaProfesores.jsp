@@ -11,9 +11,22 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready( function () {
-        $('#table_id').DataTable();
+		 var table = $('#table_id').DataTable({
+	        dom: 'Bfrtip',
+	        select: true,
+	        buttons: [
+	            {
+	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
+	            	action: function(){
+	            		
+	            	}
+	            }
+	        ]
+	    } );
 	} );
 	</script>
 </head>
@@ -59,7 +72,7 @@
 		    <tbody style="color:black">
 		        <%   if(listadocentes != null)
 		        	  for(Docente d : listadocentes){
-		        		 %>  <tr><form method="post" action="servletAdminTablaProfesores"> 
+		        		 %>  <tr><form method="post" action="ServletAdminModificarProfesor"> 
 		        		 <td><%= d.getLegajo() %> <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>"></td>
 		        		 <td><%= d.getNombreyAp() %>   </td>
 		        		 <td><%= d.getDNI() %>   </td>
@@ -69,10 +82,22 @@
 		        		 <td><%= d.getProvincia().getNombreProvincia() %>   </td>
 		        		 <td><%= d.getTelefono() %>   </td>
 		        		 <td><%= d.getEmail() %>   </td>
-		        		  <td><input type="submit" class="botones" value="Modificar">
-		                  <td><input type="submit" class="botones" value="Eliminar">
+		        		  <td>
+		            	<button type="submit" value="Modificar" name="btnModificar">
+		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
+		            	</button>
+		            
+		            </form>
+		            <td>
+		            <form method="post" action=""> 
+		            <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>">
+		            	<button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+		            </td>
 		        		 </form> 
 		        		</tr>
+		        		
 		        	<%  } %>
 		    </tbody>
 		</table>

@@ -71,7 +71,7 @@
 		        	for(Alumno a : listaAlumnos){
 		        	%>
 		        <tr>
-		        <form method="post" action="servletAdminTablaAlumos">
+		        <form method="post" action="ServletAdminModificarAlumno">
 		         <td><%= a.getLegajo() %> <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo() %>"></td>
 		        		 <td><%= a.getNombreyAp() %>   </td>
 		        		 <td><%= a.getDNI() %>   </td>
@@ -81,18 +81,23 @@
 		        		 <td><%= a.getProvincia().getNombreProvincia() %>   </td>
 		        		 <td><%= a.getTelefono() %>   </td>
 		        		 <td><%= a.getEmail() %>   </td>
-		            	<td>
-		            	<button type="submit">
+		            <td>
+		            	<button type="submit" value="Modificar" name="btnModificar">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
 		            	</button>
+		            
+		            </form>
 		            <td>
-		            	<button type="submit">
+		            <form method="post" action=""> 
+		            <input type="hidden" name="LegajoProfe" value="<%= a.getLegajo() %>">
+		            	<button type="submit" value="Eliminar" name="btnEliminar">
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 		            </td>
-		            </form>
-		        </tr>
-		        <% } %>
+		        		 </form> 
+		        		</tr>
+		        		
+		        	<%  } %>
 		    </tbody>
 		</table>
 		</div>

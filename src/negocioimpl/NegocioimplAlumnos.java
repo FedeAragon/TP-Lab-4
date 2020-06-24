@@ -4,6 +4,7 @@ import java.util.List;
 
 import daoimpl.DaoimplAlumnos;
 import entidad.Alumno;
+import entidad.Docente;
 import negocio.NegocioAlumnos;
 
 public class NegocioimplAlumnos implements NegocioAlumnos {
@@ -29,6 +30,11 @@ public class NegocioimplAlumnos implements NegocioAlumnos {
     {
     	daoalumno.spEliminarAlumno(alumno);
     }
+    public Alumno obtenerAlumno(int leg_alumno) 
+	{
+		
+		return daoalumno.obtenerAlumno(leg_alumno);
+	}
 
 }
  

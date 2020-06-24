@@ -9,6 +9,7 @@ import java.util.List;
 
 import dao.DaoAlumnos;
 import entidad.Alumno;
+import entidad.Docente;
 import entidad.Localidades;
 import entidad.Provincias;
 
@@ -17,6 +18,7 @@ import entidad.Provincias;
 public class DaoimplAlumnos implements DaoAlumnos{
 
 	private static final String readall = "SELECT * FROM alumnos";
+	private static final String obteneralumno ="SELECT * FROM alumnos WHERE legajo_a = ?";
 	
 	public List<Alumno> readAll() {
 		
@@ -141,6 +143,51 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	            System.out.println(e);
 	       }
 		
+	}
+	
+	public Alumno obtenerAlumno(int leg_alumno) {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+			Alumno alumno= new Alumno();
+			DaoimplLocalidades daoloc= new DaoimplLocalidades();
+			DaoimplProvincias daoprov= new DaoimplProvincias();
+			
+		 	PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		   try{
+				
+				statement = conexion.getSQLConexion().prepareStatement(obteneralumno);
+				statement.setInt(1,leg_alumno);
+				
+				resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{ 
+					alumno.setLegajo(resultSet.getInt(1));
+					alumno.setDNI(resultSet.getInt(2));
+					alumno.setNombreyAp(resultSet.getString(3));
+					alumno.setFechaNacimiento(resultSet.getDate(4));
+					alumno.setDireccion(resultSet.getString(5));
+					alumno.setLocalidad(daoloc.obtenerLocalidad(resultSet.getString(6)));
+					alumno.setProvincia(daoprov.obtenerProvincia(resultSet.getString(7)));
+					alumno.setEmail(resultSet.getString(8));
+					alumno.setTelefono(resultSet.getInt(9));
+					alumno.setEstado(resultSet.getInt(10));
+					return alumno;
+				}
+
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace(); 
+			}
+		
+		  
+		return null;
 	}
 	
 }

@@ -16,7 +16,7 @@ import entidad.Provincias;
 public class DaoimplProfesores implements DaoProfesores {
 	
 	private static final String readall = "Select * from profesores inner join usuarios on usuarios.Usuario= profesores.Email_p where Estado_p= true and TipoCuenta = false; ";
-	private static final String obtenerprofesor ="Select * from profesores where legajo_p=?";
+	private static final String obtenerprofesor ="Select * from profesores where legajo_p = ?";
 public List<Docente> readAll() {
 		
 		try {

@@ -29,5 +29,12 @@ public class NegocioimplProfesores {
 	    daoprofesor.spEliminarProfesor(docente);
 	}
 	
+	public Docente obtenerProfesor(int leg_profesor) 
+	{
+		
+		return daoprofesor.obtenerProfesor(leg_profesor);
+	}
+	
+	
 }
  

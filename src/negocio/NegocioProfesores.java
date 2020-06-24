@@ -9,4 +9,5 @@ public interface NegocioProfesores {
 	public void spAgregarProfesor(Docente docente);
 	public void spModificarProfesor(Docente docente);
 	public void spEliminarProfesor(Docente docente);
+	public Docente obtenerProfesor(int leg_profesor);
 }
