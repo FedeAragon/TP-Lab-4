@@ -62,7 +62,7 @@
 
    </div>
    <div class="boton">
- <input type ="submit" name = "btnAgregar" value = "Agregar" class = "botones">
+ <input type ="submit" name = "btnModificar" value = "Modificar" class = "botones">
  </div>
   
 

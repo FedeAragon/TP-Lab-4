@@ -48,7 +48,10 @@
 			if(request.getAttribute("alumnos")!=null){
 				listaAlumnos = (List<Alumno>)request.getAttribute("alumnos");
 			}
-			
+			if(request.getAttribute("eliminado")!= null)
+			{
+				int eliminado = (int)request.getAttribute("eliminado");
+			}
 			%>
 			
 			<table id="table_id" class="display" >
@@ -63,6 +66,7 @@
 		            <th>Provincia</th>
 		            <th>Telefono</th>
 		            <th>Email</th>
+		            <th>Estado</th>
 		            <th><th>
 		        </tr>
 		    </thead>
@@ -81,6 +85,7 @@
 		        		 <td><%= a.getProvincia().getNombreProvincia() %>   </td>
 		        		 <td><%= a.getTelefono() %>   </td>
 		        		 <td><%= a.getEmail() %>   </td>
+		        		 <td><%= a.getEstado() %>   </td>
 		            <td>
 		            	<button type="submit" value="Modificar" name="btnModificar">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
@@ -88,8 +93,8 @@
 		            
 		            </form>
 		            <td>
-		            <form method="post" action=""> 
-		            <input type="hidden" name="LegajoProfe" value="<%= a.getLegajo() %>">
+		            <form method="post" action="ServletAdminTablaAlumnos"> 
+		            <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo() %>">
 		            	<button type="submit" value="Eliminar" name="btnEliminar">
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>

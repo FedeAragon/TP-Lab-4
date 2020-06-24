@@ -1,10 +1,12 @@
 package daoimpl;
 import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.util.List;
 
 import dao.DaoAlumnos;
@@ -133,15 +135,16 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	public void spEliminarAlumno(Alumno alumno)
 	{
 		Conexion conexion = Conexion.getConexion();
-		
+		 
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarAlumno(?) ");
-	            proc.setInt("ULegajo", alumno.getLegajo());
+	            proc.setInt(1, alumno.getLegajo());
 	            proc.execute();             
 	        } 
+		
 	       catch (Exception e) {                  
 	            System.out.println(e);
-	       }
+	       } 
 		
 	}
 	

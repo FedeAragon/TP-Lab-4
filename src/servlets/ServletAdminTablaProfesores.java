@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.Alumno;
 import entidad.Docente;
+import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplProfesores;
 import negocioimpl.NegocioimplUsuarios;
 
@@ -25,7 +27,6 @@ public class ServletAdminTablaProfesores extends HttpServlet {
   
     public ServletAdminTablaProfesores() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,6 +46,22 @@ public class ServletAdminTablaProfesores extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		 if(request.getParameter("btnEliminar")!=null)
+         {
+       	  
+         if(request.getParameter("LegajoProfe")!= null)
+         {
+       	  int legajo = Integer.parseInt(request.getParameter("LegajoProfe"));  
+       	  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
+       	  negocioProfe.spEliminarProfesor(negocioProfe.obtenerProfesor(legajo));
+          ArrayList<Docente> docentes = (ArrayList<Docente>) negocioProfe.readAll();
+       	   
+            request.setAttribute("docentes", docentes);
+ 			RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaProfesores.jsp");   
+ 	        rd.forward(request, response);
+         }
+         
+         }
 	}
 
 }
