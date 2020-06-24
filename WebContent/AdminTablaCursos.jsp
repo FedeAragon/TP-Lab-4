@@ -70,7 +70,9 @@
 		            <th>Cuatrimestre</th>
 		            <th>Año</th>
 		            <th>Docente</th>
-		            <th>Alumnos</th>    
+		            <th>Comision</th>
+		            <th>Estado</th> 
+		            <th>Alumnos</th>    	     
 		            <th><th>
 		        </tr>
 		    </thead>
@@ -80,18 +82,21 @@
 		    	   for(Cursos  c: listacursos){
 		    		   
 		    	   %> <tr>
-		        <form method="post" action="servletAdminTablaCursos"></form>
+		            <form method="post" action="ServletAdminTablaCursos">
 		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
-					<td><%=c.getCuatrimeste() %></td>
-					<td><%=c.getAnio() %></td>
-					<td><%=c.getDocente().getNombreyAp() %></td>
+					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
+					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
+					<td><%=c.getDocente().getNombreyAp() %><input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>"></td>
+					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
+					<td><%=c.getEstado() %></td>
 		            <td>
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
+		            <td><input type="submit" name="btnModificar"class="botones" value="Modificar">
+		            <td><input type="submit" name="btnEliminar" class="botones" value="Eliminar">
+		             </form>
 		        </tr>
 		       <%} %>
 		    </tbody>

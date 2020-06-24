@@ -15,4 +15,8 @@ public class NegocioimplMaterias implements NegocioMaterias{
 		return daomateria.readAll();
 	}
 	
+	public Materias obtenerMateria(int id_materia)
+	{
+		return daomateria.obtenerMateria(id_materia);
+	}
 }

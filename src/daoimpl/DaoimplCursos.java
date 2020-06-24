@@ -87,11 +87,11 @@ public class DaoimplCursos implements DaoCursos{
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spAgregarCurso(?,?,?,?,?) ");
-	            proc.setInt("UCodMateria_c", curso.getMateria().getID());
-	            proc.setInt("ULegajoProfesor_c", curso.getDocente().getLegajo());
-	            proc.setInt("UAño_c", curso.getAnio());
-	            proc.setInt("UCuatrimestre_c", curso.getComision());
-	            proc.setInt("UComision_c", curso.getComision());
+	            proc.setInt(1, curso.getMateria().getID());
+	            proc.setInt(2, curso.getDocente().getLegajo());
+	            proc.setInt(3, curso.getAnio());
+	            proc.setInt(4, curso.getCuatrimeste());
+	            proc.setInt(5, curso.getComision());
 	            proc.execute();             
 	        } 
 	       catch (Exception e) {                  
@@ -109,13 +109,13 @@ public class DaoimplCursos implements DaoCursos{
 		Conexion conexion = Conexion.getConexion();
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spModificarCruso(?,?,?,?,?) ");
-	            proc.setInt("UCodMateria_c", curso.getMateria().getID());
-	            proc.setInt("ULegajoProfesor_c", curso.getDocente().getLegajo());
-	            proc.setInt("UAño_c", curso.getAnio());
-	            proc.setInt("UCuatrimestre_c", curso.getComision());
-	            proc.setInt("UComision_c", curso.getComision());
-	            proc.execute();             
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spModificarCurso(?,?,?,?,?) ");
+	            proc.setInt(1, curso.getMateria().getID());
+	            proc.setInt(2, curso.getDocente().getLegajo());
+	            proc.setInt(3, curso.getAnio());
+	            proc.setInt(4, curso.getCuatrimeste());
+	            proc.setInt(5, curso.getComision());
+	            proc.execute();              
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
@@ -131,12 +131,12 @@ public class DaoimplCursos implements DaoCursos{
 Conexion conexion = Conexion.getConexion();
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarCruso(?,?,?,?,?) ");
-	            proc.setInt("UCodMateria_c", curso.getMateria().getID());
-	            proc.setInt("ULegajoProfesor_c", curso.getDocente().getLegajo());
-	            proc.setInt("UAño_c", curso.getAnio());
-	            proc.setInt("UCuatrimestre_c", curso.getComision());
-	            proc.setInt("UComision_c", curso.getComision());
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarCurso(?,?,?,?,?) ");
+	            proc.setInt(1, curso.getMateria().getID());
+	            proc.setInt(2, curso.getDocente().getLegajo());
+	            proc.setInt(3, curso.getAnio());
+	            proc.setInt(4, curso.getCuatrimeste());
+	            proc.setInt(5, curso.getComision());
 	            proc.execute();             
 	        } 
 	       catch (Exception e) {                  
