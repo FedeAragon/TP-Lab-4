@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Agregar Alumno</title>
 </head>
 <body>
@@ -36,19 +37,7 @@
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
   <input type="text" name="txtDireccion" class= "texts" >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-  <select name="ddlLocalidades" class="Ddls">
-  
-  	<option value="0"> Seleccione una localidad </option>
-  	
-  	<%
-  	
-  	NegocioimplLocalidades negLoc = new NegocioimplLocalidades();
-		List<Localidades> localidades =  negLoc.LocalidadesXProv(request.getParameter("provincia"));
-		for(Localidades loc : localidades){
-			%> <option value="<%=loc.getCodLocalidad() %>"> <%= loc.getNombreLocalidad()  %></option> <%
-		}
-	  	
-  	%>
+  <select id="ddlLocalidades" class="Ddls">
   
   </select>
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
@@ -64,8 +53,27 @@
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
  
 
+ <script>
+ 	function CargarLocalidades(){
+ 		
+ 		var idProv = $("#provincia").val();
+ 		
+ 		$.ajax({
+ 			  url: "ServletAdminAgregarAlumno",
+ 			  data: {
+ 			    provincia: idProv
+ 			  },
+ 			  type:"POST",
+ 			  
+ 			  success: function( result ) {
+ 			    $( "#ddlLocalidades" ).html(result);
+ 			  }
+ 			});
+ 	}
  
- <select name="provincia" id="provincia" class = "Ddls" onchange="this.form.submit();">
+ </script>
+ 
+ <select name="provincia" id="provincia" class = "Ddls" onchange="CargarLocalidades()">
  						<option value="0">Seleccione una provincia</option>
 						
 						<%
