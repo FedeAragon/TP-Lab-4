@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.List"%>   
+<%@ page import="entidad.Alumno" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,6 +43,14 @@
   </div>
   <hr>
   <br>
+			<%
+			List<Alumno> listaAlumnos = null;
+			if(request.getAttribute("alumnos")!=null){
+				listaAlumnos = (List<Alumno>)request.getAttribute("alumnos");
+			}
+			
+			%>
+			
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -57,17 +67,21 @@
 		        </tr>
 		    </thead>
 		    <tbody style="color:black">
+		        <% if(listaAlumnos!=null)
+		        	for(Alumno a : listaAlumnos){
+		        	%>
 		        <tr>
-		            <td>22220</td>
-		            <td>Federico Aragon</td>
-		            <td>42197455</td>
-		            <td>03/11/1999</td>
-		            <td>Row 1 Data 5</td>
-		            <td>Row 1 Data 6</td>
-		            <td>Row 1 Data 7</td>
-		            <td>Row 1 Data 8</td>
-		            <td>Row 1 Data 9</td>
-		            <td>
+		        <form method="post" action="servletAdminTablaAlumos">
+		         <td><%= a.getLegajo() %> <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo() %>"></td>
+		        		 <td><%= a.getNombreyAp() %>   </td>
+		        		 <td><%= a.getDNI() %>   </td>
+		        		 <td><%= a.getFechaNacimiento() %>   </td>
+		        		 <td><%= a.getDireccion() %>   </td>
+		        		 <td><%= a.getLocalidad().getNombreLocalidad() %>   </td>
+		        		 <td><%= a.getProvincia().getNombreProvincia() %>   </td>
+		        		 <td><%= a.getTelefono() %>   </td>
+		        		 <td><%= a.getEmail() %>   </td>
+		            	<td>
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
 		            	</button>
@@ -76,48 +90,9 @@
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 		            </td>
+		            </form>
 		        </tr>
-		        <tr>
-		            <td>Row 2 Data 1</td>
-		            <td>Row 2 Data 2</td>
-		            <td>Row 2 Data 3</td>
-		            <td>Row 2 Data 4</td>
-		            <td>Row 2 Data 5</td>
-		            <td>Row 2 Data 6</td>
-		            <td>Row 2 Data 7</td>
-		            <td>Row 2 Data 8</td>
-		            <td>Row 2 Data 9</td>
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
-		            	</button>
-		            <td>
-		            	<button type="submit">
-			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
-			            </button>
-		            </td>
-		        </tr>
-		        
-		        <tr>
-		            <td>Row 3 Data 1</td>
-		            <td>Row 3 Data 2</td>
-		            <td>Row 3 Data 3</td>
-		            <td>Row 3 Data 4</td>
-		            <td>Row 3 Data 5</td>
-		            <td>Row 3 Data 6</td>
-		            <td>Row 3 Data 7</td>
-		            <td>Row 3 Data 8</td>
-		            <td>Row 3 Data 9</td>
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
-		            	</button>
-		            <td>
-		            	<button type="submit">
-			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
-			            </button>
-		            </td>
-		        </tr>
+		        <% } %>
 		    </tbody>
 		</table>
 		</div>

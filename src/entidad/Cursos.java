@@ -5,13 +5,13 @@ public class Cursos {
 	//Atributos
 	int Comision;
 	Materias materia = new Materias();
-	String Cuatrimeste;
+	int Cuatrimeste;
 	int Anio;
 	Docente docente = new Docente();
 	int Estado;
 	
 	//Constructores	
-	public Cursos(int comision, Materias materia, String cuatrimeste, int anio, Docente docente, int estado) {
+	public Cursos(int comision, Materias materia, int cuatrimeste, int anio, Docente docente, int estado) {
 		super();
 		Comision = comision;
 		this.materia = materia;
@@ -42,11 +42,11 @@ public class Cursos {
 		this.materia = materia;
 	}
 
-	public String getCuatrimeste() {
+	public int getCuatrimeste() {
 		return Cuatrimeste;
 	}
 
-	public void setCuatrimeste(String cuatrimeste) {
+	public void setCuatrimeste(int cuatrimeste) {
 		Cuatrimeste = cuatrimeste;
 	}
 

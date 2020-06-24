@@ -15,8 +15,8 @@ import entidad.Provincias;
 
 public class DaoimplProfesores implements DaoProfesores {
 	
-	private static final String readall = "SELECT * FROM profesores ";
-
+	private static final String readall = "Select * from profesores inner join usuarios on usuarios.Usuario= profesores.Email_p where Estado_p= true and TipoCuenta = false; ";
+	private static final String obtenerprofesor ="Select * from profesores where legajo_p=?";
 public List<Docente> readAll() {
 		
 		try {
@@ -143,4 +143,53 @@ public List<Docente> readAll() {
 	       }
 		
 	}
+
+
+	@Override
+	public Docente obtenerProfesor(int leg_profesor) {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+			Docente doc= new Docente();
+			DaoimplLocalidades daoloc= new DaoimplLocalidades();
+			DaoimplProvincias daoprov= new DaoimplProvincias();
+			
+		 	PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		   try{
+				
+				statement = conexion.getSQLConexion().prepareStatement(obtenerprofesor);
+				statement.setInt(1,leg_profesor);
+				
+				resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{ 
+					doc.setLegajo(resultSet.getInt(1));
+					doc.setDNI(resultSet.getInt(2));
+					doc.setNombreyAp(resultSet.getString(3));
+					doc.setFechaNacimiento(resultSet.getDate(4));
+					doc.setDireccion(resultSet.getString(5));
+					doc.setLocalidad(daoloc.obtenerLocalidad(resultSet.getString(6)));
+					doc.setProvincia(daoprov.obtenerProvincia(resultSet.getString(7)));
+					doc.setEmail(resultSet.getString(8));
+					doc.setTelefono(resultSet.getInt(9));
+					doc.setEstado(resultSet.getInt(10));
+					return doc;
+				}
+
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace(); 
+			}
+		
+		  
+		return null;
+	}
+
+
 }

@@ -68,11 +68,17 @@ public class DaoimplAlumnos implements DaoAlumnos{
 	 	int telefono = resultSet.getInt(9);
 		int estado = resultSet.getInt(10);
 		
-       DaoimplLocalidades daoimplocalidades = new DaoimplLocalidades();
+		DaoimplLocalidades daoimplocalidades = new DaoimplLocalidades();
+		Localidades loca = new Localidades();
+         if (daoimplocalidades.obtenerLocalidad(codLocalidad) != null) {
         
-        Localidades loca =  daoimplocalidades.obtenerLocalidad(codLocalidad);
+        	  loca =  daoimplocalidades.obtenerLocalidad(codLocalidad);
+         }
         DaoimplProvincias daoimplprov = new DaoimplProvincias();
-        Provincias prov = daoimplprov.obtenerProvincia(codProvincia);
+        Provincias prov = new Provincias();
+         if(daoimplprov.obtenerProvincia(codProvincia) != null) {
+        prov = daoimplprov.obtenerProvincia(codProvincia);
+         }
 		
 	 	return new Alumno(legajo, DNI, nombreyApellido, nacimiento, direccion, loca,prov , email, telefono, estado);	
 	}  

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.List"%>   
+<%@ page import="entidad.Cursos" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,6 +58,11 @@
   </div>
   <hr>
   <br>
+  <%List<Cursos> listacursos=null;
+  	if(request.getAttribute("cursos")!=null){
+  		listacursos = (List<Cursos>)request.getAttribute("cursos");
+  	}
+  %>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -68,12 +75,16 @@
 		        </tr>
 		    </thead>
 		    <tbody style="color:black">
-		        <tr>
-		        <form></form>
-		            <td>Programacion III</td>
-		            <td>Segundo Cuatrimestre</td>
-		            <td>2019</td>
-		            <td>Claudio Fernandez</td>
+		       
+		       <% if(listacursos!=null)
+		    	   for(Cursos  c: listacursos){
+		    		   
+		    	   %> <tr>
+		        <form method="post" action="servletAdminTablaCursos"></form>
+		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
+					<td><%=c.getCuatrimeste() %></td>
+					<td><%=c.getAnio() %></td>
+					<td><%=c.getDocente().getNombreyAp() %></td>
 		            <td>
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
@@ -82,33 +93,7 @@
 		            <td><input type="submit" class="botones" value="Modificar">
 		            <td><input type="submit" class="botones" value="Eliminar">
 		        </tr>
-		        <tr>
-		            <td>Row 2 Data 1</td>
-		            <td>Row 2 Data 2</td>
-		            <td>Row 2 Data 3</td>
-		            <td>Row 2 Data 4</td>
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
-		            	</button>
-	            	</td>
-		            <td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
-		        </tr>
-		        
-		        <tr>
-		            <td>Row 3 Data 1</td>
-		            <td>Row 3 Data 2</td>
-		            <td>Row 3 Data 3</td>
-		            <td>Row 3 Data 4</td>
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
-		            	</button>
-	            	</td>
-	            	<td><input type="submit" class="botones" value="Modificar">
-		            <td><input type="submit" class="botones" value="Eliminar">
-		        </tr>
+		       <%} %>
 		    </tbody>
 		</table>
 		</div>
