@@ -93,13 +93,13 @@
 		            
 		            </form>
 		            <td>
-		            <form method="post" action="ServletAdminTablaAlumnos"> 
+		          <!-- <form method="post" action="ServletAdminTablaAlumnos">  -->  
 		            <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo() %>">
-		            	<button type="submit" value="Eliminar" name="btnEliminar">
+		            	<button type="submit" value="Eliminar" name="btnEliminar" onclick="mensaje(<%= a.getLegajo()%>)">
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 		            </td>
-		        		 </form> 
+		        		<!--  </form>  -->
 		        		</tr>
 		        		
 		        	<%  } %>
@@ -110,7 +110,25 @@
 	
 	<jsp:include page="Footer.html"></jsp:include>
 	
-	 
+	<script type="text/javascript">
+	function mensaje(legajo){
+		var mensaje = confirm("Estas seguro que deseas eliminar este Alumno?");
+		
+		if(mensaje){
+			$.ajax({
+	 			  url: "ServletAdminTablaAlumnos",
+	 			  data: {
+	 				 LegajoAlu: legajo,
+	 				 btnEliminar: true
+	 			  },
+	 			  type:"POST",
+	 			 success: function(){
+	  			    location.reload(true);
+	  			  }
+	 			});
+		}
+	}
+	</script>
 	 	
 	
 	

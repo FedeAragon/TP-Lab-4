@@ -39,7 +39,9 @@ public class ServletAdminTablaAlumnos extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          if(request.getParameter("btnEliminar")!=null)
+          
+		
+		if(request.getParameter("btnEliminar")!=null)
           {
         	  
           if(request.getParameter("LegajoAlu")!= null)

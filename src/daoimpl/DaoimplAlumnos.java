@@ -19,7 +19,7 @@ import entidad.Provincias;
 
 public class DaoimplAlumnos implements DaoAlumnos{
 
-	private static final String readall = "SELECT * FROM alumnos";
+	private static final String readall = "SELECT * FROM alumnos where Estado_a=true";
 	private static final String obteneralumno ="SELECT * FROM alumnos WHERE legajo_a = ?";
 	
 	public List<Alumno> readAll() {
