@@ -49,7 +49,7 @@
 <body>
 	
 	
-	 <jsp:include page="Menu.html"></jsp:include>
+	 <jsp:include page="Menu.jsp"></jsp:include>
 	
 	<div class="contenedor">
 		<div class="fondo">
@@ -71,7 +71,6 @@
 		            <th>Año</th>
 		            <th>Docente</th>
 		            <th>Comision</th>
-		            <th>Estado</th> 
 		            <th>Alumnos</th>    	     
 		            <th><th>
 		        </tr>
@@ -88,7 +87,6 @@
 					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
 					<td><%=c.getDocente().getNombreyAp() %><input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>"></td>
 					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
-					<td><%=c.getEstado() %></td>
 		            <td>
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>

@@ -33,7 +33,7 @@
 <body>
 	
 	
-	 <jsp:include page="Menu.html"></jsp:include>
+	 <jsp:include page="Menu.jsp"></jsp:include>
 	
 	<div class="contenedor">
 		<div class="fondo">
@@ -66,7 +66,6 @@
 		            <th>Provincia</th>
 		            <th>Telefono</th>
 		            <th>Email</th>
-		            <th>Estado</th>
 		            <th><th>
 		        </tr>
 		    </thead>
@@ -83,7 +82,6 @@
 		        		 <td><%= d.getProvincia().getNombreProvincia() %>   </td>
 		        		 <td><%= d.getTelefono() %>   </td>
 		        		 <td><%= d.getEmail() %>   </td>
-		        		 <td><%= d.getEstado() %>   </td>
 		        		  <td>
 		            	<button type="submit" value="Modificar" name="btnModificar">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>

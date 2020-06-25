@@ -30,7 +30,7 @@
 <body>
 	
 	
-	 <jsp:include page="Menu.html"></jsp:include>
+	 <jsp:include page="Menu.jsp"></jsp:include>
 	
 	<div class="contenedor">
 		<div class="fondo">
