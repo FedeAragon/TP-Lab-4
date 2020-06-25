@@ -15,9 +15,9 @@ public class NegocioimplCursos implements NegocioCursos {
 	}
 
 	@Override
-	public void spAgregarCurso(Cursos curso) {
-		
-		daocurso.spAgregarCurso(curso);
+	public boolean spAgregarCurso(Cursos curso) {
+		 boolean anduvo=daocurso.spAgregarCurso(curso);
+		return anduvo; 
 		
 	}
 

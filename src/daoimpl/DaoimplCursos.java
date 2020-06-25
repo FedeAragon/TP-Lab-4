@@ -14,7 +14,7 @@ import entidad.Materias;
 
 public class DaoimplCursos implements DaoCursos{
 
-	private static final String readall ="Select * from Cursos";
+	private static final String readall ="Select * from Cursos where Estado_c=true";
 	
 	
 	
@@ -82,9 +82,9 @@ public class DaoimplCursos implements DaoCursos{
 	}
 
 	@Override
-	public void spAgregarCurso(Cursos curso) {
+	public boolean spAgregarCurso(Cursos curso) {
 		Conexion conexion = Conexion.getConexion();
-		
+		boolean anduvo=false;
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spAgregarCurso(?,?,?,?,?) ");
 	            proc.setInt(1, curso.getMateria().getID());
@@ -92,11 +92,12 @@ public class DaoimplCursos implements DaoCursos{
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
 	            proc.setInt(5, curso.getComision());
-	            proc.execute();             
+	            anduvo = proc.execute();             
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
+		return anduvo;
 		
 		
 	}
