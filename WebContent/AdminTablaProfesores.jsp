@@ -72,7 +72,7 @@
 		    <tbody style="color:black">
 		        <%   if(listadocentes != null)
 		        	  for(Docente d : listadocentes){
-		        		 %><tr><form method="post" action="ServletAdminModificarProfesor"> 
+		        		 %><tr><form method="get" action="ServletAdminModificarProfesor"> 
 		        		 <td><%= d.getLegajo() %> <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>"></td>
 		        		 <td><%= d.getNombreyAp() %>   </td>
 		        		 <td><%= d.getDNI() %>   </td>

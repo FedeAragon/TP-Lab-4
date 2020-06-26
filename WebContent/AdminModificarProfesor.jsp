@@ -20,7 +20,7 @@
 <body onload="CargarLocalidades()">
 <jsp:include page="Menu.jsp"></jsp:include>
 <div class="contenedor">
-<form class="fondo" method="post" action="">
+<form class="fondo" method="post" action="ServletAdminModificarProfesor">
 
 <div class="titulo_div">
   <label id="titulo" class ="titulos" >Modificar Profesor</label>
@@ -37,26 +37,26 @@
   <br>
   <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
-  <input type="text" name="txtLegajo" class= "texts" disabled="disabled" value="<%= doc.getLegajo() %>" style="color:white;">
+  <input type="text" name="txtLegajo" class= "texts"  readonly="readonly" value="<%= doc.getLegajo() %>" >
   <label id ="lblDNI" class="subtitulos">DNI </label>
-  <input type="text" name="txtDNI" class= "texts" value="<%= doc.getDNI() %>">
+  <input type="text" name="txtDNI" class= "texts" value="<%= doc.getDNI() %>" required>
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
-  <input type="text" name="txtDireccion" class= "texts" value="<%= doc.getDireccion() %>" >
+  <input type="text" name="txtDireccion" class= "texts" value="<%= doc.getDireccion() %>" required >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
   <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
   
    </select>
    
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
-    <input type="text" name="txtTelefono" class= "texts" value="<%= doc.getTelefono() %>">
+    <input type="text" name="txtTelefono" class= "texts" value="<%= doc.getTelefono() %>" required>
   
   </div>
   <div class="contenido">
   
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
-  <input type="text" name="txtNombre" class="texts" value="<%= doc.getNombreyAp() %>"  >
+  <input type="text" name="txtNombre" class="texts" value="<%= doc.getNombreyAp() %>" required >
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <input type="text" name="txtNacimiento" class= "texts" value="<%= doc.getFechaNacimiento() %>">
+  <<input type="date" name="DateNacimiento" value="<%= doc.getFechaNacimiento() %>" required>
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
   <script>
  	function CargarLocalidades(){
@@ -103,7 +103,7 @@
 						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
-  <input type="text" name="txtEmail" class= "texts" value="<%= doc.getEmail() %>">
+  <input type="text" name="txtEmail" class= "texts" value="<%= doc.getEmail() %>"required >
   </div>
   
 

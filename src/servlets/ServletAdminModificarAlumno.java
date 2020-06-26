@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import entidad.Alumno;
 import entidad.Docente;
 import negocioimpl.NegocioimplAlumnos;
+import negocioimpl.NegocioimplLocalidades;
 import negocioimpl.NegocioimplProfesores;
+import negocioimpl.NegocioimplProvincias;
 
 /**
  * Servlet implementation class ServletAdminModificarAlumno
@@ -30,11 +34,6 @@ public class ServletAdminModificarAlumno extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NegocioimplAlumnos negocioalumno = new NegocioimplAlumnos();
 		Alumno alumno = new Alumno();
 		if(request.getParameter("btnModificar")!=null)
@@ -50,7 +49,44 @@ public class ServletAdminModificarAlumno extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarAlumno.jsp");   
         rd.forward(request, response);
 		
-	}
 	
+		
+	}
 
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getParameter("btnModificar")!=null)
+        {
+		  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
+      	  NegocioimplLocalidades negocioloca = new NegocioimplLocalidades();
+      	  NegocioimplProvincias negocioprov = new NegocioimplProvincias();
+      	  Alumno alu = new Alumno();
+      	  	java.util.Date date = null;
+      	try {
+			 date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("DateNacimiento"));
+				
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+    	java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+       
+    	alu.setLegajo(Integer.parseInt(request.getParameter("txtLegajo")));
+       alu.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
+       alu.setDireccion(request.getParameter("txtDireccion").toString());
+       alu.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
+       alu.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
+       alu.setFechaNacimiento(sqlDate);
+      	alu.setNombreyAp(request.getParameter("txtNombre").toString());
+       alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
+      	alu.setEmail(request.getParameter("txtEmail").toString());
+        
+      	alu.setEstado(1);
+      	  negocioalu.spModificarAlumno(alu);
+	          
+        }
+		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaAlumnos.jsp");   
+        rd.forward(request, response);
+		}
 }

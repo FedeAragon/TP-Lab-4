@@ -74,7 +74,7 @@
 		        	for(Alumno a : listaAlumnos){
 		        	%>
 		        <tr>
-		        <form method="post" action="ServletAdminModificarAlumno">
+		        <form method="get" action="ServletAdminModificarAlumno">
 		         <td><%= a.getLegajo() %> <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo() %>"></td>
 		        		 <td><%= a.getNombreyAp() %>   </td>
 		        		 <td><%= a.getDNI() %>   </td>
