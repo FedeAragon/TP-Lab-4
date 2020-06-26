@@ -39,19 +39,13 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	
-		
-			if(request.getParameter("btnAgregar")!=null)
+	if(request.getParameter("btnAgregar")!=null)
 	         {
-			
-	  
-	       	  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
+			  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
 	       	  NegocioimplLocalidades negocioloca = new NegocioimplLocalidades();
 	       	  NegocioimplProvincias negocioprov = new NegocioimplProvincias();
 	       	  Alumno alu = new Alumno();
-	       	  
-	     	 
-	      	java.util.Date date = null;
+	       	  	java.util.Date date = null;
 	       	try {
 				 date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("DateNacimiento"));
 					
@@ -59,38 +53,19 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-	       
-	  
-	       	java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-	    	  
-	       	alu.setLegajo(0);
-	       	alu.setEstado(1);
-	       	
+         	java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+	        alu.setLegajo(0);
+	        alu.setEstado(1);
 	        alu.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
-	       	
-	       	  alu.setDireccion(request.getParameter("txtDireccion").toString());
-	      
-	       	  alu.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
-	  
-	         
-	       	 alu.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
-	
-	       	  
-	       	  alu.setFechaNacimiento(sqlDate);
-	       	 
-	       
-	       	  alu.setNombreyAp(request.getParameter("txtNombre").toString());
-	      
-	    
-	       	  alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
-	       	  alu.setEmail(request.getParameter("txtEmail").toString());
-	       	  
-	       
-	      
-	          negocioalu.spAgregarAlumno(alu);
-   	          
-	 		
-	         }
+	        alu.setDireccion(request.getParameter("txtDireccion").toString());
+	        alu.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
+	        alu.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
+	        alu.setFechaNacimiento(sqlDate);
+	       	alu.setNombreyAp(request.getParameter("txtNombre").toString());
+	        alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
+	       	alu.setEmail(request.getParameter("txtEmail").toString());
+	       	  negocioalu.spAgregarAlumno(alu);
+   	          }
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
  	        rd.forward(request, response);
 	         

@@ -11,9 +11,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/Estilos.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Modificar Alumno</title>
 </head>
-<body>
+<body onload="CargarLocalidades()">
 <jsp:include page="Menu.jsp"></jsp:include>
 <div class="contenedor">
 <form class="fondo" method="post" action="">
@@ -41,7 +45,9 @@
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
   <input type="text" name="txtDireccion" class= "texts" value="<%= alu.getDireccion() %>" >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-   <input type="text" name="txtLocalidad" class="texts"  value="ee">
+   <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
+  
+   </select>
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
     <input type="text" name="txtTelefono" class= "texts" value="<%= alu.getTelefono() %>">
   
@@ -53,8 +59,50 @@
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
   <input type="text" name="txtNacimiento" class= "texts" value="<%= alu.getFechaNacimiento() %>">
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
- <select name="ddlProvincias" class = "Ddls">
-					
+ <script>
+ 	function CargarLocalidades(){
+ 		
+ 		var idProv = $("#provincia").val();
+ 		
+ 		$.ajax({
+ 			  url: "ServletLocalidades",
+ 			  data: {
+ 			    provincia: idProv
+ 			  },
+ 			  type:"POST",
+ 			  
+ 			  success: function( result ) {
+ 			    $( "#ddlLocalidades" ).html(result);
+ 			   $( "#ddlLocalidades option[value='<%=alu.getLocalidad().getCodLocalidad()%>'").attr("selected",true);
+ 			  }
+ 			});
+ 	}
+ 
+ </script>
+<select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
+ 					
+						<%
+							NegocioimplProvincias negProv = new NegocioimplProvincias();
+							List<Provincias> provincias =  negProv.readAll();
+							for(Provincias prov : provincias){
+								
+								if( alu.getProvincia().getCodProvincia() != prov.getCodProvincia()){
+								
+								%> <option value="<%=prov.getCodProvincia() %>"
+							
+								<%
+                           		if(alu.getProvincia() != null){
+									
+									if( Integer.parseInt(prov.getCodProvincia()) == Integer.parseInt(alu.getProvincia().getCodProvincia()))
+									{
+										out.print("selected");
+									}
+								}
+								
+								%>
+									> <%=prov.getNombreProvincia()  %></option> <%
+								}}
+						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
   <input type="text" name="txtEmail" class= "texts" value="<%= alu.getEmail() %>">

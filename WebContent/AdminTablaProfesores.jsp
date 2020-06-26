@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Profesores</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
 	            {
 	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
 	            	action: function(){
-	            		
+	            		 location.href="AdminAgregarProfesor.jsp";
 	            	}
 	            }
 	        ]
@@ -89,13 +89,13 @@
 		            
 		            </form>
 		            <td>
-		           <!-- <form method="post" action="ServletAdminTablaProfesores"> -->  
+		            
 		            <input type="hidden" name="LegajoProfe" value="<%= d.getLegajo() %>">
 		            	<button type="submit" value="Eliminar" name="btnEliminar" onclick="mensaje(<%= d.getLegajo()%>)">
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 		            </td>
-		        		<!-- </form>  --> 
+		        	
 		        		</tr>
 		        		
 		        	<%  } %>
@@ -115,6 +115,7 @@
 	 			  url: "ServletAdminTablaProfesores",
 	 			  data: {
 	 				 LegajoProfe: legajo,
+	 				 
 	 				 btnEliminar: true
 	 			  },
 	 			  type:"POST",

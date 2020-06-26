@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="entidad.Provincias"%>
+<%@page import="entidad.Localidades"%>
+<%@page import="negocio.NegocioProvincias"%>
+<%@page import="negocioimpl.NegocioimplProvincias"%>
+<%@page import="negocioimpl.NegocioimplLocalidades"%>
+<%@ page import="java.util.List"%>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,69 +13,96 @@
 <link rel="stylesheet" href="css/Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Agregar Profesor</title>
 </head>
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
 <div class="contenedor">
-<div class="fondo">
+<form class="fondo" method="post" action="ServletAdminAgregarProfesor">
 
 <div class="titulo_div">
-  <label id="titulo" class ="titulos" >Agregar Profesores</label>
+  <label id="titulo" class ="titulos" >Agregar Profesor</label>
   </div>
   <hr>
 <div class="cuadrado">
   
   
   <br>
-  <form class="contenido">
+  <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
   <input type="text" name="txtLegajo" class= "texts" disabled="disabled">
   <label id ="lblDNI" class="subtitulos">DNI </label>
-  <input type="text" name="txtDNI" class= "texts" >
+  <input type="text" name="txtDNI" class= "texts" required>
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
-  <input type="text" name="txtDireccion" class= "texts" >
+  <input type="text" name="txtDireccion" class= "texts" required>
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-   <input type="text" name="txtLocalidad" class="texts">
-    <label id ="lblTelefono" class="subtitulos">Telefono</label>
-    <input type="text" name="txtTelefono" class= "texts">
+  <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
   
-  </form>
-  <form class="contenido">
+  </select>
+    <label id ="lblTelefono" class="subtitulos">Telefono</label>
+    <input type="text" name="txtTelefono" class= "texts" required>
+  
+  </div>
+  <div class="contenido">
   
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
-  <input type="text" name="txtNombre" class="texts">
+  <input type="text" name="txtNombre" class="texts" required>
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <input type="text" name="txtNacimiento" class= "texts" >
+  <input type="date" name="DateNacimiento"  required>
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
- <select name="ddlProvincias" class = "Ddls">
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Catamarca">Catamarca</option>
-						<option value="Chaco">Chaco</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Corrientes">Corrientes</option>
-						<option value="Entre rios">Entre rios</option>
-						<option value="Formosa">Formosa</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="La Pampa">La Pampa</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="Misiones">Misiones</option>
-						<option value="Neuquén">Neuquén</option>
-						<option value="Rio Negro">Rio Negro</option>
-						<option value="Salta">Salta</option>
-						<option value="San Juan">San Juan</option>
-						<option value="San Luis">San Luis</option>
-						<option value="Santa Cruz">Santa Cruz</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Tucuman">Tucuman</option>
+ 
+
+ <script>
+ 	function CargarLocalidades(){
+ 		
+ 		var idProv = $("#provincia").val();
+ 		
+ 		$.ajax({
+ 			  url: "ServletLocalidades",
+ 			  data: {
+ 			    provincia: idProv
+ 			  },
+ 			  type:"POST",
+ 			  
+ 			  success: function( result ) {
+ 			    $( "#ddlLocalidades" ).html(result);
+ 			  }
+ 			});
+ 	}
+ 
+ </script>
+ 
+ <select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
+ 						<option value="0">Seleccione una provincia</option>
+						
+						<%
+							NegocioimplProvincias negProv = new NegocioimplProvincias();
+							List<Provincias> provincias =  negProv.readAll();
+							for(Provincias prov : provincias){
+								%> <option value="<%=prov.getCodProvincia() %>"
+								
+								
+								<%
+
+								if(request.getParameter("provincia")!=null){
+									
+									if( Integer.parseInt(prov.getCodProvincia()) == Integer.parseInt(request.getParameter("provincia")))
+									{
+										out.print("selected");
+									}
+								}
+								
+								%>
+								
+								
+								> <%=prov.getNombreProvincia()  %></option> <%
+							}
+						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
-  <input type="text" name="txtEmail" class= "texts">
-  </form>
+  <input type="text" name="txtEmail"  class="texts"   required>
+  </div>
   
 
    </div>
@@ -78,7 +111,7 @@
  </div>
   
 
-</div>
+</form>
  
     </div>
 

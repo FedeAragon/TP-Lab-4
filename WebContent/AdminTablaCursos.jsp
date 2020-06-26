@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.util.List"%>   
+<%@ page import="java.util.List"%>   
 <%@ page import="entidad.Cursos" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ABM Cursos</title>
+<title>Cursos</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
@@ -20,7 +22,7 @@
 	            {
 	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
 	            	action: function(){
-	            		
+	            		 location.href="AdminAgregarCursos.jsp";
 	            	}
 	            }
 	        ]
@@ -74,8 +76,15 @@
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>
-		            <td><input type="submit" name="btnModificar"class="botones" value="Modificar">
-		            <td><input type="submit" name="btnEliminar" class="botones" value="Eliminar">
+	            	<td>
+		            <button type="submit" value="Modificar" name="btnModificar">
+		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
+		            	</button>
+		            	</td>
+		            <td><button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+			            </td>
 		             </form>
 		        </tr>
 		       <%} %>

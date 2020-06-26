@@ -32,14 +32,14 @@ Usuario usuario= (Usuario) misession.getAttribute("Usuario");
 				  
 				  </li>
 				  
-				  <li><a href="">Item 4</a></li>
+				  <li><a href="AdminReportes.jsp">Reportes</a></li>
 			  </ul>
 		  </nav>
   			<div class="logout">
   				<i class="material-icons" style="font-size:36px;">engineering</i>
   				<i class="material-icons" style="font-size:36px;">person</i>
 		  		<label id="Nombre"> <%= usuario.getUsuario() %>  </label>
-		  		<a href="">Salir</a>
+		  		<a href="Login.jsp">Salir</a>
 			  </div>
   </header>
 </body>

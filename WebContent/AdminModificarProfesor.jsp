@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="entidad.Docente" %> 
+    <%@page import="entidad.Provincias"%>
+<%@page import="entidad.Localidades"%>
+<%@page import="negocio.NegocioProvincias"%>
+<%@page import="negocioimpl.NegocioimplProvincias"%>
+<%@page import="negocioimpl.NegocioimplLocalidades"%>
+<%@ page import="java.util.List"%>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,9 +14,10 @@
 <link rel="stylesheet" href="css/Estilos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Modificar Profesor</title>
 </head>
-<body>
+<body onload="CargarLocalidades()">
 <jsp:include page="Menu.jsp"></jsp:include>
 <div class="contenedor">
 <form class="fondo" method="post" action="">
@@ -36,7 +43,10 @@
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
   <input type="text" name="txtDireccion" class= "texts" value="<%= doc.getDireccion() %>" >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-   <input type="text" name="txtLocalidad" class="texts"  value="<%= doc.getLocalidad().getNombreLocalidad()%>">
+  <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
+  
+   </select>
+   
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
     <input type="text" name="txtTelefono" class= "texts" value="<%= doc.getTelefono() %>">
   
@@ -48,8 +58,49 @@
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
   <input type="text" name="txtNacimiento" class= "texts" value="<%= doc.getFechaNacimiento() %>">
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
- <select name="ddlProvincias" class = "Ddls">
-					
+  <script>
+ 	function CargarLocalidades(){
+ 		
+ 		var idProv = $("#provincia").val();
+ 		
+ 		$.ajax({
+ 			  url: "ServletLocalidades",
+ 			  data: {
+ 			    provincia: idProv
+ 			  },
+ 			  type:"POST",
+ 			  
+ 			  success: function( result ) {
+ 			    $( "#ddlLocalidades" ).html(result);
+ 			   $( "#ddlLocalidades option[value='<%=doc.getLocalidad().getCodLocalidad()%>'").attr("selected",true);
+ 			  }
+ 			});
+ 	}
+ 
+ </script>
+<select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
+ 						
+	
+					<%
+							NegocioimplProvincias negProv = new NegocioimplProvincias();
+							List<Provincias> provincias =  negProv.readAll();
+							for(Provincias prov : provincias){
+								%> <option value="<%=prov.getCodProvincia() %>"
+							
+								<%
+                           		if(doc.getProvincia() != null){
+									
+									if( Integer.parseInt(prov.getCodProvincia()) == Integer.parseInt(doc.getProvincia().getCodProvincia()))
+									{
+										out.print("selected");
+									}
+								}
+								
+								%>
+									> <%=prov.getNombreProvincia()  %></option> <%
+							}
+							
+						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
   <input type="text" name="txtEmail" class= "texts" value="<%= doc.getEmail() %>">
