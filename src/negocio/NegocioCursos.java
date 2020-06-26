@@ -7,6 +7,6 @@ import entidad.Cursos;
 public interface NegocioCursos {
 	public List<Cursos> readAll();
 	public boolean spAgregarCurso(Cursos curso);
-	public void spModificarCurso(Cursos curso);
-	public void spEliminarCurso(Cursos curso);
+	public boolean spModificarCurso(Cursos curso);
+	public boolean spEliminarCurso(Cursos curso);
 }

@@ -14,19 +14,22 @@ public class NegocioimplProfesores {
 		return daoprofesor.readAll();
 	}
 	
-	public void spAgregarProfesor(Docente docente)
+	public boolean spAgregarProfesor(Docente docente)
 	{
-	    daoprofesor.spAgregarProfesor(docente);	
+		boolean funco = daoprofesor.spAgregarProfesor(docente);	
+		return funco ;
 	}
 	
-	public void spModificarProfesor(Docente docente)
+	public boolean spModificarProfesor(Docente docente)
 	{
-	    daoprofesor.spModificarProfesor(docente);	
+		boolean funco =  daoprofesor.spModificarProfesor(docente);	
+		return funco ;
 	}
 	
-	public void spEliminarProfesor(Docente docente)
+	public boolean spEliminarProfesor(Docente docente)
 	{
-	    daoprofesor.spEliminarProfesor(docente);
+		boolean funco = daoprofesor.spEliminarProfesor(docente);
+		return funco ;
 	}
 	
 	public Docente obtenerProfesor(int leg_profesor) 

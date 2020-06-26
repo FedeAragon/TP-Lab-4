@@ -16,19 +16,22 @@ public class NegocioimplAlumnos implements NegocioAlumnos {
 		return daoalumno.readAll();
 	}
 	
-	public void spAgregarAlumno(Alumno alumno)
+	public boolean spAgregarAlumno(Alumno alumno)
 	{
-		daoalumno.spAgregarAlumno(alumno);
+		boolean funco = daoalumno.spAgregarAlumno(alumno);
+	      return funco;
 	}
 	
-	public void spModificarAlumno(Alumno alumno) 
+	public boolean spModificarAlumno(Alumno alumno) 
 	{
-		daoalumno.spModificarAlumno(alumno);
+		boolean funco = daoalumno.spModificarAlumno(alumno);
+		return funco;
 	}
 	
-    public void spEliminarAlumno(Alumno alumno)
+    public boolean spEliminarAlumno(Alumno alumno)
     {
-    	daoalumno.spEliminarAlumno(alumno);
+    	boolean funco = daoalumno.spEliminarAlumno(alumno);
+    	return funco;
     }
     public Alumno obtenerAlumno(int leg_alumno) 
 	{

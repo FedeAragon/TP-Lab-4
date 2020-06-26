@@ -84,9 +84,10 @@ public List<Docente> readAll() {
 	 	return new Docente(legajo, DNI, nombreyApellido, nacimiento, direccion, loca, prov, email, telefono, estado);	
 	}   
 	
-	public void spAgregarProfesor(Docente docente)
+	public boolean spAgregarProfesor(Docente docente)
 	{
 		Conexion conexion = Conexion.getConexion();
+		 boolean funco = false;
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spAgregarProfesor(?,?,?,?,?,?,?,?) ");
@@ -98,17 +99,21 @@ public List<Docente> readAll() {
 	            proc.setString("UCodProvincia", docente.getProvincia().getCodProvincia());
 	            proc.setString("UEmail", docente.getEmail());
 	            proc.setInt("UTelefono", docente.getTelefono());
-	            proc.execute();             
+	            proc.execute();   
+	            funco = true;
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
 		
+		return funco;
+		
 	}
 	
-	public void spModificarProfesor(Docente docente)
+	public boolean spModificarProfesor(Docente docente)
 	{ 
 		Conexion conexion = Conexion.getConexion();
+		 boolean funco = false;
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spModificarProfesor(?,?,?,?,?,?,?,?,?) ");
@@ -121,27 +126,30 @@ public List<Docente> readAll() {
 	            proc.setString("UCodProvincia", docente.getProvincia().getCodProvincia());
 	            proc.setString("UEmail", docente.getEmail());
 	            proc.setInt("UTelefono", docente.getTelefono());
-	            proc.execute();             
+	            proc.execute(); 
+	            funco = true;
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
-		
+		return funco;
 	}
 	
-	public void spEliminarProfesor(Docente docente)
+	public boolean spEliminarProfesor(Docente docente)
 	{
 		Conexion conexion = Conexion.getConexion();
+		 boolean funco = false;
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarProfesor(?) ");
 	            proc.setInt("ULegajo", docente.getLegajo());
-	            proc.execute();             
+	            proc.execute(); 
+	            funco = true;
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
-		
+		return funco;
 	}
 
 

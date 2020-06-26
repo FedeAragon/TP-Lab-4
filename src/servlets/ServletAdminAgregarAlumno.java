@@ -39,7 +39,8 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	if(request.getParameter("btnAgregar")!=null)
+		boolean funco=false;
+		if(request.getParameter("btnAgregar")!=null)
 	         {
 			  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
 	       	  NegocioimplLocalidades negocioloca = new NegocioimplLocalidades();
@@ -64,9 +65,10 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 	       	alu.setNombreyAp(request.getParameter("txtNombre").toString());
 	        alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
 	       	alu.setEmail(request.getParameter("txtEmail").toString());
-	       	  negocioalu.spAgregarAlumno(alu);
+	       	 funco = negocioalu.spAgregarAlumno(alu);
    	          }
-			RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
+		request.setAttribute("funco", funco);	
+		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
  	        rd.forward(request, response);
 	         
 		}

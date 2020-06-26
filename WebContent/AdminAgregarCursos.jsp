@@ -76,7 +76,7 @@
   			<label>El curso se agrego con exito</label>
   		<%} else{
   			 %>
-  			 <label>El curso no se agrego o ya existe</label>
+  			 <label>El curso no se agrego </label>
   			 <%
   		} %>	 
   		

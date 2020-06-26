@@ -100,7 +100,6 @@ public class DaoimplCursos implements DaoCursos{
 	       }
 	
 		
-		System.out.print(anduvo);
 		return anduvo;
 		
 		
@@ -110,8 +109,9 @@ public class DaoimplCursos implements DaoCursos{
 
 
 	@Override
-	public void spModificarCurso(Cursos curso) {
+	public boolean spModificarCurso(Cursos curso) {
 		Conexion conexion = Conexion.getConexion();
+		 boolean funco = false;
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spModificarCurso(?,?,?,?,?) ");
@@ -120,20 +120,22 @@ public class DaoimplCursos implements DaoCursos{
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
 	            proc.setInt(5, curso.getComision());
-	            proc.execute();              
+	            proc.execute();   
+	            funco = true;
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
-		
+		return funco;
 	}
 
 
 
 
 	@Override
-	public void spEliminarCurso(Cursos curso) {
-Conexion conexion = Conexion.getConexion();
+	public boolean spEliminarCurso(Cursos curso) {
+      Conexion conexion = Conexion.getConexion();
+             boolean funco = false;
 		
 		try {    	    
 	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarCurso(?,?,?,?,?) ");
@@ -142,12 +144,13 @@ Conexion conexion = Conexion.getConexion();
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
 	            proc.setInt(5, curso.getComision());
-	            proc.execute();             
+	            proc.execute();    
+	            funco = true;
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
-		
+		return funco;
 	}
 	
 

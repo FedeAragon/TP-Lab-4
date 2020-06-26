@@ -109,7 +109,18 @@
    <div class="boton">
  <input type ="submit" name = "btnAgregar" value = "Agregar" class = "botones">
  </div>
-  
+   <% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label>El alumno se agrego con exito</label>
+  		<%} else{
+  			 %>
+  			 <label>No se pudo agregar al alumno</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
 
 </form>
  

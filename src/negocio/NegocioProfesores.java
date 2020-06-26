@@ -6,8 +6,8 @@ import entidad.Docente;
 public interface NegocioProfesores {
 
 	public List<Docente> readAll();
-	public void spAgregarProfesor(Docente docente);
-	public void spModificarProfesor(Docente docente);
-	public void spEliminarProfesor(Docente docente);
+	public boolean spAgregarProfesor(Docente docente);
+	public boolean spModificarProfesor(Docente docente);
+	public boolean spEliminarProfesor(Docente docente);
 	public Docente obtenerProfesor(int leg_profesor);
 }

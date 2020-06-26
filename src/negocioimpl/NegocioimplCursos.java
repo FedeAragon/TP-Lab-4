@@ -22,15 +22,15 @@ public class NegocioimplCursos implements NegocioCursos {
 	}
 
 	@Override
-	public void spModificarCurso(Cursos curso) {
-		daocurso.spModificarCurso(curso);
-		
+	public boolean spModificarCurso(Cursos curso) {
+		boolean funco =daocurso.spModificarCurso(curso);
+		return funco;
 	}
 
 	@Override
-	public void spEliminarCurso(Cursos curso) {
-		daocurso.spEliminarCurso(curso);
-		
+	public boolean spEliminarCurso(Cursos curso) {
+		boolean funco = daocurso.spEliminarCurso(curso);
+		return funco;
 	}
 
 }

@@ -38,6 +38,8 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		boolean funco = false;
 		if(request.getParameter("btnAgregar")!=null)
         {
 		  NegocioimplProfesores negocioprofe = new NegocioimplProfesores();
@@ -63,8 +65,9 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
       	d.setNombreyAp(request.getParameter("txtNombre").toString());
        d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
       	d.setEmail(request.getParameter("txtEmail").toString());
-      	  negocioprofe.spAgregarProfesor(d);
+      	 funco = negocioprofe.spAgregarProfesor(d);
 	          }
+		request.setAttribute("funco", funco);
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
         rd.forward(request, response);
         
