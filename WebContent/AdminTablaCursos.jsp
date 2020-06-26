@@ -75,16 +75,24 @@
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
-	            	</td>
+	            	</td>       	
+	            	  <td><button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+			            </td>
+			             </form>
+			         <form method="get" action="ServletAdminModificarCurso">
+	            	<input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>">
+					<input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>">
+					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
+					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
+					<input type="hidden" name="comision" value="<%=c.getComision()%>">
 	            	<td>
 		            <button type="submit" value="Modificar" name="btnModificar">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
 		            	</button>
 		            	</td>
-		            <td><button type="submit" value="Eliminar" name="btnEliminar">
-			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
-			            </button>
-			            </td>
+		          
 		             </form>
 		        </tr>
 		       <%} %>
