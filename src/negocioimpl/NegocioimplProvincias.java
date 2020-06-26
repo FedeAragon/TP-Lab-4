@@ -14,4 +14,8 @@ public class NegocioimplProvincias implements NegocioProvincias{
 	{
 		return daoprovincia.readAll();
 	}
+	
+	public Provincias obtenerProvincia(String id_provincia) {
+		return daoprovincia.obtenerProvincia(id_provincia);
+	}
 }

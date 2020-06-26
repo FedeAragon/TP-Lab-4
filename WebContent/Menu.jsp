@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/Menu.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 

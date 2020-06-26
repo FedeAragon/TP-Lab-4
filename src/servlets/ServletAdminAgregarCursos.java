@@ -47,7 +47,7 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			d.setLegajo(Integer.parseInt(request.getParameter("ddlDocentes")));
 			c.setDocente(d);
 			DaoimplCursos daoCurso = new DaoimplCursos();
-			anduvo=daoCurso.spAgregarCurso(c);
+			anduvo = daoCurso.spAgregarCurso(c);
 			request.setAttribute("anduvo", anduvo);
 			RequestDispatcher rd= request.getRequestDispatcher("/AdminAgregarCursos.jsp");
 			rd.forward(request, response);

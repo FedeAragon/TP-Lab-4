@@ -19,7 +19,7 @@
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
 <div class="contenedor">
-<form class="fondo" method="post" action="">
+<form class="fondo" method="post" action="ServletAdminAgregarAlumno">
 
 <div class="titulo_div">
   <label id="titulo" class ="titulos" >Agregar Alumnos</label>
@@ -33,23 +33,23 @@
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
   <input type="text" name="txtLegajo" class= "texts" disabled="disabled">
   <label id ="lblDNI" class="subtitulos">DNI </label>
-  <input type="text" name="txtDNI" class= "texts" >
+  <input type="text" name="txtDNI" class= "texts" required>
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
-  <input type="text" name="txtDireccion" class= "texts" >
+  <input type="text" name="txtDireccion" class= "texts" required>
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
-  <select id="ddlLocalidades" class="Ddls">
+  <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
   
   </select>
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
-    <input type="text" name="txtTelefono" class= "texts">
+    <input type="text" name="txtTelefono" class= "texts" required>
   
   </div>
   <div class="contenido">
   
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
-  <input type="text" name="txtNombre" class="texts">
+  <input type="text" name="txtNombre" class="texts" required>
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <input type="text" name="txtNacimiento" class= "texts" >
+  <input type="date" name="DateNacimiento"  required>
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
  
 
@@ -59,7 +59,7 @@
  		var idProv = $("#provincia").val();
  		
  		$.ajax({
- 			  url: "ServletAdminAgregarAlumno",
+ 			  url: "ServletLocalidades",
  			  data: {
  			    provincia: idProv
  			  },
@@ -73,7 +73,7 @@
  
  </script>
  
- <select name="provincia" id="provincia" class = "Ddls" onchange="CargarLocalidades()">
+ <select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
  						<option value="0">Seleccione una provincia</option>
 						
 						<%
@@ -101,7 +101,7 @@
 						%>
  </select> 
   <label id ="lblEmail" class="subtitulos">Email</label>
-  <input type="text" name="txtEmail" class= "texts">
+  <input type="text" name="txtEmail"  class="texts"   required>
   </div>
   
 

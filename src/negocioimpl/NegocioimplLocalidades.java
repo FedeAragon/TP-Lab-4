@@ -19,4 +19,7 @@ public class NegocioimplLocalidades implements NegocioLocalidades{
 		return daolocalidad.LocalidadesXProv(codProvincia);
 	}
 	
+	public Localidades obtenerLocalidad(String id_localidad) {
+		return daolocalidad.obtenerLocalidad(id_localidad);
+	}
 }

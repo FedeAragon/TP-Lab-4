@@ -2,8 +2,11 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import entidad.Alumno;
 import entidad.Localidades;
 import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplLocalidades;
+import negocioimpl.NegocioimplProvincias;
 
 /**
  * Servlet implementation class ServletAdminAgregarAlumno
@@ -34,22 +39,61 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		response.setContentType("text/html;charset=UTF-8");
+	
+		
+			if(request.getParameter("btnAgregar")!=null)
+	         {
 			
-			try(PrintWriter out = response.getWriter()){
+	  
+	       	  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
+	       	  NegocioimplLocalidades negocioloca = new NegocioimplLocalidades();
+	       	  NegocioimplProvincias negocioprov = new NegocioimplProvincias();
+	       	  Alumno alu = new Alumno();
+	       	  
+	     	 
+	      	java.util.Date date = null;
+	       	try {
+				 date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("DateNacimiento"));
 					
-						if(request.getParameter("provincia")!=null) {
-						
-							String idProv = (String)request.getParameter("provincia");
-							
-							NegocioimplLocalidades negLoc = new NegocioimplLocalidades();
-							List<Localidades> localidades = negLoc.LocalidadesXProv(idProv);
-							
-						for(Localidades loc : localidades) {
-							out.println("<option value=" + loc.getCodLocalidad() + " >" + loc.getNombreLocalidad() + "</option>" );
-						}
-				}
+			} catch (ParseException e) {
+				
+				e.printStackTrace();
 			}
+	       
+	  
+	       	java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+	    	  
+	       	alu.setLegajo(0);
+	       	alu.setEstado(1);
+	       	
+	        alu.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
+	       	
+	       	  alu.setDireccion(request.getParameter("txtDireccion").toString());
+	      
+	       	  alu.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
+	  
+	         
+	       	 alu.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
+	
+	       	  
+	       	  alu.setFechaNacimiento(sqlDate);
+	       	 
+	       
+	       	  alu.setNombreyAp(request.getParameter("txtNombre").toString());
+	      
+	    
+	       	  alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
+	       	  alu.setEmail(request.getParameter("txtEmail").toString());
+	       	  
+	       
+	      
+	          negocioalu.spAgregarAlumno(alu);
+   	          
+	 		
+	         }
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
+ 	        rd.forward(request, response);
+	         
 		}
 
 }

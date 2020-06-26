@@ -92,11 +92,15 @@ public class DaoimplCursos implements DaoCursos{
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
 	            proc.setInt(5, curso.getComision());
-	            anduvo = proc.execute();             
+	            proc.execute();
+	            anduvo = true;             
 	        } 
 	       catch (Exception e) {                  
 	            System.out.println(e);
 	       }
+	
+		
+		System.out.print(anduvo);
 		return anduvo;
 		
 		

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Alumnos</title>
 <link rel="stylesheet" type="text/css" href="css/Estilos.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
