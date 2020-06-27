@@ -47,7 +47,7 @@
 		            <td>22220</td>
 		            <td>Federico Aragon</td>
 		            <td>42197455</td>
-		          	<th><button type="submit" value="Eliminar" name="btnEliminar">
+		          	<th><button type="submit" value="Agregar" name="btnAgregar">
 			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
 			            </button><th>
 		           
@@ -57,7 +57,7 @@
 		            <td>Row 2 Data 1</td>
 		            <td>Row 2 Data 2</td>
 		            <td>Row 2 Data 3</td>
-		 			<th><button type="submit" value="Eliminar" name="btnEliminar">
+		 			<th><button type="submit" value="Agregar" name="btnAgregar">
 			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
 			            </button><th>
 		          
@@ -68,7 +68,7 @@
 		            <td>Row 3 Data 1</td>
 		            <td>Row 3 Data 2</td>
 		            <td>Row 3 Data 3</td>
-		  			<th><button type="submit" value="Eliminar" name="btnEliminar">
+		  			<th><button type="submit" value="Agregar" name="btnAgregar">
 			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
 			            </button><th>
 		      

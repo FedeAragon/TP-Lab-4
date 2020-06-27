@@ -48,8 +48,18 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			c.setDocente(d);
 			DaoimplCursos daoCurso = new DaoimplCursos();
 			anduvo = daoCurso.spAgregarCurso(c);
-			request.setAttribute("anduvo", anduvo);
-			RequestDispatcher rd= request.getRequestDispatcher("/AdminAgregarAlumnoXCurso.jsp");
+			
+			RequestDispatcher rd = null;
+			
+			if(anduvo) {
+				
+			rd = request.getRequestDispatcher("/AdminAgregarAlumnoXCurso.jsp");
+			}else {
+				
+				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
+				request.setAttribute("anduvo", anduvo);
+				
+			}
 			rd.forward(request, response);
 		}
 	}

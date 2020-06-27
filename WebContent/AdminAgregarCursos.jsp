@@ -32,7 +32,7 @@
  
   <form class="contenido" method="get" action="ServletAdminAgregarCursos">
  <label id ="lblMateria" class="subtitulos">Materia</label>
- <select name="ddlMaterias" class = "Ddls">
+ <select name="ddlMaterias" class = "Ddls" required>
  <option value="0" >Seleccione una Materia</option>
 						
 						<%
@@ -45,17 +45,17 @@
 						%>
  </select> 
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
- <select name="ddlCuatrimestre" class = "Ddls">
+ <select name="ddlCuatrimestre" class = "Ddls" required>
  						<option value="0">Seleccione un cuatrimestre</option>
                         <option value="1">Primer Cuatrimestre</option>
 						<option value="2">Segundo Cuatrimestre</option>
  </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
- <input type="number" name="txtAnio" class= "texts" min="2000" max="2070">
+ <input type="number" name="txtAnio" class= "texts" min="2000" max="2070" required>
   <label id ="lblComision" class="subtitulos">Comision</label>
-   <input type="number" name="txtComision" class= "texts" min="1" max="10">
+   <input type="number" name="txtComision" class= "texts" min="1" max="10" required>
   <label id ="lblDocente" class="subtitulos">Docente</label>
-   <select name="ddlDocentes" class = "Ddls">
+   <select name="ddlDocentes" class = "Ddls" required>
    <option value="0" >Seleccione un Docente</option>
 						
 						<%
