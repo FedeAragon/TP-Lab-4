@@ -15,14 +15,7 @@
 	<script type="text/javascript">
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
-	        dom: 'Bfrtip',
-	        select: true,
-	        buttons: [
-	            {
-	            	text: ' <input type="submit" value="Agregar Alumnos" class="botones">',
-	            	
-	            }
-	        ]
+	        dom: 'Bfrtip'
 	    } );
 	} );
 	</script>
@@ -45,6 +38,7 @@
 		            <th>Nº Legajo</th>
 		            <th>Nombre</th>
 		            <th>DNI</th>
+		            <th><th>
 		            
 		   
 		        </tr>
@@ -54,7 +48,9 @@
 		            <td>22220</td>
 		            <td>Federico Aragon</td>
 		            <td>42197455</td>
-		          
+		          	<th><button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
+			            </button><th>
 		           
 		          
 		        </tr>
@@ -62,7 +58,9 @@
 		            <td>Row 2 Data 1</td>
 		            <td>Row 2 Data 2</td>
 		            <td>Row 2 Data 3</td>
-		 
+		 			<th><button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
+			            </button><th>
 		          
 		           
 		        </tr>
@@ -71,7 +69,9 @@
 		            <td>Row 3 Data 1</td>
 		            <td>Row 3 Data 2</td>
 		            <td>Row 3 Data 3</td>
-		  
+		  			<th><button type="submit" value="Eliminar" name="btnEliminar">
+			            <i class="material-icons" style="font-size:36px; color:green;">add</i>
+			            </button><th>
 		      
 		       
 		        </tr>

@@ -20,7 +20,7 @@
 	        select: true,
 	        buttons: [
 	            {
-	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
+	            	text: '<i class="material-icons" style="font-size:36px; color:green;">add</i>',
 	            	action: function(){
 	            		 location.href="AdminAgregarCursos.jsp";
 	            	}
