@@ -65,8 +65,26 @@
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
  <select name="ddlCuatrimestre" class = "Ddls"> 
  						<option value="0">Seleccione un cuatrimestre</option>
-                        <option value="1">Primer Cuatrimestre</option>
-						<option value="2">Segundo Cuatrimestre</option>
+                        <option value="1"
+                          <%
+		
+						      	if( curso.getCuatrimeste() == 1)
+						        {
+							      out.print("selected");
+							   	}
+			
+						   %>
+                        >Primer Cuatrimestre</option>
+						<option value="2"
+						  <%
+		
+						      	if( curso.getCuatrimeste() == 2)
+						        {
+							      out.print("selected");
+							   	}
+			
+						   %>
+						>Segundo Cuatrimestre</option>
  </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
  <input type="number" name="txtAnio" class= "texts" min="2000" max="2070" value=<%=curso.getAnio() %> >
