@@ -11,6 +11,7 @@ import java.util.List;
 
 import dao.DaoAlumnos;
 import entidad.Alumno;
+import entidad.Cursos;
 import entidad.Docente;
 import entidad.Localidades;
 import entidad.Provincias;
@@ -198,6 +199,38 @@ public class DaoimplAlumnos implements DaoAlumnos{
 		
 		  
 		return null;
+	}
+	
+	private static final String AlumnosAgregar = "SELECT * FROM alumnos where not exists(select * from alumnosxcurso where CodMateria_axc=? and LegajoProfesor_axc=? and Año_axc=? and Cuatrimestre_axc=? and LegajoAlumno_axc = Legajo_a) and Estado_a=1;";
+	
+	@Override
+	public List<Alumno> AlumnosAgregar(Cursos curso) {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+     		PreparedStatement statement;
+			ResultSet resultSet; 
+			ArrayList<Alumno> alumno = new ArrayList<Alumno>();
+			Conexion conexion = Conexion.getConexion();
+			try 
+			{
+				statement = conexion.getSQLConexion().prepareStatement(AlumnosAgregar);
+				resultSet = statement.executeQuery();
+				while(resultSet.next())
+				{
+					alumno.add(getAlumno(resultSet));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			return alumno;
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import daoimpl.DaoimplAlumnos;
 import entidad.Alumno;
+import entidad.Cursos;
 import entidad.Docente;
 import negocio.NegocioAlumnos;
 
@@ -38,6 +39,10 @@ public class NegocioimplAlumnos implements NegocioAlumnos {
 		
 		return daoalumno.obtenerAlumno(leg_alumno);
 	}
-
+    
+    public List<Alumno> AlumnosAgregar(Cursos curso)
+    {
+		return daoalumno.AlumnosAgregar(curso);
+	}
 }
  

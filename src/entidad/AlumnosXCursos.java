@@ -3,48 +3,42 @@ package entidad;
 public class AlumnosXCursos {
 
 	//Atributos
-	int CodigoCurso;
-	int LegajoAlumno;
+	Cursos curso;
+	Alumno alumno;
 	int PrimerParcial;
 	int SegundoParcial;
 	int Recuperatorio1;
 	int Recuperatorio2;
-	int Estado;
-	int EstadoCurso;
 	
-	//Constructores
-	public AlumnosXCursos(int codigoCurso, int legajoAlumno, int primerParcial, int segundoParcial, int recuperatorio1,
-			int recuperatorio2, int estado, int estadoCurso) {
+	public AlumnosXCursos(Cursos curso, Alumno alumno, int primerParcial, int segundoParcial, int recuperatorio1,
+			int recuperatorio2) {
 		super();
-		CodigoCurso = codigoCurso;
-		LegajoAlumno = legajoAlumno;
+		this.curso = curso;
+		this.alumno = alumno;
 		PrimerParcial = primerParcial;
 		SegundoParcial = segundoParcial;
 		Recuperatorio1 = recuperatorio1;
 		Recuperatorio2 = recuperatorio2;
-		Estado = estado;
-		EstadoCurso = estadoCurso;
 	}
 	
 	public AlumnosXCursos() {
 		
 	}
 	
-	//Gets y sets
-	public int getCodigoCurso() {
-		return CodigoCurso;
+	public Cursos getCurso() {
+		return curso;
 	}
 
-	public void setCodigoCurso(int codigoCurso) {
-		CodigoCurso = codigoCurso;
+	public void setCurso(Cursos curso) {
+		this.curso = curso;
 	}
 
-	public int getLegajoAlumno() {
-		return LegajoAlumno;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
-	public void setLegajoAlumno(int legajoAlumno) {
-		LegajoAlumno = legajoAlumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 
 	public int getPrimerParcial() {
@@ -79,28 +73,11 @@ public class AlumnosXCursos {
 		Recuperatorio2 = recuperatorio2;
 	}
 
-	public int getEstado() {
-		return Estado;
-	}
-
-	public void setEstado(int estado) {
-		Estado = estado;
-	}
-
-	public int getEstadoCurso() {
-		return EstadoCurso;
-	}
-
-	public void setEstadoCurso(int estadoCurso) {
-		EstadoCurso = estadoCurso;
-	}
-
-	//toString()
 	@Override
 	public String toString() {
-		return "AlumnosXCursos [CodigoCurso=" + CodigoCurso + ", LegajoAlumno=" + LegajoAlumno + ", PrimerParcial="
-				+ PrimerParcial + ", SegundoParcial=" + SegundoParcial + ", Recuperatorio1=" + Recuperatorio1
-				+ ", Recuperatorio2=" + Recuperatorio2 + ", Estado=" + Estado + ", EstadoCurso=" + EstadoCurso + "]";
+		return "AlumnosXCursos [curso=" + curso + ", alumno=" + alumno + ", PrimerParcial=" + PrimerParcial
+				+ ", SegundoParcial=" + SegundoParcial + ", Recuperatorio1=" + Recuperatorio1 + ", Recuperatorio2="
+				+ Recuperatorio2 + "]";
 	}
 	
 }

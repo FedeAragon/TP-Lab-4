@@ -15,7 +15,6 @@
 	<script type="text/javascript">
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
-	        dom: 'Bfrtip'
 	    } );
 	} );
 	</script>
