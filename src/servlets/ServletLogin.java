@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import javax.servlet.http.HttpSession;
 
+import entidad.Docente;
 import entidad.Usuario;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +32,10 @@ public class ServletLogin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
+		request.getSession().removeAttribute("usuario");
+		request.getSession().removeAttribute("profesor");
+		RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+		rd.forward(request, response);
 	}
 
 	
@@ -49,17 +53,21 @@ public class ServletLogin extends HttpServlet {
 				
 				if( negociousuario.ComprobarUsuario (nombreU, password) == 1)  
 				{
-                    HttpSession misession= request.getSession(true);					
+					NegocioimplUsuarios negUser = new NegocioimplUsuarios();
+					Docente prof = new Docente();
+					
 					if(negociousuario.TipoCuenta(nombreU)) {
-						boolean admin = true;
 						Usuario usuario = new Usuario(1, nombreU,Integer.parseInt(password), 1);
-						misession.setAttribute("Usuario",usuario);
-						request.setAttribute("admin", admin);
+						request.getSession().setAttribute("usuario", usuario);
+						prof = negUser.getDocente(usuario);
+						request.getSession().setAttribute("profesor", prof);
 						RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
 		                rd.forward(request, response);
 					}else {
 						Usuario usuario = new Usuario(0, nombreU,Integer.parseInt(password), 1);
-						misession.setAttribute("Usuario",usuario);
+						request.getSession().setAttribute("usuario", usuario);
+						prof = negUser.getDocente(usuario);
+						request.getSession().setAttribute("profesor", prof);
 						RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaCursos.jsp");   
 		                rd.forward(request, response);
 					}	

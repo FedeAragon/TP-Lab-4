@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import="javax.servlet.http.HttpSession"%> 
     <%@ page import ="entidad.Usuario" %>
+    <%@ page import ="entidad.Docente" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,9 +14,15 @@
 </head>
 <body>
 
-<% 
-HttpSession misession= (HttpSession) request.getSession();
-Usuario usuario= (Usuario) misession.getAttribute("Usuario");
+<% 	
+	Usuario usuario = new Usuario();
+	Docente prof = new Docente();
+   if(session.getAttribute("usuario") != null && session.getAttribute("profesor")!=null){
+	  usuario = (Usuario)session.getAttribute("usuario");
+	  prof = (Docente)session.getAttribute("profesor");
+	  System.out.println(usuario);
+	  System.out.println(prof);
+   }
 %>
 
   <header>
@@ -24,22 +31,34 @@ Usuario usuario= (Usuario) misession.getAttribute("Usuario");
 		
 		  <nav class="menu">
 			  <ul>
-				  <li><a href="ServletAdminTablaProfesores?Param=1">Profesores</a>
-				   </li>
-				  <li><a href="ServletAdminTablaAlumnos?Param=1">Alumnos</a>
+			  <%if(usuario.getTipoCuenta()==1){ %>
+				  <li>
+				  	<a href="ServletAdminTablaProfesores?Param=1">Profesores</a>
 				  </li>
-				  <li><a href="ServletAdminTablaCursos?Param=1">Cursos</a>
-				  
+				  <li>
+				  	<a href="ServletAdminTablaAlumnos?Param=1">Alumnos</a>
 				  </li>
-				  
-				  <li><a href="AdminReportes.jsp">Reportes</a></li>
+				  <li>
+				  	<a href="ServletAdminTablaCursos?Param=1">Cursos</a>
+				  </li>
+				  <li>
+				  	<a href="AdminReportes.jsp">Reportes</a>
+				  </li>
+				 <% }else { %> 
+				 	<li>
+				  	<a href="ServletAdminTablaCursos?Param=1">Cursos</a>
+				  </li>
+				 <%} %>
 			  </ul>
 		  </nav>
   			<div class="logout">
-  				<i class="material-icons" style="font-size:36px;">engineering</i>
-  				<i class="material-icons" style="font-size:36px;">person</i>
-		  		<label id="Nombre"> <%= usuario.getUsuario() %>  </label>
-		  		<a href="Login.jsp">Salir</a>
+	  			<%if(usuario.getTipoCuenta()==1){ %>
+	  				<i class="material-icons" style="font-size:36px;">engineering</i>
+				<% }else { %> 
+					 <i class="material-icons" style="font-size:36px;">person</i>
+		       	<%} %>
+		  		<label id="Nombre"> <%= prof.getNombreyAp() %>  </label>
+		  		<a href="ServletLogin">Salir</a>
 			  </div>
   </header>
 </body>
