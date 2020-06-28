@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.AlumnosXCursos;
 import entidad.Cursos;
 import entidad.Docente;
+import entidad.Materias;
+import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplCursos;
 
 /**
@@ -53,8 +56,29 @@ public class ServletProfesoresTablaCursos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("btnVerAlumnos")!= null)
+		{
+			Cursos c = new Cursos();
+			Materias m = new Materias();
+		    Docente d = new Docente(); 
+		    d = (Docente)request.getSession().getAttribute("profesor"); 
+		   
+			
+			m.setID(Integer.parseInt(request.getParameter("codMate")));
+			c.setMateria(m);
+			c.setDocente(d);
+			c.setAnio(Integer.parseInt(request.getParameter("anio")));
+			c.setCuatrimeste(Integer.parseInt(request.getParameter("codCuatri")));
+			c.setComision(Integer.parseInt(request.getParameter("comision"))); 
+			
+			NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
+			ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
+			alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
+					
+			request.setAttribute("cursos",alumsXCursos); 
+			RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
+	        rd.forward(request, response);
+		}
 	}
 
 }

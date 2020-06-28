@@ -68,7 +68,7 @@ public class ServletLogin extends HttpServlet {
 						request.getSession().setAttribute("usuario", usuario);
 						prof = negUser.getDocente(usuario);
 						request.getSession().setAttribute("profesor", prof);
-						RequestDispatcher rd = request.getRequestDispatcher("/ServletProfesoresTablaCursos");   
+						RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaCursos.jsp");   
 		                rd.forward(request, response);
 					}	
 					

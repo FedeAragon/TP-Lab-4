@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.List"%> 
+    <%@ page import="entidad.AlumnosXCursos"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,6 +42,14 @@
   </div>
   <hr>
   <br>
+  
+   <%  
+  List<AlumnosXCursos> listacursos=null;
+	if(request.getAttribute("cursos")!=null){
+		listacursos = (List<AlumnosXCursos>)request.getAttribute("cursos");
+	}
+       
+       %>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -55,51 +65,27 @@
 		         
 		        </tr>
 		    </thead>
-		    <tbody style="color:black">
+		    <tbody style="color:black">		       
+		       <% if(listacursos!=null)
+		    	   for(AlumnosXCursos axc : listacursos){
+		    		   
+		    	   %>
 		        <tr>
-		            <td>22220</td>
-		            <td>Federico Aragon</td>
-		            <td>42197455</td>
-		            <td>Row 1 Data 4</td>
-		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts"></td>
-		            <td><select name="estado" class="Ddls">
+		            <td><%= axc.getAlumno().getLegajo() %></td>
+		            <td><%= axc.getAlumno().getNombreyAp() %></td>
+		            <td><%= axc.getAlumno().getDNI() %></td>
+		            <td><%= axc.getAlumno().getEmail() %></td>
+		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<%=axc.getPrimerParcial()  %>></td>
+		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts" style="width: 67px; " value =<%=axc.getSegundoParcial()  %> ></td>
+		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts" style="width: 67px; "value =<%=axc.getRecuperatorio1()  %>></td>
+		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts" style="width: 67px; "value =<%=axc.getRecuperatorio2()  %>></td>
+		            <td><select name="estado" class="Ddls" style="width: 110px; ">
+		                    <option value="0">En Curso</option>
 		            		<option value="1">Regular</option>
 		            		<option value="2">Libre</option>
 		            </select></td>
-		        </tr>
-		        <tr>
-		            <td>Row 2 Data 1</td>
-		            <td>Row 2 Data 2</td>
-		            <td>Row 2 Data 3</td>
-		            <td>Row 2 Data 4</td>
-		           <td><input type="number" min="1" max="10" name="txtParcial1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts"></td>
-		           <td><select name="estado" class="Ddls">
-		            		<option value="1">Regular</option>
-		            		<option value="2">Libre</option>
-		            </select></td>
-		        </tr>
-		        
-		        <tr>
-		            <td>Row 3 Data 1</td>
-		            <td>Row 3 Data 2</td>
-		            <td>Row 3 Data 3</td>
-		            <td>Row 3 Data 4</td>
-		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts"></td>
-		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts"></td>
-		           <td><select name="estado" class="Ddls">
-		            		<option value="1">Regular</option>
-		            		<option value="2">Libre</option>
-		            </select></td>
-		        </tr>
-		        
+		        </tr>	  
+		        <%} %>      
 		    </tbody>
 		</table>
 		</div>

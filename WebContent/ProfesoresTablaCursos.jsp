@@ -73,11 +73,10 @@
 		        <tr>
 		            <th>Materia</th>
 		            <th>Cuatrimestre</th>
+		            <th>Comision</th>
 		            <th>Año</th>
-		           
 		            <th>Alumnos</th>    
-		          
-		        </tr>
+		       </tr>
 		 </thead>
 		    <tbody style="color:black">
 		       
@@ -85,13 +84,13 @@
 		    	   for(Cursos  c: listacursos){
 		    		   
 		    	   %> <tr>
-		            <form method="post" action="ServletAdminTablaCursos">
+		            <form method="post" action="ServletProfesoresTablaCursos">
 		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
 					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
+					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
 					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
-							         
-		            	   <td>
-		            	<button type="submit">
+				    <td>
+		            	<button type="submit" name ="btnVerAlumnos">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>

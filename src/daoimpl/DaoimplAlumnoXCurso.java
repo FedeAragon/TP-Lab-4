@@ -17,7 +17,7 @@ import entidad.Provincias;
 
 public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 	
-	private static final String AlumnosDelCurso = "SELECT Legajo_a,PrimerParcial_axc,SegundoParcial_axc,Recuperatorio1_axc,Recuperatorio2_axc FROM bdtpintegrador.alumnosxcurso inner join alumnos on Legajo_a=LegajoAlumno_axc where Estado_axc=1 and CodMateria_axc=? and LegajoProfesor_axc=? and Año_axc=? and Cuatrimestre_axc =? and Comision_axc=?;";
+	private static final String AlumnosDelCurso = "SELECT Legajo_a, PrimerParcial_axc,SegundoParcial_axc,Recuperatorio1_axc,Recuperatorio2_axc FROM bdtpintegrador.alumnosxcurso inner join alumnos on Legajo_a=LegajoAlumno_axc where Estado_axc=1 and CodMateria_axc=? and LegajoProfesor_axc=? and Año_axc=? and Cuatrimestre_axc =? and Comision_axc=?;";
 	
 	@Override
 	public List<AlumnosXCursos> AlumnosdelCurso(Cursos curso) {
@@ -67,10 +67,10 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		
 		alumXCurso.setAlumno(daoAlum.obtenerAlumno(resultSet.getInt(1)));
 		alumXCurso.setCurso(curso);
-		alumXCurso.setPrimerParcial(resultSet.getInt(3));
-		alumXCurso.setSegundoParcial(resultSet.getInt(4));
-		alumXCurso.setRecuperatorio1(resultSet.getInt(5));
-		alumXCurso.setRecuperatorio2(resultSet.getInt(6));
+		alumXCurso.setPrimerParcial(resultSet.getInt(2));
+		alumXCurso.setSegundoParcial(resultSet.getInt(3));
+		alumXCurso.setRecuperatorio1(resultSet.getInt(4));
+		alumXCurso.setRecuperatorio2(resultSet.getInt(5));
 
 	 	return alumXCurso;	
 	}  
@@ -82,7 +82,7 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		boolean funco = false;
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarAlumnoxCurso(?,?,?,?,?,?); ");
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarAlumnoxCurso(?,?,?,?,?,?) ");
 	            proc.setInt(1, alumXCurso.getCurso().getMateria().getID());
 	            proc.setInt(2, alumXCurso.getCurso().getDocente().getLegajo());
 	            proc.setInt(3, alumXCurso.getCurso().getAnio());
