@@ -45,7 +45,7 @@
 				  </li>
 				 <% }else { %> 
 				 	<li>
-				  	<a href="ServletAdminTablaCursos">Cursos</a>
+				  	<a href="ServletProfesoresTablaCursos">Cursos</a>
 				  </li>
 				 <%} %>
 			  </ul>
