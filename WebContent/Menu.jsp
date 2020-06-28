@@ -20,8 +20,7 @@
    if(session.getAttribute("usuario") != null && session.getAttribute("profesor")!=null){
 	  usuario = (Usuario)session.getAttribute("usuario");
 	  prof = (Docente)session.getAttribute("profesor");
-	  System.out.println(usuario);
-	  System.out.println(prof);
+	 
    }
 %>
 

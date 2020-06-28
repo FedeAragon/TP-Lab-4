@@ -18,6 +18,8 @@
 		 var table = $('#table_id').DataTable({
 	        dom: 'Bfrtip',
 	        select: true,
+	        pageLength : 5,
+	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
 	        buttons: [
 	            {
 	            	text: '<i class="material-icons" style="font-size:36px; color:green;">add</i>',
@@ -76,7 +78,7 @@
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>       	
-	            	  <td><button type="submit" value="Eliminar" name="btnEliminar">
+	            	   <td><button type="submit" value="Eliminar" name="btnEliminar" >
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 			            </td>
@@ -92,8 +94,10 @@
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
 		            	</button>
 		            	</td>
+		            	
 		          
 		             </form>
+		            
 		        </tr>
 		       <%} %>
 		    </tbody>
@@ -103,7 +107,8 @@
 	
 	<jsp:include page="Footer.html"></jsp:include>
 	
-	 
+		
+
 	 	
 	
 	

@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daoimpl.DaoimplCursos;
+import entidad.Alumno;
+import entidad.AlumnosXCursos;
 import entidad.Cursos;
 import entidad.Docente;
 import entidad.Materias;
+import negocioimpl.NegocioimplAlumnoXCurso;
+import negocioimpl.NegocioimplAlumnos;
 
 /**
  * Servlet implementation class ServletAdminAgregarCursos
@@ -52,15 +58,22 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			RequestDispatcher rd = null;
 			
 			if(anduvo) {
+			
+				NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
+			
+				List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
+				request.setAttribute("alumnos", alumnos);
+				request.setAttribute("curso",c);
 				
 			rd = request.getRequestDispatcher("/AdminAgregarAlumnoXCurso.jsp");
+			rd.forward(request, response);
 			}else {
-				
-				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
 				request.setAttribute("anduvo", anduvo);
+				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
+				rd.forward(request, response);
 				
 			}
-			rd.forward(request, response);
+			
 		}
 	}
 

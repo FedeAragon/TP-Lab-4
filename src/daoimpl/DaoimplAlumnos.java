@@ -220,6 +220,11 @@ public class DaoimplAlumnos implements DaoAlumnos{
 			try 
 			{
 				statement = conexion.getSQLConexion().prepareStatement(AlumnosAgregar);
+				statement.setInt(1, curso.getMateria().getID());
+				statement.setInt(2, curso.getDocente().getLegajo());
+				statement.setInt(3, curso.getAnio());
+				statement.setInt(4, curso.getCuatrimeste());
+				
 				resultSet = statement.executeQuery();
 				while(resultSet.next())
 				{
