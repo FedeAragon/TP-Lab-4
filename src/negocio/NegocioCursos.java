@@ -9,4 +9,5 @@ public interface NegocioCursos {
 	public boolean spAgregarCurso(Cursos curso);
 	public boolean spModificarCurso(Cursos curso);
 	public boolean spEliminarCurso(Cursos curso);
+	public List<Cursos> CursosProfe(int Legajo_p);
 }

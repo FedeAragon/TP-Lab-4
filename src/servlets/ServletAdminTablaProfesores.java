@@ -32,7 +32,7 @@ public class ServletAdminTablaProfesores extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		if(request.getParameter("Param")!= null) {
+		
 		
 		NegocioimplProfesores negocioprofesores = new NegocioimplProfesores();
 		Docente docente = new Docente();
@@ -41,7 +41,7 @@ public class ServletAdminTablaProfesores extends HttpServlet {
 		request.setAttribute("docentes", docentes);
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaProfesores.jsp");   
         rd.forward(request, response);
-		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

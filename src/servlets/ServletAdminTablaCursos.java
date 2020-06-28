@@ -32,7 +32,7 @@ public class ServletAdminTablaCursos extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("Param")!= null) {
+		
 			
 			NegocioimplCursos negociocursos = new NegocioimplCursos();
 			
@@ -41,7 +41,7 @@ public class ServletAdminTablaCursos extends HttpServlet {
 			request.setAttribute("cursos", curso);
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaCursos.jsp");   
 	        rd.forward(request, response);
-			}
+			
 		
 	}
 

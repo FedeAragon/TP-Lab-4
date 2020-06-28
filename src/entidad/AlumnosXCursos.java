@@ -25,6 +25,17 @@ public class AlumnosXCursos {
 		
 	}
 	
+	public AlumnosXCursos(Cursos curso , Alumno alumno) {
+		
+		super();
+		this.alumno = alumno;
+		this.curso =curso;
+		this.PrimerParcial = 0;
+		this.SegundoParcial = 0;
+		this.Recuperatorio1 = 0;
+		this.Recuperatorio2 = 0;
+	}
+	
 	public Cursos getCurso() {
 		return curso;
 	}

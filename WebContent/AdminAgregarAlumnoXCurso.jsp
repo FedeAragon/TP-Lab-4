@@ -68,7 +68,7 @@
 		        	for(Alumno a : Alumnos){
 		        	%>
 		        <tr>
-		        <form method="get" action="ServletAdminAgregarAlumnoXCurso">
+		        <form method="post" action="ServletAdminAgregarAlumnoXCurso">
 		             <td><%= a.getLegajo() %>   </td>
 		              <td><%= a.getNombreyAp() %> </td>
 		              <td><%= a.getDNI() %>   </td>

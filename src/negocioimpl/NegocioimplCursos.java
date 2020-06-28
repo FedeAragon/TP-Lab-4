@@ -32,5 +32,9 @@ public class NegocioimplCursos implements NegocioCursos {
 		boolean funco = daocurso.spEliminarCurso(curso);
 		return funco;
 	}
+     public List<Cursos> CursosProfe(int Legajo_p) {
+		
+		return daocurso.CursosProfe(Legajo_p);
+	}
 
 }

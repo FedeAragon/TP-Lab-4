@@ -27,14 +27,14 @@ public class ServletAdminTablaAlumnos extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("Param")!= null) {
+		
 			
 			NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
 			ArrayList<Alumno> alumnos = (ArrayList<Alumno>) negAlu.readAll();
 			request.setAttribute("alumnos", alumnos);
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaAlumnos.jsp");   
 	        rd.forward(request, response);
-			}
+			
 		}
 	
 

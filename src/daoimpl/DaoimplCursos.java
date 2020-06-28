@@ -15,6 +15,7 @@ import entidad.Materias;
 public class DaoimplCursos implements DaoCursos{
 
 	private static final String readall ="Select * from Cursos where Estado_c=true";
+	private static final String cursosProfe= "Select * from Cursos where LegajoProfesor_c = ?";
 	
 	
 	
@@ -153,7 +154,35 @@ public class DaoimplCursos implements DaoCursos{
 		return funco;
 	}
 	
-
+	public List<Cursos> CursosProfe(int Legajo_p) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+     		PreparedStatement statement;
+			ResultSet resultSet; 
+			ArrayList<Cursos> curso = new ArrayList<Cursos>();
+			Conexion conexion = Conexion.getConexion();
+			try 
+			{
+				statement = conexion.getSQLConexion().prepareStatement(cursosProfe);
+				statement.setInt(1,Legajo_p);
+				resultSet = statement.executeQuery();
+				while(resultSet.next())
+				{
+					curso.add(getCurso(resultSet));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();  
+			}
+			return curso;
+			
+		}
 	
 
 }

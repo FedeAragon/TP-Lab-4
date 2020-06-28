@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="entidad.Docente" %> 
+    <%@ page import="entidad.Cursos" %> 
+    <%@ page import="java.util.List"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,6 +59,15 @@
   </div>
   <hr>
   <br>
+  
+  <%  
+  List<Cursos> listacursos=null;
+	if(request.getAttribute("cursos")!=null){
+		listacursos = (List<Cursos>)request.getAttribute("cursos");
+	}
+       
+       %>
+  
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -66,45 +78,29 @@
 		            <th>Alumnos</th>    
 		          
 		        </tr>
-		    </thead>
+		 </thead>
 		    <tbody style="color:black">
-		        <tr>
-		            <td>Programacion III</td>
-		            <td>Segundo Cuatrimestre</td>
-		            <td>2019</td>
-		         
-		            <td>
+		       
+		       <% if(listacursos!=null)
+		    	   for(Cursos  c: listacursos){
+		    		   
+		    	   %> <tr>
+		            <form method="post" action="ServletAdminTablaCursos">
+		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
+					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
+					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
+							         
+		            	   <td>
 		            	<button type="submit">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>
-		           
-		        </tr>
-		        <tr>
-		            <td>Row 2 Data 1</td>
-		            <td>Row 2 Data 2</td>
-		            <td>Row 2 Data 3</td>
+	 	
+		          
+		             </form>
 		            
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black ;">group</i>
-		            	</button>
-	            	</td>
-		           
 		        </tr>
-		        
-		        <tr>
-		            <td>Row 3 Data 1</td>
-		            <td>Row 3 Data 2</td>
-		            <td>Row 3 Data 3</td>
-		           
-		            <td>
-		            	<button type="submit">
-		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
-		            	</button>
-	            	</td>
-	            	
-		        </tr>
+		       <%} %>
 		    </tbody>
 		</table>
 		</div>

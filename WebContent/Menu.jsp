@@ -32,20 +32,20 @@
 			  <ul>
 			  <%if(usuario.getTipoCuenta()==1){ %>
 				  <li>
-				  	<a href="ServletAdminTablaProfesores?Param=1">Profesores</a>
+				  	<a href="ServletAdminTablaProfesores">Profesores</a>
 				  </li>
 				  <li>
-				  	<a href="ServletAdminTablaAlumnos?Param=1">Alumnos</a>
+				  	<a href="ServletAdminTablaAlumnos">Alumnos</a>
 				  </li>
 				  <li>
-				  	<a href="ServletAdminTablaCursos?Param=1">Cursos</a>
+				  	<a href="ServletAdminTablaCursos">Cursos</a>
 				  </li>
 				  <li>
 				  	<a href="AdminReportes.jsp">Reportes</a>
 				  </li>
 				 <% }else { %> 
 				 	<li>
-				  	<a href="ServletAdminTablaCursos?Param=1">Cursos</a>
+				  	<a href="ServletAdminTablaCursos">Cursos</a>
 				  </li>
 				 <%} %>
 			  </ul>
