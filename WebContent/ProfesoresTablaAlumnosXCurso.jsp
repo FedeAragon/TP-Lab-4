@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.List"%> 
+        <%@ page import ="entidad.Usuario" %>
     <%@ page import="entidad.AlumnosXCursos"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,7 +22,26 @@
 	        pageLength : 5,
 	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
 	        buttons: [
-	            {
+	            
+	            	
+	            	<% if(request.getSession().getAttribute("usuario")!=null){
+	            		Usuario user = (Usuario)session.getAttribute("usuario");
+	            		if(user.getTipoCuenta()==1){
+	            			%>
+	            			{
+	            			text: '<input type ="submit" name = "btnAgregar" value = "Agregar" class = "botones">',
+	    	            	action: function(){
+	    	            		location.href = "ServletAdminAgregarAlumnoXCurso";
+	    	            	}
+	            			},
+	            			<%
+	            		}
+	            	} %>
+	            
+	        	
+	        	
+	        	{
+	            	
 	            	text: '<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">',
 	            	action: function(){
 	            		
