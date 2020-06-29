@@ -42,6 +42,7 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		boolean anduvo=false;
+		boolean repetido = false;
 		if(request.getParameter("btnAgregar")!=null) {
 			Cursos c = new Cursos();
 			Materias m= new  Materias();
@@ -52,14 +53,27 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			c.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
 			d.setLegajo(Integer.parseInt(request.getParameter("ddlDocentes")));
 			c.setDocente(d);
-			NegocioimplCursos daoCurso = new NegocioimplCursos();
-			anduvo = daoCurso.spAgregarCurso(c);
+			NegocioimplCursos negCurso = new NegocioimplCursos();
+			if(negCurso.obtenerCurso(c)) 
+			{
+				repetido = true;
+			}
+			else 
+			{
+				anduvo = negCurso.spAgregarCurso(c); 
+			}
 			RequestDispatcher rd = null;
 			
-			if(anduvo) {
+			if(repetido == true)
+			{
+				request.setAttribute("repetido", repetido);
+				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
+				rd.forward(request, response);
+			}
+		    else if(anduvo) {
 			
 				NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
-				c.setCodCurso(daoCurso.ObtenerCodCurso());
+				c.setCodCurso(negCurso.ObtenerCodCurso());
 				List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
 				request.setAttribute("alumnos", alumnos);
 				request.setAttribute("curso",c);

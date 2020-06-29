@@ -3,6 +3,7 @@
 <%@page import="negocio.NegocioProvincias"%>
 <%@page import="negocioimpl.NegocioimplProvincias"%>
 <%@page import="negocioimpl.NegocioimplLocalidades"%>
+<%@page import="negocioimpl.NegocioimplAlumnos"%>
 <%@ page import="java.util.List"%>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -43,7 +44,10 @@
   <br>
   <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
-  <input type="text" name="txtLegajo" class= "texts" disabled="disabled">
+  <%NegocioimplAlumnos negalu = new NegocioimplAlumnos();
+   int ultlegajo = negalu.obtenerLegAlumno() + 1;
+  %>
+  <input type="text" name="txtLegajo" class= "texts" readonly="readonly"  value=<%= ultlegajo %>>
   <label id ="lblDNI" class="subtitulos" type="number">DNI </label>
   <input type="text" name="txtDNI" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="8">
   <label id ="lblDireccion" class="subtitulos">Direccion</label>

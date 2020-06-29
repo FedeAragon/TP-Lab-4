@@ -14,9 +14,43 @@ import entidad.Materias;
 
 public class DaoimplCursos implements DaoCursos{
 
-	private static final String readall ="Select * from Cursos where Estado_c=true";
-	private static final String cursosProfe= "Select * from Cursos where LegajoProfesor_c = ?";
+	private static final String readall ="Select * from cursos where Estado_c=true";
+	private static final String cursosProfe= "Select * from cursos where LegajoProfesor_c = ?";
 	private static final String obtenerCodCurso = "SELECT MAX(CodCurso_c) from cursos";
+	private static final String readCurso ="Select * from cursos where CodMateria_c = ? AND  LegajoProfesor_c = ? AND Año_c = ? AND Cuatrimestre_c = ? AND Estado_c = true";
+	
+	public boolean obtenerCurso(Cursos curso) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+     		PreparedStatement statement;
+			ResultSet resultSet; 
+			Conexion conexion = Conexion.getConexion();
+			try 
+			{
+				statement = conexion.getSQLConexion().prepareStatement(readCurso);
+				statement.setInt(1,curso.getMateria().getID());
+				statement.setInt(2,curso.getDocente().getLegajo());
+				statement.setInt(3,curso.getAnio());
+				statement.setInt(4,curso.getCuatrimeste());
+				resultSet = statement.executeQuery();
+				
+				if(resultSet.next())
+				{
+					return true;
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();  
+			}
+			return false;
+			
+		}
 	
 	public int ObtenerCodCurso() {
 		try {

@@ -17,24 +17,14 @@ import entidad.Materias;
 import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplCursos;
 
-/**
- * Servlet implementation class ServletProfesoresTablaCursos
- */
 @WebServlet("/ServletProfesoresTablaCursos")
 public class ServletProfesoresTablaCursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ServletProfesoresTablaCursos() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Docente prof = new Docente();
@@ -53,13 +43,7 @@ public class ServletProfesoresTablaCursos extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaCursos.jsp");   
 	        rd.forward(request, response);
 			}
-		
-	
 
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("btnVerAlumnos")!= null)
 		{
@@ -84,6 +68,8 @@ public class ServletProfesoresTablaCursos extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
 	        rd.forward(request, response);
 		}
+		
+		doGet(request, response);
 	}
 
 }

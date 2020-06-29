@@ -39,6 +39,8 @@
   %>
  
   <form class="contenido" method="post" action="ServletAdminModificarCurso">
+   <label id ="lblCodCurso" class="subtitulos">CodCurso</label>
+  <input type="text" name="txtCodCurso" class= "texts" readonly="readonly" value=<%=curso.getCodCurso() %>>
  <label id ="lblMateria" class="subtitulos">Materia</label>
  <select name="ddlMaterias" class = "Ddls">
  <option value="0" >Seleccione una Materia</option>

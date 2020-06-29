@@ -11,4 +11,5 @@ public interface DaoCursos {
 	public boolean spEliminarCurso(Cursos curso);
 	public List<Cursos> CursosProfe(int Legajo_p);
 	public int ObtenerCodCurso();
+	public boolean obtenerCurso(Cursos curso);
 }

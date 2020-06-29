@@ -13,5 +13,5 @@ public interface NegocioAlumnos {
     public boolean spEliminarAlumno(Alumno alumno);
     public Alumno obtenerAlumno(int leg_alumno);
     public List<Alumno> AlumnosAgregar(Cursos curso);
-
+    public int obtenerLegAlumno();
 }

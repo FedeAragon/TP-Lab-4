@@ -5,6 +5,7 @@
 <%@page import="negocio.NegocioProvincias"%>
 <%@page import="negocioimpl.NegocioimplProvincias"%>
 <%@page import="negocioimpl.NegocioimplLocalidades"%>
+<%@page import="negocioimpl.NegocioimplProfesores"%>
 <%@ page import="java.util.List"%>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,7 +44,10 @@
   <br>
   <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
-  <input type="text" name="txtLegajo" class= "texts" disabled="disabled">
+ <% NegocioimplProfesores negprofes = new NegocioimplProfesores();
+   int ultlegajo = negprofes.obtenerLegProfesor() + 1;
+  %>
+  <input type="text" name="txtLegajo" class= "texts" readonly="readonly" value=<%= ultlegajo %>>
   <label id ="lblDNI" class="subtitulos">DNI </label>
   <input type="text" name="txtDNI" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="8">
   <label id ="lblDireccion" class="subtitulos">Direccion</label>

@@ -10,4 +10,5 @@ public interface NegocioProfesores {
 	public boolean spModificarProfesor(Docente docente);
 	public boolean spEliminarProfesor(Docente docente);
 	public Docente obtenerProfesor(int leg_profesor);
+	public int obtenerLegProfesor();
 }

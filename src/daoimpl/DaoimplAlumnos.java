@@ -22,6 +22,39 @@ public class DaoimplAlumnos implements DaoAlumnos{
 
 	private static final String readall = "SELECT * FROM alumnos where Estado_a=true";
 	private static final String obteneralumno ="SELECT * FROM alumnos WHERE legajo_a = ?";
+	private static final String obtenerLegAlumno = "SELECT MAX(Legajo_a) from alumnos";
+	
+public int obtenerLegAlumno() {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+     		PreparedStatement statement;
+			ResultSet resultSet; 
+			Conexion conexion = Conexion.getConexion();
+			int Legajo = 0;
+			try 
+			{
+				statement = conexion.getSQLConexion().prepareStatement(obtenerLegAlumno);
+				resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{
+					Legajo = resultSet.getInt(1);
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();  
+			}
+			return Legajo;
+			
+		}
+	
+	
 	
 	public List<Alumno> readAll() {
 		

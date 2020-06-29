@@ -39,4 +39,9 @@ public class NegocioimplCursos implements NegocioCursos {
  	public int ObtenerCodCurso() {
  		return daocurso.ObtenerCodCurso();
  	}
+ 	
+ 	public boolean obtenerCurso(Cursos curso)
+ 	{
+ 		return daocurso.obtenerCurso(curso);
+ 	}
 }

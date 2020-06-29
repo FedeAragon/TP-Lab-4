@@ -85,7 +85,6 @@ public class ServletAdminModificarCurso extends HttpServlet {
 		}
 		
 		NegocioimplCursos negocioCursos = new NegocioimplCursos();
-		Cursos curso2 = new Cursos();
 		List<Cursos> cursos = (List<Cursos>) negocioCursos.readAll();
 		
 		request.setAttribute("cursos", cursos);

@@ -44,5 +44,10 @@ public class NegocioimplAlumnos implements NegocioAlumnos {
     {
 		return daoalumno.AlumnosAgregar(curso);
 	}
+    public int obtenerLegAlumno ()
+    {
+    	return daoalumno.obtenerLegAlumno();
+    }
+    
 }
  

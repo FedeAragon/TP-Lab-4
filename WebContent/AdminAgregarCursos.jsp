@@ -4,6 +4,7 @@
     <%@page import="negocio.NegocioMaterias"%>
     <%@page import="entidad.Materias"%>
     <%@page import="negocioimpl.NegocioimplProfesores"%>
+    <%@page import="negocioimpl.NegocioimplCursos"%>
     <%@page import="negocio.NegocioProfesores"%>
     <%@page import="entidad.Docente"%>
     <%@ page import="java.util.List"%>  
@@ -31,6 +32,12 @@
 <div class="cuadrado">
  
   <form class="contenido" method="get" action="ServletAdminAgregarCursos">
+  <label id ="lblCodCurso" class="subtitulos">CodCurso</label>
+  <%
+  NegocioimplCursos negcurso = new NegocioimplCursos();
+  int ultcodcurso = negcurso.ObtenerCodCurso() + 1;
+  %>
+  <input type="text" name="txtCodCurso" class= "texts" readonly="readonly" value=<%=ultcodcurso %>>
  <label id ="lblMateria" class="subtitulos">Materia</label>
  <select name="ddlMaterias" class = "Ddls" required>
  <option value="0" >Seleccione una Materia</option>
@@ -79,8 +86,13 @@
   			 <%
   		} %>	 
   		
-  <% }%>
-  
+  <% } else if(request.getAttribute("repetido")!=null)
+  {
+   %>
+  <label>El curso ya se encuentra registrado</label>
+  <%
+  }
+  %>
   </form>
   
   

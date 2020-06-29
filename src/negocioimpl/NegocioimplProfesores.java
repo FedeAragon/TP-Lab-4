@@ -38,6 +38,11 @@ public class NegocioimplProfesores {
 		return daoprofesor.obtenerProfesor(leg_profesor);
 	}
 	
+	public int obtenerLegProfesor()
+	{
+		return daoprofesor.obtenerLegProfesor();
+	}
+	
 	
 }
  
