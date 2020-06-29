@@ -17,6 +17,8 @@
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
 	        dom: 'Bfrtip',
+	        pageLength : 5,
+	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
 	        select: true,
 	        buttons: [
 	            {

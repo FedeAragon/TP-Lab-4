@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -78,6 +79,11 @@ public class ServletAdminModificarProfesor extends HttpServlet {
       	d.setEmail(request.getParameter("txtEmail").toString());
       	  negocioprofe.spModificarProfesor(d);
 	          }
+		NegocioimplProfesores negocioprofesores = new NegocioimplProfesores();
+		Docente docente = new Docente();
+		ArrayList<Docente> docentes = (ArrayList<Docente>) negocioprofesores.readAll();
+		
+		request.setAttribute("docentes", docentes);
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaProfesores.jsp");   
         rd.forward(request, response);
 		

@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -86,6 +87,10 @@ public class ServletAdminModificarAlumno extends HttpServlet {
       	  negocioalu.spModificarAlumno(alu);
 	          
         }
+
+		NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
+		ArrayList<Alumno> alumnos = (ArrayList<Alumno>) negAlu.readAll();
+		request.setAttribute("alumnos", alumnos);
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaAlumnos.jsp");   
         rd.forward(request, response);
 		}
