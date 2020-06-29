@@ -84,13 +84,16 @@ public class ServletAdminModificarAlumno extends HttpServlet {
       	alu.setEmail(request.getParameter("txtEmail").toString());
         
       	alu.setEstado(1);
-      	  negocioalu.spModificarAlumno(alu);
+      	boolean funco = false;
+      	  funco = negocioalu.spModificarAlumno(alu);
+      	request.setAttribute("funco", funco);
 	          
         }
 
 		NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
 		ArrayList<Alumno> alumnos = (ArrayList<Alumno>) negAlu.readAll();
 		request.setAttribute("alumnos", alumnos);
+	
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaAlumnos.jsp");   
         rd.forward(request, response);
 		}

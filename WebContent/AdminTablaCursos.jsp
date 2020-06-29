@@ -50,6 +50,20 @@
   	}
   %>
 			<table id="table_id" class="display" >
+			<div>
+				 <% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label style= "display:flex;justify-content: center;">El curso se modifico correctamente</label>
+  		<%} else{
+  			 %>
+  			<label style= "display:flex;justify-content: center;">No se pudo modificar el curso</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
+			</div>
 		    <thead >
 		        <tr>
 		            <th>Materia</th>
@@ -67,21 +81,18 @@
 		    	   for(Cursos  c: listacursos){
 		    		   
 		    	   %> <tr>
-		            <form method="post" action="ServletAdminTablaCursos">
+		            <form method="post" action="ServletAdminTablaAlumnosXCurso">
 		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
 					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
 					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
 					<td><%=c.getDocente().getNombreyAp() %><input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>"></td>
 					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
 		            <td>
-		            	<button type="submit">
+		            	<button type="submit" valu="Alumnos" name="btnAlumnos">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>       	
-	            	   <td><button type="submit" value="Eliminar" name="btnEliminar" >
-			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
-			            </button>
-			            </td>
+	            	   
 			             </form>
 			         <form method="get" action="ServletAdminModificarCurso">
 	            	<input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>">
@@ -94,7 +105,19 @@
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
 		            	</button>
 		            	</td>
-		            	
+		            	   
+			             </form>
+		            	<form method="post" action="ServletAdminTablaCursos">
+		            <input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>">
+					<input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>">
+					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
+					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
+					<input type="hidden" name="comision" value="<%=c.getComision()%>">
+		            <td>
+		            	<td><button type="submit" value="Eliminar" name="btnEliminar" >
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+			            </td>
 		          
 		             </form>
 		            

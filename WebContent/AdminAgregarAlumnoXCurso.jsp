@@ -55,6 +55,19 @@
   <hr>
   <br>
 			<table id="table_id" class="display" >
+				 <% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label style= "display:flex;justify-content: center;">El alumno se agrego correctamente</label>
+  		<%} else{
+  			 %>
+  			<label style= "display:flex;justify-content: center;">No se pudo agregar el alumno</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
+			</div>
 		    <thead >
 		        <tr>
 		            <th>Nº Legajo</th>

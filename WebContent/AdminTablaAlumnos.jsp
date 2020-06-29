@@ -56,7 +56,23 @@
 			}
 			%>
 			
+			
 			<table id="table_id" class="display" >
+			
+			<div> 
+		 <% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label style= "display:flex;justify-content: center;">El alumno se modifico correctamente</label>
+  		<%} else{
+  			 %>
+  			<label style= "display:flex;justify-content: center;">No se pudo modificar el alumno</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
+			</div>
 		    <thead >
 		        <tr>
 		            <th>Nº Legajo</th>
