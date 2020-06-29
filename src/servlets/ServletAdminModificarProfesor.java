@@ -74,10 +74,10 @@ public class ServletAdminModificarProfesor extends HttpServlet {
        d.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
        d.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
        d.setFechaNacimiento(sqlDate);
-      d.setNombreyAp(request.getParameter("txtNombre").toString());
+       d.setNombreyAp(request.getParameter("txtNombre").toString());
        d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
-      	d.setEmail(request.getParameter("txtEmail").toString());
-      	  negocioprofe.spModificarProfesor(d);
+       d.setEmail(request.getParameter("txtEmail").toString());
+       negocioprofe.spModificarProfesor(d);
 	          }
 		NegocioimplProfesores negocioprofesores = new NegocioimplProfesores();
 		Docente docente = new Docente();

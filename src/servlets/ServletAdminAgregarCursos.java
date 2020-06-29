@@ -19,6 +19,7 @@ import entidad.Docente;
 import entidad.Materias;
 import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplAlumnos;
+import negocioimpl.NegocioimplCursos;
 
 /**
  * Servlet implementation class ServletAdminAgregarCursos
@@ -52,7 +53,7 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			c.setComision(Integer.parseInt(request.getParameter("txtComision")));
 			d.setLegajo(Integer.parseInt(request.getParameter("ddlDocentes")));
 			c.setDocente(d);
-			DaoimplCursos daoCurso = new DaoimplCursos();
+			NegocioimplCursos daoCurso = new NegocioimplCursos();
 			anduvo = daoCurso.spAgregarCurso(c);
 			
 			RequestDispatcher rd = null;

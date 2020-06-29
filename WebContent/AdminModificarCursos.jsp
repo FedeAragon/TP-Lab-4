@@ -38,7 +38,7 @@
   }
   %>
  
-  <form class="contenido" method="get" action="ServletAdminModificarCursos">
+  <form class="contenido" method="post" action="ServletAdminModificarCurso">
  <label id ="lblMateria" class="subtitulos">Materia</label>
  <select name="ddlMaterias" class = "Ddls">
  <option value="0" >Seleccione una Materia</option>
@@ -115,7 +115,7 @@
 						%>
  </select> 
   <br>
-  <input type="submit" name="btnAgregar" value="Modificar Curso" class= "botones">
+  <input type="submit" name="btnModificar" value="Modificar Curso" class= "botones">
   <% 
   		if(request.getAttribute("anduvo")!=null){ 
   			 if((Boolean)request.getAttribute("anduvo")==true){	 
@@ -129,4 +129,17 @@
   		
   <% }%>
   
-  </form>
+</form>
+  
+  
+
+  </div>
+  
+  </div>
+  
+  </div>
+  
+ <jsp:include page="Footer.html"></jsp:include>
+  
+</body>
+</html>
