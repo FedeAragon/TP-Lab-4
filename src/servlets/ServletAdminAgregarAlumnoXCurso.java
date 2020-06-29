@@ -54,9 +54,9 @@ public class ServletAdminAgregarAlumnoXCurso extends HttpServlet {
 		alu = negAlu.obtenerAlumno(Integer.parseInt(request.getParameter("LegajoAlu")));
 		AlumnosXCursos aluXcursos = new AlumnosXCursos(c,alu);
 		NegocioimplAlumnoXCurso negaluxcurso = new NegocioimplAlumnoXCurso();
-	
-		negaluxcurso.spAgregarAlumnoXCurso(aluXcursos);
-		
+		boolean funco= false;
+		funco = negaluxcurso.spAgregarAlumnoXCurso(aluXcursos);
+		request.setAttribute("funco",funco);
 		List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
 		request.setAttribute("alumnos", alumnos);
 		request.setAttribute("curso",c);

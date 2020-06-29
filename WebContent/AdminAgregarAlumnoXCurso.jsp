@@ -19,8 +19,17 @@
 	<script type="text/javascript">
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
+			 dom: 'Bfrtip',
 			 pageLength : 5,
 		        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+		        buttons: [
+		            {
+		            	text: '<input type ="submit" name = "btnModificar" value = "Finalizar" class = "botones">',
+		            	action: function(){
+		            		 location.href="ServletAdminTablaCursos";
+		            	}
+		            }
+		        ]
 	    } );
 	} );
 	</script>
@@ -55,6 +64,19 @@
   <hr>
   <br>
 			<table id="table_id" class="display" >
+				 <% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label style= "display:flex;justify-content: center;">El alumno se agrego correctamente</label>
+  		<%} else{
+  			 %>
+  			<label style= "display:flex;justify-content: center;">No se pudo agregar el alumno</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
+			</div>
 		    <thead >
 		        <tr>
 		            <th>Nº Legajo</th>

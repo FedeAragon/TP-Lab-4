@@ -76,8 +76,15 @@ public class ServletAdminModificarProfesor extends HttpServlet {
        d.setFechaNacimiento(sqlDate);
        d.setNombreyAp(request.getParameter("txtNombre").toString());
        d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
+
        d.setEmail(request.getParameter("txtEmail").toString());
        negocioprofe.spModificarProfesor(d);
+
+      	d.setEmail(request.getParameter("txtEmail").toString());
+      	boolean funco = false;
+      	funco = negocioprofe.spModificarProfesor(d);
+      	request.setAttribute("funco",funco);
+
 	          }
 		NegocioimplProfesores negocioprofesores = new NegocioimplProfesores();
 		Docente docente = new Docente();
