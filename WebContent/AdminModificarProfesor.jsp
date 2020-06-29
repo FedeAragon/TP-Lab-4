@@ -16,6 +16,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Modificar Profesor</title>
+<SCRIPT >
+     
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+      
+   </SCRIPT>
 </head>
 <body onload="CargarLocalidades()">
 <jsp:include page="Menu.jsp"></jsp:include>
@@ -39,7 +51,7 @@
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
   <input type="text" name="txtLegajo" class= "texts"  readonly="readonly" value="<%= doc.getLegajo() %>" >
   <label id ="lblDNI" class="subtitulos">DNI </label>
-  <input type="text" name="txtDNI" class= "texts" value="<%= doc.getDNI() %>" required>
+  <input type="text" name="txtDNI" class= "texts" value="<%= doc.getDNI() %>" required onkeypress="return isNumberKey(event)" maxlength="8">
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
   <input type="text" name="txtDireccion" class= "texts" value="<%= doc.getDireccion() %>" required >
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
@@ -48,7 +60,7 @@
    </select>
    
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
-    <input type="text" name="txtTelefono" class= "texts" value="<%= doc.getTelefono() %>" required>
+    <input type="text" name="txtTelefono" class= "texts" value="<%= doc.getTelefono() %>" required  onkeypress="return isNumberKey(event)" maxlength="11">
   
   </div>
   <div class="contenido">
