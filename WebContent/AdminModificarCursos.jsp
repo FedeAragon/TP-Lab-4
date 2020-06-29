@@ -118,22 +118,14 @@
   <br>
   <input type="submit" name="btnModificar" value="Modificar Curso" class= "botones">
   <% 
-  		if(request.getAttribute("anduvo")!=null){ 
-  			 if((Boolean)request.getAttribute("anduvo")==true){	 
+  		if(request.getAttribute("repetido")!=null)
+  		{ 
   			%>
-  			<label>El curso se modifico con exito</label>
-  		<%} else{
-  			 %>
-  			 <label>El curso no pudo modificarse</label>
-  			 <%
-  		} %>	 
-  		
-  <% }%>
+  			<label>Ya existe un curso con esas caracteristicas</label> 		
+  		<% } %>  	
   
 </form>
   
-  
-
   </div>
   
   </div>

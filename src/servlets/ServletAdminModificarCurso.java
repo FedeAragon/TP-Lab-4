@@ -64,6 +64,8 @@ public class ServletAdminModificarCurso extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("btnModificar")!=null) {
 			
+			boolean funco = false;
+			boolean repetido = false;
 			Cursos curso = new Cursos();
 			NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
   		    NegocioimplMaterias negocioMateria = new NegocioimplMaterias();
@@ -78,18 +80,29 @@ public class ServletAdminModificarCurso extends HttpServlet {
   		    curso.setCuatrimeste(Integer.parseInt(request.getParameter("ddlCuatrimestre")));
   		    curso.setEstado(1);
   		    
-  		    boolean funco = negocioCurso.spModificarCurso(curso);
-  		    System.out.println(curso);
-  		    System.out.println(funco);
-  		    request.setAttribute("funco", funco);
+  		    if(negocioCurso.obtenerCurso(curso))
+  		    {
+  		    	repetido = true;
+  		    	request.setAttribute("repetido", repetido);
+  		    	request.setAttribute("Curso", curso);
+  				RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarCursos.jsp");   
+  		        rd.forward(request, response);
+  		    }
+  		    else
+  		    {
+  		        funco = negocioCurso.spModificarCurso(curso);
+  	  		    System.out.println(curso);
+  	  		    System.out.println(funco);
+  	  		    request.setAttribute("funco", funco);
+  	  		    NegocioimplCursos negocioCursos = new NegocioimplCursos();
+  			    List<Cursos> cursos = (List<Cursos>) negocioCursos.readAll();
+  			
+  			   request.setAttribute("cursos", cursos);
+  			   RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaCursos.jsp");   
+  	           rd.forward(request, response);
+  		    }		   
 		}
 		
-		NegocioimplCursos negocioCursos = new NegocioimplCursos();
-		List<Cursos> cursos = (List<Cursos>) negocioCursos.readAll();
-		
-		request.setAttribute("cursos", cursos);
-		RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaCursos.jsp");   
-        rd.forward(request, response);
 	}
 
 }
