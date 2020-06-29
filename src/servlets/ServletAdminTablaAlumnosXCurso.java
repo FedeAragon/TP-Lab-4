@@ -57,10 +57,11 @@ public class ServletAdminTablaAlumnosXCurso extends HttpServlet {
 		NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
 		ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
 		alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
+		
+		request.setAttribute("cursos",alumsXCursos); 
 		RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
         rd.forward(request, response);
-				
-		request.setAttribute("cursos",alumsXCursos); 
+		
 		
 	}
 		

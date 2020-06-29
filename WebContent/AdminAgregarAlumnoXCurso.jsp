@@ -19,8 +19,17 @@
 	<script type="text/javascript">
 	$(document).ready( function () {
 		 var table = $('#table_id').DataTable({
+			 dom: 'Bfrtip',
 			 pageLength : 5,
 		        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+		        buttons: [
+		            {
+		            	text: '<input type ="submit" name = "btnModificar" value = "Finalizar" class = "botones">',
+		            	action: function(){
+		            		 location.href="ServletAdminTablaCursos";
+		            	}
+		            }
+		        ]
 	    } );
 	} );
 	</script>

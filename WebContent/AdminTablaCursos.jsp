@@ -88,7 +88,7 @@
 					<td><%=c.getDocente().getNombreyAp() %><input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>"></td>
 					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
 		            <td>
-		            	<button type="submit" valu="Alumnos" name="btnAlumnos">
+		            	<button type="submit" value="Alumnos" name="btnAlumnos">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
 		            	</button>
 	            	</td>       	
@@ -113,7 +113,7 @@
 					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
 					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
 					<input type="hidden" name="comision" value="<%=c.getComision()%>">
-		            <td>
+		          
 		            	<td><button type="submit" value="Eliminar" name="btnEliminar" >
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
