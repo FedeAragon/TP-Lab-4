@@ -16,9 +16,35 @@ public class DaoimplCursos implements DaoCursos{
 
 	private static final String readall ="Select * from Cursos where Estado_c=true";
 	private static final String cursosProfe= "Select * from Cursos where LegajoProfesor_c = ?";
+	private static final String obtenerCodCurso = "SELECT MAX(CodCurso_c) from cursos";
 	
-	
-	
+	public int ObtenerCodCurso() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			int CodCurso = -1;
+     		PreparedStatement statement;
+			ResultSet resultSet; 
+			Conexion conexion = Conexion.getConexion();
+			try 
+			{
+				statement = conexion.getSQLConexion().prepareStatement(obtenerCodCurso);
+				resultSet = statement.executeQuery();
+				
+				if(resultSet.next())
+				{ 
+				CodCurso = resultSet.getInt(1);
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();  
+			}
+			return CodCurso;
+	}
 	
 	@Override
 	public List<Cursos> readAll() {
@@ -59,12 +85,11 @@ public class DaoimplCursos implements DaoCursos{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		int codmateria = resultset.getInt(1);
-		int LegDocente = resultset.getInt(2) ;
-		int Anio = resultset.getInt(3);
-		int Cuatrimestre =resultset.getInt(4);
-		int comision = resultset.getInt(5);
+		int codCurso = resultset.getInt(1);
+		int codmateria = resultset.getInt(2);
+		int LegDocente = resultset.getInt(3) ;
+		int Anio = resultset.getInt(4);
+		int Cuatrimestre =resultset.getInt(5);
 		int Estado= resultset.getInt(6);
 		
 		DaoimplProfesores daoimplProfes= new  DaoimplProfesores();
@@ -78,7 +103,7 @@ public class DaoimplCursos implements DaoCursos{
 			mat = daoimplMates.obtenerMateria(codmateria);
 		}
 		
-		return new Cursos(comision,mat,Cuatrimestre,Anio,profe, Estado);
+		return new Cursos(codCurso,mat,Cuatrimestre,Anio,profe, Estado);
 		
 	}
 
@@ -87,12 +112,11 @@ public class DaoimplCursos implements DaoCursos{
 		Conexion conexion = Conexion.getConexion();
 		boolean anduvo=false;
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spAgregarCurso(?,?,?,?,?) ");
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spAgregarCurso(?,?,?,?) ");
 	            proc.setInt(1, curso.getMateria().getID());
 	            proc.setInt(2, curso.getDocente().getLegajo());
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
-	            proc.setInt(5, curso.getComision());
 	            proc.execute();
 	            anduvo = true;             
 	        } 
@@ -120,7 +144,7 @@ public class DaoimplCursos implements DaoCursos{
 	            proc.setInt(2, curso.getDocente().getLegajo());
 	            proc.setInt(3, curso.getAnio());
 	            proc.setInt(4, curso.getCuatrimeste());
-	            proc.setInt(5, curso.getComision());
+	            proc.setInt(5, curso.getCodCurso());
 	            proc.execute();   
 	            funco = true;
 	        } 
@@ -139,12 +163,8 @@ public class DaoimplCursos implements DaoCursos{
              boolean funco = false;
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarCurso(?,?,?,?,?) ");
-	            proc.setInt(1, curso.getMateria().getID());
-	            proc.setInt(2, curso.getDocente().getLegajo());
-	            proc.setInt(3, curso.getAnio());
-	            proc.setInt(4, curso.getCuatrimeste());
-	            proc.setInt(5, curso.getComision());
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spEliminarCurso(?) ");
+	            proc.setInt(1, curso.getCodCurso());
 	            proc.execute();    
 	            funco = true;
 	        } 

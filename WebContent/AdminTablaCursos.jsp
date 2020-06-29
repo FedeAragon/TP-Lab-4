@@ -70,7 +70,6 @@
 		            <th>Cuatrimestre</th>
 		            <th>Año</th>
 		            <th>Docente</th>
-		            <th>Comision</th>
 		            <th>Alumnos</th>    	     
 		            <th><th>
 		        </tr>
@@ -86,7 +85,7 @@
 					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
 					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
 					<td><%=c.getDocente().getNombreyAp() %><input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>"></td>
-					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
+					<input type="hidden" name="CodCurso" value=" <%= c.getCodCurso()  %> ">
 		            <td>
 		            	<button type="submit" value="Alumnos" name="btnAlumnos">
 		            	<i class="material-icons" style="font-size:36px; color:black;">group</i>
@@ -99,7 +98,7 @@
 					<input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>">
 					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
 					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
-					<input type="hidden" name="comision" value="<%=c.getComision()%>">
+					<input type="hidden" name="CodCurso" value=" <%= c.getCodCurso()  %> ">
 	            	<td>
 		            <button type="submit" value="Modificar" name="btnModificar">
 		            	<i class="material-icons" style="font-size:36px; color:black;">create</i>
@@ -112,7 +111,7 @@
 					<input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>">
 					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
 					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
-					<input type="hidden" name="comision" value="<%=c.getComision()%>">
+					<input type="hidden" name="CodCurso" value=" <%= c.getCodCurso()  %> ">
 		          
 		            	<td><button type="submit" value="Eliminar" name="btnEliminar" >
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>

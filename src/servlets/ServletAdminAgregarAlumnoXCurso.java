@@ -49,7 +49,7 @@ public class ServletAdminAgregarAlumnoXCurso extends HttpServlet {
 		c.setMateria(m);
 		c.setCuatrimeste(Integer.parseInt(request.getParameter("Cuatri")));
 		c.setAnio(Integer.parseInt(request.getParameter("Anio")));
-		c.setComision(Integer.parseInt(request.getParameter("Comision")));
+		c.setCodCurso(Integer.parseInt(request.getParameter("CodCurso").trim()));
 		c.setDocente(negocioprofe.obtenerProfesor(Integer.parseInt(request.getParameter("LegajoProf"))));		
 		alu = negAlu.obtenerAlumno(Integer.parseInt(request.getParameter("LegajoAlu")));
 		AlumnosXCursos aluXcursos = new AlumnosXCursos(c,alu);

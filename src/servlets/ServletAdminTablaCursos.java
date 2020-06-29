@@ -51,13 +51,13 @@ public class ServletAdminTablaCursos extends HttpServlet {
       {
     	  if(request.getParameter("codMate")!= null && request.getParameter("codCuatri")!=null
     	     && request.getParameter("anio")!=null && request.getParameter("legDocente")!=null
-    	     && request.getParameter("comision")!=null) 
+    	     && request.getParameter("CodCurso")!=null) 
     	  {    
     		  int codMate = Integer.parseInt(request.getParameter("codMate"));
     		  int codCuatri = Integer.parseInt(request.getParameter("codCuatri"));
     		  int anio = Integer.parseInt(request.getParameter("anio"));
     		  int legDocente = Integer.parseInt(request.getParameter("legDocente"));
-    		  int comision = Integer.parseInt(request.getParameter("comision"));
+    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
     		  
     		  NegocioimplCursos negocioCurso = new NegocioimplCursos();
     		  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
@@ -65,7 +65,7 @@ public class ServletAdminTablaCursos extends HttpServlet {
     		  
     		  Docente docente = negocioProfe.obtenerProfesor(legDocente);
     		  Materias materia = negocioMateria.obtenerMateria(codMate);
-    		  Cursos curso = new Cursos(comision, materia, codCuatri, anio, docente, 1);   		 
+    		  Cursos curso = new Cursos(CodCurso, materia, codCuatri, anio, docente, 1);   		 
     		  negocioCurso.spEliminarCurso(curso);
     		  
     		ArrayList<Cursos> cursos = (ArrayList<Cursos>) negocioCurso.readAll();

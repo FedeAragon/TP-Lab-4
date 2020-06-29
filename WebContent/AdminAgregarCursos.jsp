@@ -52,8 +52,7 @@
  </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
  <input type="number" name="txtAnio" class= "texts" min="2000" max="2070" required>
-  <label id ="lblComision" class="subtitulos">Comision</label>
-   <input type="number" name="txtComision" class= "texts" min="1" max="10" required>
+  
   <label id ="lblDocente" class="subtitulos">Docente</label>
    <select name="ddlDocentes" class = "Ddls" required>
    <option value="0" >Seleccione un Docente</option>

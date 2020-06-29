@@ -102,7 +102,7 @@
 		           <input type="hidden" name="LegajoAlu" value="<%= a.getLegajo()%>"> 
 		              <input type="hidden" name="Materia" value="<%= c.getMateria().getID()%>">
 		                <input type="hidden" name="Cuatri" value="<%= c.getCuatrimeste()%>">
-		                <input type="hidden" name="Comision" value="<%= c.getComision()%>">
+		                <input type="hidden" name="CodCurso" value="<%= c.getCodCurso() %>">
 		                <input type="hidden" name="Anio" value="<%= c.getAnio()%>">
 		                <input type="hidden" name="LegajoProf" value="<%= c.getDocente().getLegajo()%>">
 		           

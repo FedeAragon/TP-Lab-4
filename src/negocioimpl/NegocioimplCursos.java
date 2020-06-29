@@ -36,5 +36,7 @@ public class NegocioimplCursos implements NegocioCursos {
 		
 		return daocurso.CursosProfe(Legajo_p);
 	}
-
+ 	public int ObtenerCodCurso() {
+ 		return daocurso.ObtenerCodCurso();
+ 	}
 }

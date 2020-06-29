@@ -50,18 +50,16 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			c.setMateria(m);
 			c.setCuatrimeste(Integer.parseInt(request.getParameter("ddlCuatrimestre")));
 			c.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
-			c.setComision(Integer.parseInt(request.getParameter("txtComision")));
 			d.setLegajo(Integer.parseInt(request.getParameter("ddlDocentes")));
 			c.setDocente(d);
 			NegocioimplCursos daoCurso = new NegocioimplCursos();
 			anduvo = daoCurso.spAgregarCurso(c);
-			
 			RequestDispatcher rd = null;
 			
 			if(anduvo) {
 			
 				NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
-			
+				c.setCodCurso(daoCurso.ObtenerCodCurso());
 				List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
 				request.setAttribute("alumnos", alumnos);
 				request.setAttribute("curso",c);

@@ -36,20 +36,21 @@ public class ServletAdminModificarCurso extends HttpServlet {
 	      {
 	    	  if(request.getParameter("codMate")!= null && request.getParameter("codCuatri")!=null
 	    	     && request.getParameter("anio")!=null && request.getParameter("legDocente")!=null
-	    	     && request.getParameter("comision")!=null) 
+	    	     && request.getParameter("CodCurso")!=null) 
 	    	  {    
+	    		  
 	    		  int codMate = Integer.parseInt(request.getParameter("codMate"));
 	    		  int codCuatri = Integer.parseInt(request.getParameter("codCuatri"));
 	    		  int anio = Integer.parseInt(request.getParameter("anio"));
 	    		  int legDocente = Integer.parseInt(request.getParameter("legDocente"));
-	    		  int comision = Integer.parseInt(request.getParameter("comision"));
+	    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
 	    		  
 	    		  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
 	    		  NegocioimplMaterias negocioMateria = new NegocioimplMaterias();
 	    		  
 	    		  Docente docente = negocioProfe.obtenerProfesor(legDocente);
 	    		  Materias materia = negocioMateria.obtenerMateria(codMate);
-	    		  Cursos curso = new Cursos(comision, materia, codCuatri, anio, docente, 1);   	
+	    		  Cursos curso = new Cursos(CodCurso, materia, codCuatri, anio, docente, 1);   	
 	    		  
 	    		request.setAttribute("Curso", curso);
 	    	    RequestDispatcher rd= request.getRequestDispatcher("/AdminModificarCursos.jsp");
@@ -72,7 +73,7 @@ public class ServletAdminModificarCurso extends HttpServlet {
   		    Materias materia = negocioMateria.obtenerMateria(Integer.parseInt(request.getParameter("ddlMaterias")));
   		    curso.setMateria(materia);
   		    curso.setDocente(docente);
-  		    curso.setComision(Integer.parseInt(request.getParameter("txtComision")));
+  		    curso.setCodCurso(Integer.parseInt(request.getParameter("CodCurso")));
   		    curso.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
   		    curso.setCuatrimeste(Integer.parseInt(request.getParameter("ddlCuatrimestre")));
   		    curso.setEstado(1);

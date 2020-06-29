@@ -52,7 +52,7 @@ public class ServletAdminTablaAlumnosXCurso extends HttpServlet {
 		c.setDocente(d);
 		c.setAnio(Integer.parseInt(request.getParameter("anio")));
 		c.setCuatrimeste(Integer.parseInt(request.getParameter("codCuatri")));
-		c.setComision(Integer.parseInt(request.getParameter("comision"))); 
+		c.setCodCurso(Integer.parseInt(request.getParameter("CodCurso").trim())); 
 		
 		NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
 		ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();

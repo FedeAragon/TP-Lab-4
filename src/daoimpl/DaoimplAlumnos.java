@@ -201,7 +201,7 @@ public class DaoimplAlumnos implements DaoAlumnos{
 		return null;
 	}
 	
-	private static final String AlumnosAgregar = "SELECT * FROM alumnos where not exists(select * from alumnosxcurso where CodMateria_axc=? and LegajoProfesor_axc=? and Año_axc=? and Cuatrimestre_axc=? and LegajoAlumno_axc = Legajo_a) and Estado_a=1;";
+	private static final String AlumnosAgregar = "SELECT * FROM alumnos where not exists(select * from alumnosxcurso where CodCurso_axc=? and LegajoAlumno_axc = Legajo_a) and Estado_a=1;";
 	
 	@Override
 	public List<Alumno> AlumnosAgregar(Cursos curso) {
@@ -220,10 +220,7 @@ public class DaoimplAlumnos implements DaoAlumnos{
 			try 
 			{
 				statement = conexion.getSQLConexion().prepareStatement(AlumnosAgregar);
-				statement.setInt(1, curso.getMateria().getID());
-				statement.setInt(2, curso.getDocente().getLegajo());
-				statement.setInt(3, curso.getAnio());
-				statement.setInt(4, curso.getCuatrimeste());
+				statement.setInt(1, curso.getCodCurso());
 				
 				resultSet = statement.executeQuery();
 				while(resultSet.next())

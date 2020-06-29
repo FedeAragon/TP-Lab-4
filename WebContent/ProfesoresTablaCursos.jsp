@@ -48,7 +48,6 @@
 		        <tr>
 		            <th>Materia</th>
 		            <th>Cuatrimestre</th>
-		            <th>Comision</th>
 		            <th>Año</th>
 		            <th>Alumnos</th>    
 		       </tr>
@@ -62,7 +61,7 @@
 		            <form method="post" action="ServletProfesoresTablaCursos">
 		            <td><%= c.getMateria().getDescripcion() %><input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>"></td>
 					<td><%=c.getCuatrimeste() %><input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>"></td>
-					<td><%=c.getComision() %><input type="hidden" name="comision" value="<%=c.getComision()%>"></td>
+					<input type="hidden" name="CodCurso" value="<%=c.getCodCurso()%>">
 					<td><%=c.getAnio() %><input type="hidden" name="anio" value="<%=c.getAnio()%>"></td>
 				    <td>
 		            	<button type="submit" name ="btnVerAlumnos">

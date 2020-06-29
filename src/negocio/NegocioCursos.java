@@ -10,4 +10,5 @@ public interface NegocioCursos {
 	public boolean spModificarCurso(Cursos curso);
 	public boolean spEliminarCurso(Cursos curso);
 	public List<Cursos> CursosProfe(int Legajo_p);
+	public int ObtenerCodCurso() ;
 }
