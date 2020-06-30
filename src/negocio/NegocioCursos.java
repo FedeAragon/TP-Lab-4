@@ -12,4 +12,5 @@ public interface NegocioCursos {
 	public List<Cursos> CursosProfe(int Legajo_p);
 	public int ObtenerCodCurso() ;
 	public boolean obtenerCurso(Cursos curso);
+	public Cursos saberCurso(int CodCurso);
 }

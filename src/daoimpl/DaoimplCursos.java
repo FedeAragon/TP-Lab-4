@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoCursos;
-
+import entidad.Alumno;
 import entidad.Cursos;
 import entidad.Docente;
 import entidad.Materias;
@@ -18,6 +18,7 @@ public class DaoimplCursos implements DaoCursos{
 	private static final String cursosProfe= "Select * from cursos where LegajoProfesor_c = ?";
 	private static final String obtenerCodCurso = "SELECT MAX(CodCurso_c) from cursos";
 	private static final String readCurso ="Select * from cursos where CodMateria_c = ? AND  LegajoProfesor_c = ? AND Año_c = ? AND Cuatrimestre_c = ? AND Estado_c = true";
+	private static final String obtenerCurso ="SELECT * FROM cursos WHERE CodCurso_c = ? and Estado_c = true";
 	
 	public boolean obtenerCurso(Cursos curso) {
 		try {
@@ -237,6 +238,51 @@ public class DaoimplCursos implements DaoCursos{
 			return curso;
 			
 		}
+	
+	public Cursos saberCurso(int CodCurso) {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+			Cursos curso = new Cursos();
+			DaoimplProfesores daoimplProfes= new  DaoimplProfesores();
+			Docente profe =new Docente();
+			DaoimplMaterias daoimplMates = new DaoimplMaterias();
+			Materias mat = new Materias();
+			
+		 	PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		   try{
+				
+				statement = conexion.getSQLConexion().prepareStatement(obtenerCurso);
+				statement.setInt(1,CodCurso);
+				
+				resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{ 
+					curso.setCodCurso(resultSet.getInt(1));
+					curso.setMateria(daoimplMates.obtenerMateria(resultSet.getInt(2)));
+					curso.setDocente(daoimplProfes.obtenerProfesor(resultSet.getInt(3)));
+					curso.setAnio(resultSet.getInt(4));
+					curso.setCuatrimeste(resultSet.getInt(5));
+					curso.setEstado(resultSet.getInt(6));
+				
+					resultSet = statement.executeQuery();
+					return curso;
+				}
+
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace(); 
+			}
+		
+		  
+		return null;
+	}
 	
 
 }

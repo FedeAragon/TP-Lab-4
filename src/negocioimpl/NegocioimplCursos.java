@@ -44,4 +44,7 @@ public class NegocioimplCursos implements NegocioCursos {
  	{
  		return daocurso.obtenerCurso(curso);
  	}
+ 	public Cursos saberCurso(int CodCurso) {
+ 		return daocurso.saberCurso(CodCurso);
+ 	}
 }

@@ -49,23 +49,14 @@ public class ServletAdminTablaCursos extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       if(request.getParameter("btnEliminar")!=null)
       {
-    	  if(request.getParameter("codMate")!= null && request.getParameter("codCuatri")!=null
-    	     && request.getParameter("anio")!=null && request.getParameter("legDocente")!=null
-    	     && request.getParameter("CodCurso")!=null) 
+    	  if( request.getParameter("CodCurso")!=null) 
     	  {    
-    		  int codMate = Integer.parseInt(request.getParameter("codMate"));
-    		  int codCuatri = Integer.parseInt(request.getParameter("codCuatri"));
-    		  int anio = Integer.parseInt(request.getParameter("anio"));
-    		  int legDocente = Integer.parseInt(request.getParameter("legDocente"));
-    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
+    		 
+    		
     		  
     		  NegocioimplCursos negocioCurso = new NegocioimplCursos();
-    		  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
-    		  NegocioimplMaterias negocioMateria = new NegocioimplMaterias();
-    		  
-    		  Docente docente = negocioProfe.obtenerProfesor(legDocente);
-    		  Materias materia = negocioMateria.obtenerMateria(codMate);
-    		  Cursos curso = new Cursos(CodCurso, materia, codCuatri, anio, docente, 1);   		 
+    		Cursos curso = new Cursos();
+    		curso = negocioCurso.saberCurso(Integer.parseInt(request.getParameter("CodCurso").trim()));
     		  negocioCurso.spEliminarCurso(curso);
     		  
     		ArrayList<Cursos> cursos = (ArrayList<Cursos>) negocioCurso.readAll();

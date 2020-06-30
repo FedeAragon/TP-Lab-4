@@ -23,30 +23,6 @@
 	        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
 	        buttons: [
 	            
-	            	
-	            	<% if(request.getSession().getAttribute("usuario")!=null){
-	            		Usuario user = (Usuario)session.getAttribute("usuario");
-	            		if(user.getTipoCuenta()==1){
-	            			%>
-	            			{
-	            			text: '<input type ="submit" name = "btnAgregar" value = "Agregar" class = "botones">',
-	    	            	action: function(){
-	    	            		location.href = "ServletAdminAgregarAlumnoXCurso";
-	    	            	}
-	            			},
-	            			<%
-	            		}
-	            	} %>
-	            
-	        	
-	        	
-	        	{
-	            	
-	            	text: '<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">',
-	            	action: function(){
-	            		
-	            	}
-	            }
 	        ]
 	    } );
 	} );
@@ -72,6 +48,26 @@
 	}
        
        %>
+       <% if(request.getSession().getAttribute("usuario")!=null){
+	            		Usuario user = (Usuario)session.getAttribute("usuario");
+	            		if(user.getTipoCuenta()==1){
+	            			if(request.getAttribute("CodCurso")!=null){
+	            			int c = Integer.parseInt(request.getParameter("CodCurso").trim());
+	            			%>
+	            			
+	            			<div style="display:flex; flex-direction:row; ">
+	            			<form method="get" action="ServletAdminAgregarAlumnoXCurso" style="margin-right:8px;">
+	            			<input type ="submit" name = "btnAgregar" value = "Agregar Alumnos" class = "botones" >
+	            			<input type="hidden" name="CodCurso" value=" <%= c %> ">
+	            			</form>
+	            			<form action="">
+	            			<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">	
+	            			</form>
+	            			</div>
+	            			<%
+	            			}
+	            		}
+	            	} %>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>

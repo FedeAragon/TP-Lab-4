@@ -106,19 +106,15 @@
 		            	</td>
 		            	   
 			             </form>
-		            	<form method="post" action="ServletAdminTablaCursos">
-		            <input type="hidden" name="codMate" value="<%=c.getMateria().getID()%>">
-					<input type="hidden" name="codCuatri" value="<%=c.getCuatrimeste()%>">
-					<input type="hidden" name="anio" value="<%=c.getAnio()%>">
-					<input type="hidden" name="legDocente" value="<%=c.getDocente().getLegajo()%>">
-					<input type="hidden" name="CodCurso" value=" <%= c.getCodCurso()  %> ">
+		           
 		          
-		            	<td><button type="submit" value="Eliminar" name="btnEliminar" >
+		            	<td>
+		            	<button type="submit" value="Eliminar" name="btnEliminar" onclick="mensaje(<%= c.getCodCurso() %>)">
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button>
 			            </td>
 		          
-		             </form>
+		           
 		            
 		        </tr>
 		       <%} %>
@@ -130,7 +126,27 @@
 	<jsp:include page="Footer.html"></jsp:include>
 	
 		
-
+<script type="text/javascript">
+	function mensaje(Codigo){
+		var mensaje = confirm("Estas seguro que deseas eliminar este Curso?");
+		
+		if(mensaje){
+			$.ajax({
+	 			  url: "ServletAdminTablaCursos",
+	 			  data: {
+	 				 CodCurso: Codigo,
+	 				 
+	 				 btnEliminar: true
+	 			  },
+	 			  type:"POST",
+	 			 success: function(){
+	  			    location.reload(true);
+	  			  }
+	 			});
+		}
+	}
+	</script>
+	
 	 	
 	
 	

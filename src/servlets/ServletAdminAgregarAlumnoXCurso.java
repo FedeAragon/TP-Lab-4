@@ -16,6 +16,7 @@ import entidad.Cursos;
 import entidad.Materias;
 import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplAlumnos;
+import negocioimpl.NegocioimplCursos;
 import negocioimpl.NegocioimplProfesores;
 
 /**
@@ -33,8 +34,21 @@ public class ServletAdminAgregarAlumnoXCurso extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		RequestDispatcher rd = null;
+		if (request.getParameter("btnAgregar") != null) {
+			Cursos c = new Cursos();
+			NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
+			NegocioimplCursos negC = new NegocioimplCursos();
+		   
+			c = negC.saberCurso(Integer.parseInt(request.getParameter("CodCurso").trim()));
+			List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
+			request.setAttribute("alumnos", alumnos);
+			request.setAttribute("curso",c);
+			rd = request.getRequestDispatcher("/AdminAgregarAlumnoXCurso.jsp");
+			rd.forward(request, response);
+		}
 	}
+	
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

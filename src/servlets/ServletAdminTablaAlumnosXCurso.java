@@ -46,18 +46,19 @@ public class ServletAdminTablaAlumnosXCurso extends HttpServlet {
 	    Docente d = new Docente(); 
 	    NegocioimplProfesores negprofe= new NegocioimplProfesores();
 	    d = negprofe.obtenerProfesor(Integer.parseInt(request.getParameter("legDocente")));
-		
+		int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
 		m.setID(Integer.parseInt(request.getParameter("codMate")));
 		c.setMateria(m);
 		c.setDocente(d);
 		c.setAnio(Integer.parseInt(request.getParameter("anio")));
 		c.setCuatrimeste(Integer.parseInt(request.getParameter("codCuatri")));
-		c.setCodCurso(Integer.parseInt(request.getParameter("CodCurso").trim())); 
+		c.setCodCurso(CodCurso); 
 		
 		NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
 		ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
 		alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
 		
+		request.setAttribute("CodCurso", CodCurso);
 		request.setAttribute("cursos",alumsXCursos); 
 		RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
         rd.forward(request, response);
