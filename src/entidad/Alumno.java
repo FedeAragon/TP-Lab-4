@@ -80,14 +80,10 @@ public class Alumno {
 		return Localidad;
 	}
 
-	
-
 	public Provincias getProvincia() {
 		return Provincia;
 	}
-
 	
-
 	public void setLocalidad(Localidades localidad) {
 		Localidad = localidad;
 	}
@@ -111,7 +107,7 @@ public class Alumno {
 	public void setTelefono(int telefono) {
 		Telefono = telefono;
 	}
-	
+		
 	public int getEstado() {
 		return Estado;
 	}
@@ -119,7 +115,7 @@ public class Alumno {
 	public void setEstado(int estado) {
 		Estado = estado;
 	}
-
+	
 	//toString();
 	@Override
 	public String toString() {

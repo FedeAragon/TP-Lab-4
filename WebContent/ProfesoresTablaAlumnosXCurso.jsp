@@ -66,12 +66,14 @@
 	            			<%
 	            			}
 	            		}
+	            		else {
 	            		%><form action="">
 	            			<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">	
 	            			</form>
 	            			
 	            			<%
-	            	} %>
+	            	}
+	            		} %>
 	            		</div>
 			<table id="table_id" class="display" >
 		    <thead >
@@ -84,7 +86,7 @@
 		            <th>Parcial 2</th>
 		            <th>Recuperatorio 1</th>
 		            <th>Recuperatorio 2</th>
-		            <th>Estado</th>
+		            <th>Situacion</th>
 		         
 		        </tr>
 		    </thead>
@@ -99,15 +101,49 @@
 		            <td><%= axc.getAlumno().getNombreyAp() %></td>
 		            <td><%= axc.getAlumno().getDNI() %></td>
 		            <td><%= axc.getAlumno().getEmail() %></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<%=axc.getPrimerParcial()  %>></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts" style="width: 67px; " value =<%=axc.getSegundoParcial()  %> ></td>
-		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts" style="width: 67px; "value =<%=axc.getRecuperatorio1()  %>></td>
-		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts" style="width: 67px; "value =<%=axc.getRecuperatorio2()  %>></td>
+		            
+		            <%if(request.getSession().getAttribute("usuario")!=null){
+	            		Usuario user = (Usuario)session.getAttribute("usuario");
+	            		if(user.getTipoCuenta()!=1)
+		            { %>
+		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<% if(axc.getPrimerParcial() > 0) axc.getPrimerParcial();  %>></td>
+		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts" style="width: 67px;" value =<%if(axc.getSegundoParcial() > 0) axc.getSegundoParcial();  %> ></td>
+		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts" style="width: 67px;"     value =<%if(axc.getRecuperatorio1() > 0) axc.getRecuperatorio1(); %>></td>
+		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts" style="width: 67px;"     value =<%if(axc.getRecuperatorio2() > 0) axc.getRecuperatorio2(); %>></td>
 		            <td><select name="estado" class="Ddls" style="width: 110px; ">
-		                    <option value="0">En Curso</option>
-		            		<option value="1">Regular</option>
-		            		<option value="2">Libre</option>
+		                    <option value="Cursando"
+		                    <%if(axc.getSituacion() == "Cursando")
+		                    { 
+		                    	 out.print("selected");
+		                    }
+		               	     %>
+		                    >Cursando</option>
+		            		<option value="Regular"
+		            		 <%if(axc.getSituacion() == "Regular")
+		                    { 
+		                    	 out.print("selected");
+		                    }
+		               	     %>
+		            		>Regular</option>
+		            		<option value="Libre"
+		            		 <%if(axc.getSituacion() == "Libre")
+		                    { 
+		                    	 out.print("selected");
+		                    }
+		               	     %>
+		            		>Libre</option>
 		            </select></td>
+		            <%} 
+	            		 else if(user.getTipoCuenta()==1)
+	            		 {%>
+	                <td><input type="number" min="1" max="10" name="txtParcial1" class="texts" style="width: 67px;" readonly="readonly" value =<% if(axc.getPrimerParcial() > 0) axc.getPrimerParcial();  %>></td>
+		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts" style="width: 67px; " readonly="readonly"value =<%if(axc.getSegundoParcial() > 0) axc.getSegundoParcial();  %> ></td>
+		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts" style="width: 67px; " readonly="readonly"    value =<%if(axc.getRecuperatorio1() > 0) axc.getRecuperatorio1(); %>></td>
+		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts" style="width: 67px; " readonly="readonly"    value =<%if(axc.getRecuperatorio2() > 0) axc.getRecuperatorio2(); %>></td>
+		            <td><input type="text" name="txtSituacion" class="texts" readonly="readonly" value =<%= axc.getSituacion() %>></td>        		 
+	            		<% }
+		            }
+		           %>
 		            </form>
 		        </tr>	  
 		        <%} %>      

@@ -9,9 +9,10 @@ public class AlumnosXCursos {
 	int SegundoParcial;
 	int Recuperatorio1;
 	int Recuperatorio2;
+	String Situacion;
 	
 	public AlumnosXCursos(Cursos curso, Alumno alumno, int primerParcial, int segundoParcial, int recuperatorio1,
-			int recuperatorio2) {
+			int recuperatorio2 , String situacion) {
 		super();
 		this.curso = curso;
 		this.alumno = alumno;
@@ -19,6 +20,7 @@ public class AlumnosXCursos {
 		SegundoParcial = segundoParcial;
 		Recuperatorio1 = recuperatorio1;
 		Recuperatorio2 = recuperatorio2;
+		Situacion = situacion;
 	}
 	
 	public AlumnosXCursos() {
@@ -82,6 +84,14 @@ public class AlumnosXCursos {
 
 	public void setRecuperatorio2(int recuperatorio2) {
 		Recuperatorio2 = recuperatorio2;
+	}
+	
+	public String getSituacion() {
+		return Situacion;
+	}
+
+	public void setSituacion(String situacion) {
+		Situacion = situacion;
 	}
 
 	@Override

@@ -7,16 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ServletProfesoresTablaAlumnosXCurso
- */
+
 @WebServlet("/ServletProfesoresTablaAlumnosXCurso")
 public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
     public ServletProfesoresTablaAlumnosXCurso() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	
