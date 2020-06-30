@@ -41,6 +41,7 @@
   <hr>
   <br>
   
+	            			<div style="display:flex; flex-direction:row; ">
    <%  
   List<AlumnosXCursos> listacursos=null;
 	if(request.getAttribute("cursos")!=null){
@@ -55,19 +56,23 @@
 	            			int c = Integer.parseInt(request.getParameter("CodCurso").trim());
 	            			%>
 	            			
-	            			<div style="display:flex; flex-direction:row; ">
+	            			
 	            			<form method="get" action="ServletAdminAgregarAlumnoXCurso" style="margin-right:8px;">
 	            			<input type ="submit" name = "btnAgregar" value = "Agregar Alumnos" class = "botones" >
 	            			<input type="hidden" name="CodCurso" value=" <%= c %> ">
 	            			</form>
-	            			<form action="">
-	            			<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">	
-	            			</form>
-	            			</div>
+	            		
+	            			
 	            			<%
 	            			}
 	            		}
+	            		%><form action="">
+	            			<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">	
+	            			</form>
+	            			
+	            			<%
 	            	} %>
+	            		</div>
 			<table id="table_id" class="display" >
 		    <thead >
 		        <tr>
@@ -89,6 +94,7 @@
 		    		   
 		    	   %>
 		        <tr>
+		        <form method="post" action="">
 		            <td><%= axc.getAlumno().getLegajo() %></td>
 		            <td><%= axc.getAlumno().getNombreyAp() %></td>
 		            <td><%= axc.getAlumno().getDNI() %></td>
@@ -102,6 +108,7 @@
 		            		<option value="1">Regular</option>
 		            		<option value="2">Libre</option>
 		            </select></td>
+		            </form>
 		        </tr>	  
 		        <%} %>      
 		    </tbody>
