@@ -11,4 +11,5 @@ public interface NegocioProfesores {
 	public boolean spEliminarProfesor(Docente docente);
 	public Docente obtenerProfesor(int leg_profesor);
 	public int obtenerLegProfesor();
+	public boolean sPModificarUsuario(String Email,String contraseñanueva);
 }

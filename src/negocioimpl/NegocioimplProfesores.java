@@ -43,6 +43,9 @@ public class NegocioimplProfesores {
 		return daoprofesor.obtenerLegProfesor();
 	}
 	
+	public boolean sPModificarUsuario(String Email,String contraseñanueva) {
+		return daoprofesor.sPModificarUsuario(Email, contraseñanueva);
+	}
 	
 }
  

@@ -230,6 +230,25 @@ public class DaoimplProfesores implements DaoProfesores {
 		  
 		return null;
 	}
+	
+	public boolean sPModificarUsuario(String Email,String contraseñanueva)
+	{ 
+		Conexion conexion = Conexion.getConexion();
+		 boolean funco = false;
+		
+		try {    	    
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" CALL spModificarUsusario(?,?) ");
+	            proc.setString("Uusuario", Email); 
+	            proc.setString("Ucontraseña", contraseñanueva);
+	            proc.execute(); 
+	            funco = true;
+	        } 
+	       catch (Exception e) {                  
+	            System.out.println(e);
+	       }
+		return funco;
+	}
+	
 
 
 }

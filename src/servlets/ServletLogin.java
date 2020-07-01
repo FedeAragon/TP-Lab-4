@@ -57,14 +57,14 @@ public class ServletLogin extends HttpServlet {
 					Docente prof = new Docente();
 					
 					if(negociousuario.TipoCuenta(nombreU)) {
-						Usuario usuario = new Usuario(1, nombreU,Integer.parseInt(password), 1);
+						Usuario usuario = new Usuario(1, nombreU,password, 1);
 						request.getSession().setAttribute("usuario", usuario);
 						prof = negUser.getDocente(usuario);
 						request.getSession().setAttribute("profesor", prof);
 						RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
 		                rd.forward(request, response);
 					}else {
-						Usuario usuario = new Usuario(0, nombreU,Integer.parseInt(password), 1);
+						Usuario usuario = new Usuario(0, nombreU,password, 1);
 						request.getSession().setAttribute("usuario", usuario);
 						prof = negUser.getDocente(usuario);
 						request.getSession().setAttribute("profesor", prof);

@@ -68,7 +68,7 @@
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
   <input type="text" name="txtNombre" class="texts" value="<%= doc.getNombreyAp() %>" required >
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <<input type="date" name="DateNacimiento" value="<%= doc.getFechaNacimiento() %>" required>
+  <input type="date" name="DateNacimiento" value="<%= doc.getFechaNacimiento() %>" required>
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
   <script>
  	function CargarLocalidades(){
@@ -114,8 +114,8 @@
 							
 						%>
  </select> 
-  <label id ="lblEmail" class="subtitulos">Email</label>
-  <input type="text" name="txtEmail" class= "texts" value="<%= doc.getEmail() %>"required >
+  <label id ="lblContraseña" class="subtitulos">Contraseña</label>
+  <input type="text" name="txtContraseña" class= "texts" value="<%= doc.getDNI()%><%= doc.getLegajo() %>"required >
   </div>
   
 

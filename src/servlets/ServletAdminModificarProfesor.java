@@ -67,22 +67,21 @@ public class ServletAdminModificarProfesor extends HttpServlet {
 			e.printStackTrace();
 		}
     	java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-       d.setLegajo(Integer.parseInt(request.getParameter("txtLegajo")));
-       d.setEstado(1);
-       d.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
-       d.setDireccion(request.getParameter("txtDireccion").toString());
-       d.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
-       d.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
-       d.setFechaNacimiento(sqlDate);
-       d.setNombreyAp(request.getParameter("txtNombre").toString());
-       d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
-
-       d.setEmail(request.getParameter("txtEmail").toString());
-       negocioprofe.spModificarProfesor(d);
-
-      	d.setEmail(request.getParameter("txtEmail").toString());
+        d.setLegajo(Integer.parseInt(request.getParameter("txtLegajo")));
+        d.setEstado(1);
+        d.setDNI(Integer.parseInt(request.getParameter("txtDNI")));
+        d.setDireccion(request.getParameter("txtDireccion").toString());
+        d.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
+        d.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
+        d.setFechaNacimiento(sqlDate);
+        d.setNombreyAp(request.getParameter("txtNombre").toString());
+        d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
+        d.setEmail(negocioprofe.obtenerProfesor(Integer.parseInt(request.getParameter("txtLegajo"))).getEmail());
+       
       	boolean funco = false;
-      	funco = negocioprofe.spModificarProfesor(d);
+      	if(negocioprofe.spModificarProfesor(d) && negocioprofe.sPModificarUsuario(d.getEmail(),request.getParameter("txtContraseña"))) {
+      		funco = true;
+      	}
       	request.setAttribute("funco",funco);
 
 	          }

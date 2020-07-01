@@ -75,7 +75,7 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		boolean funco = false;
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarAlumnoxCurso(?,?,?,?,?,?,?) ");
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarAlumnoxCurso(?,?) ");
 	            proc.setInt(1, alumXCurso.getCurso().getCodCurso());
 	            proc.setInt(2, alumXCurso.getAlumno().getLegajo());
 	            proc.execute();  

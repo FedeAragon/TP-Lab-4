@@ -4,12 +4,12 @@ public class Usuario {
 
 	//Atributos
 	String Usuario;
-	int Password;
+	String Password;
 	int TipoCuenta;
 	int Estado;
 	
 	//Constructores
-	public Usuario(int tipoCuenta, String usuario, int password , int estado) {
+	public Usuario(int tipoCuenta, String usuario, String password , int estado) {
 		TipoCuenta = tipoCuenta;
 		Usuario = usuario;
 		Password = password;
@@ -37,11 +37,11 @@ public class Usuario {
 		Usuario = usuario;
 	}
 	
-	public int getPassword() {
+	public String getPassword() {
 		return Password;
 	}
 
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		Password = password;
 	}
 

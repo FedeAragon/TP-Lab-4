@@ -62,7 +62,7 @@ public List<Usuario> readAll() {
 		}
 		  
 		String Nombreu = resultSet.getString(1);
-		int Contra = resultSet.getInt(2);
+		String Contra = resultSet.getString(2);
 		int tipoCuenta = resultSet.getInt(3); 
 		int Estado = resultSet.getInt(4);
 		return new Usuario(tipoCuenta , Nombreu , Contra , Estado);
