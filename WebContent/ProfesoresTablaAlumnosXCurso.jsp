@@ -105,21 +105,22 @@
 		            <td><input type="number" min="0" max="10" name="txtRec2" class="texts" style="width: 67px;"    value =<%=axc.getRecuperatorio2()%> ></td>
 		            <td><select name="estado" class="Ddls" style="width: 110px; ">
 		                    <option value="Cursando"
-		                    <%if(axc.getSituacion().trim() == "Cursando")
+		                    <% System.out.println(axc.getSituacion());
+		                    if(axc.getSituacion().trim().equals("Cursando"))
 		                    { 
 		                    	 out.print("selected");
 		                    }
 		               	     %>
 		                    >Cursando</option>
 		            		<option value="Regular"
-		            		 <%if(axc.getSituacion().trim() == "Regular")
+		            		 <%if(axc.getSituacion().trim().equals("Regular"))
 		                    { 
 		                    	 out.print("selected");
 		                    }
 		               	     %>
 		            		>Regular</option>
 		            		<option value="Libre"
-		            		 <%if(axc.getSituacion().trim() == "Libre")
+		            		 <%if(axc.getSituacion().trim().equals("Libre"))
 		                    { 
 		                    	 out.print("selected");
 		                    }
@@ -133,8 +134,9 @@
 		        } 
 		        %>   
 		         <tr>
-		         <td> <input  type ="submit" name = "btnModificar" value = "Confirmar" class = "botones"></td>            
+		         <td style="background-color: black"> <input  type ="submit" name = "btnModificar" value = "Confirmar" class = "botones"></td>
 		          </tr>		
+		          
 		          <input type="hidden" name="vueltas" value="<%= vueltas %>">	           
 		          <%
 		          if(request.getAttribute("CodCurso")!=null){
