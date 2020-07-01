@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.util.List"%> 
-        <%@ page import ="entidad.Usuario" %>
-    <%@ page import="entidad.AlumnosXCursos"%> 
+<%@ page import="java.util.List"%> 
+<%@ page import ="entidad.Usuario" %>
+<%@ page import="entidad.AlumnosXCursos"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,9 +66,7 @@
 	            			<%
 	            			}
 	            		}
-	            		%><form method="post" action="ServletProfesoresTablaAlumnosXCurso">
-	            			<input type ="submit" name = "btnModificar" value = "Confirmar" class = "botones">	
-	            			</form>
+	            		%>
 	            			
 	            	<%
 	            		} %>
@@ -88,48 +86,63 @@
 		         
 		        </tr>
 		    </thead>
-		    <tbody style="color:black">		       
-		       <% if(listacursos!=null)
+		    <tbody style="color:black">		
+		     <form method="post" action="ServletProfesoresTablaAlumnosXCurso">       
+		       <%int vueltas = 0;
+		       if(listacursos!=null)
 		    	   for(AlumnosXCursos axc : listacursos){
 		    		   
 		    	   %>
-		        <tr>
-		        <form method="post" action="">
-		            <td><%= axc.getAlumno().getLegajo() %></td>
+		        <tr>		       
+		            <td><%= axc.getAlumno().getLegajo() %> <input type="hidden" name="legAlumno" value= <%= axc.getAlumno().getLegajo()%> > </td>
 		            <td><%= axc.getAlumno().getNombreyAp() %></td>
 		            <td><%= axc.getAlumno().getDNI() %></td>
 		            <td><%= axc.getAlumno().getEmail() %></td>
 
-		            <td><input type="number" min="1" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<% if(axc.getPrimerParcial() > 0) axc.getPrimerParcial();  %>></td>
-		            <td><input type="number" min="1" max="10" name="txtParcial2" class="texts" style="width: 67px;" value =<%if(axc.getSegundoParcial() > 0) axc.getSegundoParcial();  %> ></td>
-		            <td><input type="number" min="1" max="10" name="txtRec1" class="texts" style="width: 67px;"     value =<%if(axc.getRecuperatorio1() > 0) axc.getRecuperatorio1(); %>></td>
-		            <td><input type="number" min="1" max="10" name="txtRec2" class="texts" style="width: 67px;"     value =<%if(axc.getRecuperatorio2() > 0) axc.getRecuperatorio2(); %>></td>
+		            <td><input type="number" min="0" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<%= axc.getPrimerParcial() %>></td>
+		            <td><input type="number" min="0" max="10" name="txtParcial2" class="texts" style="width: 67px;" value =<%=axc.getSegundoParcial()%> ></td>
+		            <td><input type="number" min="0" max="10" name="txtRec1" class="texts" style="width: 67px;"     value =<%=axc.getRecuperatorio1()%> ></td>
+		            <td><input type="number" min="0" max="10" name="txtRec2" class="texts" style="width: 67px;"    value =<%=axc.getRecuperatorio2()%> ></td>
 		            <td><select name="estado" class="Ddls" style="width: 110px; ">
 		                    <option value="Cursando"
-		                    <%if(axc.getSituacion() == "Cursando")
+		                    <%if(axc.getSituacion().trim() == "Cursando")
 		                    { 
 		                    	 out.print("selected");
 		                    }
 		               	     %>
 		                    >Cursando</option>
 		            		<option value="Regular"
-		            		 <%if(axc.getSituacion() == "Regular")
+		            		 <%if(axc.getSituacion().trim() == "Regular")
 		                    { 
 		                    	 out.print("selected");
 		                    }
 		               	     %>
 		            		>Regular</option>
 		            		<option value="Libre"
-		            		 <%if(axc.getSituacion() == "Libre")
+		            		 <%if(axc.getSituacion().trim() == "Libre")
 		                    { 
 		                    	 out.print("selected");
 		                    }
 		               	     %>
 		            		>Libre</option>
-		            </select></td>
-		            </form>
+		            </select>
+		            </td>	                        
 		        </tr>	  
-		        <%} %>      
+		        <%
+		        vueltas ++ ;
+		        } 
+		        %>   
+		         <tr>
+		         <td> <input  type ="submit" name = "btnModificar" value = "Confirmar" class = "botones"></td>            
+		          </tr>		
+		          <input type="hidden" name="vueltas" value="<%= vueltas %>">	           
+		          <%
+		          if(request.getAttribute("CodCurso")!=null){
+		          int c = Integer.parseInt(request.getParameter("CodCurso").trim());
+          			%>	         
+		          <input type="hidden" name="CodCurso" value=" <%= c %> ">
+		          <%} %>		          
+		        </form>   
 		    </tbody>
 		</table>
 		</div>

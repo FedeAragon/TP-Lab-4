@@ -20,5 +20,9 @@ public class NegocioimplAlumnoXCurso implements NegocioAlumnoXCurso {
 	public boolean spAgregarAlumnoXCurso(AlumnosXCursos alumXCurso) {
 		return daoAlumXCurso.spAgregarAlumnoXCurso(alumXCurso);
 	}
+	@Override
+	public boolean spAgregarNotas(AlumnosXCursos alumXCurso) {
+        return daoAlumXCurso.spAgregarNotas(alumXCurso);
+	}
 
 }

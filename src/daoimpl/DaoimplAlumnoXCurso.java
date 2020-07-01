@@ -94,7 +94,7 @@ public boolean spAgregarNotas(AlumnosXCursos alumXCurso) {
 		boolean funco = false;
 		
 		try {    	    
-	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarNotas(?,?) ");
+	            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spAgregarNotas(?,?,?,?,?,?,?) ");
 	            proc.setInt(1, alumXCurso.getCurso().getCodCurso());
 	            proc.setInt(2, alumXCurso.getAlumno().getLegajo());
 	            proc.setInt(3, alumXCurso.getPrimerParcial());
