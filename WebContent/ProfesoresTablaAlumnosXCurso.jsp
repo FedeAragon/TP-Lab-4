@@ -34,7 +34,7 @@
 	 <jsp:include page="Menu.jsp"></jsp:include>
 	
 	<div class="contenedor">
-		<div class="fondo">
+		<div class="fondo" style="display:block; height:870px;  overflow: auto;">
  <div class="titulo_div">
   <label id="titulo" class ="titulos" >Tabla Alumnos del Curso</label>
   </div>
@@ -69,7 +69,7 @@
 	            		%>
 	            			
 	            	<%
-	            		} %>
+	            		} %><input type ="button" name = "Confirmar" id="Confirmar"value = "Confirmar" class = "botones">
 	            		</div>
 			<table id="table_id" class="display" >
 		    <thead >
@@ -105,7 +105,7 @@
 		            <td><input type="number" min="0" max="10" name="txtRec2" class="texts" style="width: 67px;"    value =<%=axc.getRecuperatorio2()%> ></td>
 		            <td><select name="estado" class="Ddls" style="width: 110px; ">
 		                    <option value="Cursando"
-		                    <% System.out.println(axc.getSituacion());
+		                    <% 
 		                    if(axc.getSituacion().trim().equals("Cursando"))
 		                    { 
 		                    	 out.print("selected");
@@ -134,7 +134,7 @@
 		        } 
 		        %>   
 		         <tr>
-		         <td style="background-color: black"> <input  type ="submit" name = "btnModificar" value = "Confirmar" class = "botones"></td>
+		         <td style="background-color: black"> <input  type ="submit" style="display:none;"></td>
 		          </tr>		
 		          
 		          <input type="hidden" name="vueltas" value="<%= vueltas %>">	           
@@ -152,9 +152,16 @@
 	
 	<jsp:include page="Footer.html"></jsp:include>
 	
-	 
+	 <script type="text/javascript">
+     $(document).ready(function() {
+    $("#Confirmar").click(function(event) {
+      $("#AlumnosXCurso").submit();
+    });
+       });
+</script>
 	 	
 	
 	
 </body>
+
 </html>

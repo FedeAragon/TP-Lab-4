@@ -24,5 +24,7 @@ public class NegocioimplAlumnoXCurso implements NegocioAlumnoXCurso {
 	public boolean spAgregarNotas(AlumnosXCursos alumXCurso) {
         return daoAlumXCurso.spAgregarNotas(alumXCurso);
 	}
-
+	public List<AlumnosXCursos> readAll(){
+		return daoAlumXCurso.readAll();
+	}
 }

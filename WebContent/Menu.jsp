@@ -41,7 +41,7 @@
 				  	<a href="ServletAdminTablaCursos">Cursos</a>
 				  </li>
 				  <li>
-				  	<a href="AdminReportes.jsp">Reportes</a>
+				  	<a href="ServletAdminReportes">Reportes</a>
 				  </li>
 				 <% }else { %> 
 				 	<li>

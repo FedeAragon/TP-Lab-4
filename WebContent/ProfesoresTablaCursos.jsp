@@ -48,7 +48,7 @@
 		        <tr>
 		            <th>Materia</th>
 		            <th>Cuatrimestre</th>
-		            <th>Año</th>
+		            <th>Aï¿½o</th>
 		            <th>Alumnos</th>    
 		       </tr>
 		 </thead>
@@ -82,7 +82,11 @@
 	<jsp:include page="Footer.html"></jsp:include>
 	
 	 
-	 	
+	 	<script>
+
+
+
+		 </script>
 	
 	
 </body>

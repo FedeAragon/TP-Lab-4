@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="entidad.Cursos" %> 
+    <%@ page import="entidad.AlumnosXCursos" %> 
+    <%@ page import="entidad.Materias" %> 
+    <%@ page import="java.util.List"%>  
+    <%@page import="negocioimpl.NegocioimplMaterias"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -7,29 +12,89 @@
 		<title>Reportes</title>
 		<link rel="stylesheet" type="text/css" href="css/Estilos.css">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	    <script type="text/javascript">
+	</head>
+	<body>
+	
+		<jsp:include page="Menu.jsp"></jsp:include>
+		
+		<div class="contenedor">
+		
+		<div class="fondo" style="width:80%; height: 700px;">
+			<div style="display:flex; flex-direction:column;">
+				<div id="graficos" style="display:flex; flex-direction:row;">
+					<div style="margin: 10px 10px 10px 10px;width:100%;">
+						<select name="ddlMaterias" class = "Ddls" onchange="ServletAdminReportes" required >
+							<option value="0" >Seleccione una Materia</option>
+								<%
+								NegocioimplMaterias negMateria = new NegocioimplMaterias();
+								List<Materias> mat =  negMateria.readAll();
+								for(Materias m : mat){
+									%> <option value="<%=m.getID() %>"
+									> <%=m.getDescripcion()  %></option> <%
+								}
+								%>
+						</select> 
+						<input type="number">
+						<input type="number">
+						<div id="piechart_3d" style="height: 300px;"></div>
+					</div>
+					<div style="margin: 10px 10px 10px 10px; width:100%;">
+						<input type="date">
+						<input type="date">
+						<select></select> 
+						<div id="curve_chart" style="height: 300px;"></div>
+					</div>
+				</div>
+				<div style="display:flex; flex-direction:row;">
+					<div style="margin: 10px 10px 10px 10px; width:100%;">
+						<input type="date">
+						<input type="date">
+						<select></select> 
+						<div id="chart_div" style="height: 300px;"></div>
+					</div>
+					<div style="margin: 10px 10px 10px 10px; width:100%;">
+						<input type="date">
+						<input type="date">
+						<select></select> 
+						<div id="barchart_material" style="height: 300px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		</div>
+		 
+		<jsp:include page="Footer.html"></jsp:include>
+		
+	</body>
+	 <script type="text/javascript">
+	    <%  List<AlumnosXCursos> alumosxcursos = null;
+	        if(request.getAttribute("alumxcursos")!=null){
+	    	alumosxcursos = (List<AlumnosXCursos>)request.getAttribute("alumxcursos");
+	    } %>
 	      google.charts.load("current", {packages:["corechart"]});
 	      google.charts.setOnLoadCallback(drawChartTorta);
 	      google.charts.setOnLoadCallback(drawChartCurva);
 	      google.charts.setOnLoadCallback(drawChartLinea);
 	      google.charts.setOnLoadCallback(drawChartBarras);
+	      
 	      function drawChartTorta() {
-	        var data = google.visualization.arrayToDataTable([
-	          ['Task', 'Hours per Day'],
-	          ['Laboratorio IV',     11],
-	          ['Programacion III',      2],
-	          ['Metodologia de Sistemas I',  2],
-	          ['Legislacion',    7]
-	        ]);
-	
+	        var data = new google.visualization.DataTable();
+			data.addColumn('string','Estado');
+			data.addColumn('number','Cantidad');
+			
+			data.addRow(['Aprobados',4]);
+			data.addRow(['Desaprobados',5]);
+			
 	        var options = {
-	          title: 'Aprobados por Materia',
+	          title: 'Ingles',
 	          is3D: true,
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
 	        chart.draw(data, options);
 	      }
+	      
       function drawChartCurva() {
         var data = google.visualization.arrayToDataTable([
           ['Año', 'Regulares', 'Libres'],
@@ -38,7 +103,7 @@
           ['2006',  660,       1120],
           ['2007',  1030,      540]
         ]);
-
+		
         var options = {
           title: 'Condicion de Alumnos',
           curveType: 'function',
@@ -95,49 +160,4 @@
           chart.draw(data, options);
         }
     </script>
-	</head>
-	<body>
-	
-		<jsp:include page="Menu.jsp"></jsp:include>
-		
-		<div class="contenedor">
-		
-		<div class="fondo" style="width:80%; height: 700px;">
-			<div style="display:flex; flex-direction:column;">
-				<div id="graficos" style="display:flex; flex-direction:row;">
-					<div style="margin: 10px 10px 10px 10px;width:100%;">
-						<input type="date">
-						<input type="date">
-						<select></select> 
-						<div id="piechart_3d" style="height: 300px;"></div>
-					</div>
-					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<input type="date">
-						<input type="date">
-						<select></select> 
-						<div id="curve_chart" style="height: 300px;"></div>
-					</div>
-				</div>
-				<div style="display:flex; flex-direction:row;">
-					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<input type="date">
-						<input type="date">
-						<select></select> 
-						<div id="chart_div" style="height: 300px;"></div>
-					</div>
-					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<input type="date">
-						<input type="date">
-						<select></select> 
-						<div id="barchart_material" style="height: 300px;"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		</div>
-		 
-		<jsp:include page="Footer.html"></jsp:include>
-		
-	</body>
 </html>

@@ -61,7 +61,7 @@ public class ServletLogin extends HttpServlet {
 						request.getSession().setAttribute("usuario", usuario);
 						prof = negUser.getDocente(usuario);
 						request.getSession().setAttribute("profesor", prof);
-						RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
+						RequestDispatcher rd = request.getRequestDispatcher("/ServletAdminReportes");   
 		                rd.forward(request, response);
 					}else {
 						Usuario usuario = new Usuario(0, nombreU,password, 1);
