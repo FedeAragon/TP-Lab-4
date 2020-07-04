@@ -87,7 +87,7 @@
 		        </tr>
 		    </thead>
 		    <tbody style="color:black">		
-		     <form method="post" action="ServletProfesoresTablaAlumnosXCurso">       
+		     <form id="AlumnosXCurso" method="post" action="ServletProfesoresTablaAlumnosXCurso">       
 		       <%int vueltas = 0;
 		       if(listacursos!=null)
 		    	   for(AlumnosXCursos axc : listacursos){

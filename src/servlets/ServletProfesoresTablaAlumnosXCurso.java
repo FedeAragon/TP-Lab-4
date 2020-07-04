@@ -31,9 +31,7 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(request.getParameter("btnModificar") != null)
-		{			
+				
 		int vueltas = Integer.parseInt(request.getParameter("vueltas"));	
 		String[] notaPrimerParcial = request.getParameterValues("txtParcial1");
 		String[] notaSegundoParcial = request.getParameterValues("txtParcial2");
@@ -120,7 +118,7 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 		request.setAttribute("CodCurso",codCurso); 
 		RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
         rd.forward(request, response);  					
-		}
+		
 	}
 
 }

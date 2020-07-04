@@ -23,13 +23,20 @@
 			<div style="display:flex; flex-direction:column;">
 				<div id="graficos" style="display:flex; flex-direction:row;">
 					<div style="margin: 10px 10px 10px 10px;width:100%;">
-						<select name="ddlMaterias" class = "Ddls" onchange="ServletAdminReportes" required >
-							<option value="0" >Seleccione una Materia</option>
+						<select id="ddlMaterias" class = "Ddls" onchange="drawChartTorta()" required >
+							
 								<%
 								NegocioimplMaterias negMateria = new NegocioimplMaterias();
 								List<Materias> mat =  negMateria.readAll();
+								int i = 0;
 								for(Materias m : mat){
-									%> <option value="<%=m.getID() %>"
+									%> <option value="<%=m.getID() %>" 
+									<% 
+									if(i==0){
+										out.print("selected");
+									}
+									i++;
+									%>
 									> <%=m.getDescripcion()  %></option> <%
 								}
 								%>
@@ -67,7 +74,27 @@
 		<jsp:include page="Footer.html"></jsp:include>
 		
 	</body>
-	 <script type="text/javascript">
+	<script>
+		function AlumnosXMateria(){
+		
+			var idMateria = $("#ddlMaterias").val();
+	 		
+	 		$.ajax({
+	 			  url: "ServletAdminReportes",
+	 			  data: {
+	 			    materia: idMateria
+	 			  },
+	 			  type:"POST",
+	 			  
+	 			  success: function( result ) {
+	 			    $( "#ddlLocalidades" ).html(result);
+	 			  }
+	 			});
+			
+		}
+	</script>
+	
+	<script type="text/javascript">
 	    <%  List<AlumnosXCursos> alumosxcursos = null;
 	        if(request.getAttribute("alumxcursos")!=null){
 	    	alumosxcursos = (List<AlumnosXCursos>)request.getAttribute("alumxcursos");
@@ -79,12 +106,29 @@
 	      google.charts.setOnLoadCallback(drawChartBarras);
 	      
 	      function drawChartTorta() {
-	        var data = new google.visualization.DataTable();
+	        
+	    	var data = new google.visualization.DataTable();
 			data.addColumn('string','Estado');
 			data.addColumn('number','Cantidad');
 			
-			data.addRow(['Aprobados',4]);
-			data.addRow(['Desaprobados',5]);
+			<% 
+			int aprobados = 0;
+			int desaprobados = 0;
+			if(request.getParameter("ddlMaterias")!=null){
+				for(AlumnosXCursos alumxcur:alumosxcursos){
+					if(alumxcur.getCurso().getMateria().getID() == 1){
+						if(alumxcur.getSituacion().equals("Regular")){
+							aprobados++;
+						}else{
+							desaprobados++;
+						}
+					}
+				}
+			}
+			%>
+			
+			data.addRow(['Aprobados',<%=aprobados %>]);
+			data.addRow(['Desaprobados',<%=desaprobados %>]);
 			
 	        var options = {
 	          title: 'Ingles',
