@@ -5,6 +5,8 @@
     <%@ page import="entidad.Materias" %> 
     <%@ page import="java.util.List"%>  
     <%@page import="negocioimpl.NegocioimplMaterias"%>
+    
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -12,6 +14,38 @@
 		<title>Reportes</title>
 		<link rel="stylesheet" type="text/css" href="css/Estilos.css">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		function AlumnosXMateria(){
+			
+			var idMateria = $('#ddlMaterias').val();
+			
+	 		$.ajax({
+	 			  url: "ServletAdminReportes",
+	 			  data: {
+	 			    materia: idMateria
+	 			  },
+	 			  type:"GET",
+	 			 success: drawChartTorta()
+	 			});
+	  }
+		</script>
+		<%
+   		int aprobados =10;
+		int desaprobados=20;
+		if(request.getAttribute("aprobados")!=null){
+			aprobados = (Integer)request.getAttribute("aprobados");
+			
+		}
+		if(request.getAttribute("desaprobados")!=null){
+			desaprobados =(Integer)request.getAttribute("desaprobados");
+		}
+
+		System.out.println("en el jsp");
+        System.out.println(aprobados);
+        System.out.println(desaprobados);
+     %>
+		
 	</head>
 	<body>
 	
@@ -23,7 +57,7 @@
 			<div style="display:flex; flex-direction:column;">
 				<div id="graficos" style="display:flex; flex-direction:row;">
 					<div style="margin: 10px 10px 10px 10px;width:100%;">
-						<select id="ddlMaterias" class = "Ddls" onchange="drawChartTorta()" required >
+						<select id="ddlMaterias" class = "Ddls" onchange="AlumnosXMateria()" required >
 							
 								<%
 								NegocioimplMaterias negMateria = new NegocioimplMaterias();
@@ -31,12 +65,6 @@
 								int i = 0;
 								for(Materias m : mat){
 									%> <option value="<%=m.getID() %>" 
-									<% 
-									if(i==0){
-										out.print("selected");
-									}
-									i++;
-									%>
 									> <%=m.getDescripcion()  %></option> <%
 								}
 								%>
@@ -73,135 +101,33 @@
 		 
 		<jsp:include page="Footer.html"></jsp:include>
 		
-	</body>
-	<script>
-		function AlumnosXMateria(){
-		
-			var idMateria = $("#ddlMaterias").val();
-	 		
-	 		$.ajax({
-	 			  url: "ServletAdminReportes",
-	 			  data: {
-	 			    materia: idMateria
-	 			  },
-	 			  type:"POST",
-	 			  
-	 			  success: function( result ) {
-	 			    $( "#ddlLocalidades" ).html(result);
-	 			  }
-	 			});
-			
-		}
-	</script>
+		<script type="text/javascript">
 	
-	<script type="text/javascript">
-	    <%  List<AlumnosXCursos> alumosxcursos = null;
-	        if(request.getAttribute("alumxcursos")!=null){
-	    	alumosxcursos = (List<AlumnosXCursos>)request.getAttribute("alumxcursos");
-	    } %>
-	      google.charts.load("current", {packages:["corechart"]});
-	      google.charts.setOnLoadCallback(drawChartTorta);
-	      google.charts.setOnLoadCallback(drawChartCurva);
-	      google.charts.setOnLoadCallback(drawChartLinea);
-	      google.charts.setOnLoadCallback(drawChartBarras);
-	      
+		google.charts.load("current", {'packages':["corechart"]});
+	    google.charts.setOnLoadCallback(AlumnosXMateria);
+	    	
+		
+		    
 	      function drawChartTorta() {
-	        
-	    	var data = new google.visualization.DataTable();
-			data.addColumn('string','Estado');
-			data.addColumn('number','Cantidad');
-			
-			<% 
-			int aprobados = 0;
-			int desaprobados = 0;
-			if(request.getParameter("ddlMaterias")!=null){
-				for(AlumnosXCursos alumxcur:alumosxcursos){
-					if(alumxcur.getCurso().getMateria().getID() == 1){
-						if(alumxcur.getSituacion().equals("Regular")){
-							aprobados++;
-						}else{
-							desaprobados++;
-						}
-					}
-				}
-			}
-			%>
-			
-			data.addRow(['Aprobados',<%=aprobados %>]);
-			data.addRow(['Desaprobados',<%=desaprobados %>]);
-			
-	        var options = {
-	          title: 'Ingles',
-	          is3D: true,
-	        };
-	
-	        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-	        chart.draw(data, options);
-	      }
-	      
-      function drawChartCurva() {
-        var data = google.visualization.arrayToDataTable([
-          ['Año', 'Regulares', 'Libres'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
+		    	var data = new google.visualization.DataTable();
+				data.addColumn('string','Estado');
+				data.addColumn('number','Cantidad');
+                
+                data.addRow(['Aprobados', <%=aprobados%> ]);
+                data.addRow(['Desaprobadosif', <%=desaprobados%> ]);
+                
+		        var options = {
+		          title: 'Nada' ,
+		          is3D: true,
+		        };
 		
-        var options = {
-          title: 'Condicion de Alumnos',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-      function drawChartLinea(){
-          var data = google.visualization.arrayToDataTable([
-              ['Año', 'Inscripciones'],
-              ['2013',  1000],
-              ['2014',  1170],
-              ['2015',  660],
-              ['2016',  1030]
-            ]);
-
-            var options = {
-              title: 'Inscripciones',
-              hAxis: {title: 'Año',  titleTextStyle: {color: '#333'}},
-              vAxis: {minValue: 0}
-            };
-
-            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-          }
-      function drawChartBarras() {
-
-          var data = google.visualization.arrayToDataTable([
-            ['Materia', 'Aprobados',],
-            ['2019', 817],
-            ['2018', 379],
-            ['2017', 269],
-            ['2016', 209],
-            ['2015', 152]
-          ]);
-
-          var options = {
-            title: 'Materia por Año',
-            chartArea: {width: '50%'},
-            hAxis: {
-              title: 'Cantidad de Aprobados',
-              minValue: 0
-            },
-            vAxis: {
-              title: 'Materia'
-            }
-          };
-
-          var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
-
-          chart.draw(data, options);
-        }
+		        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+		        chart.draw(data, options);
+		        
+	      }
+	
     </script>
+		
+	</body>
+	
 </html>

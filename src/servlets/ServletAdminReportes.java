@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocioimpl.NegocioimplAlumnoXCurso;
+import negocioimpl.NegocioimplMaterias;
 import entidad.AlumnosXCursos;
 
 /**
@@ -34,7 +35,28 @@ public class ServletAdminReportes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NegocioimplAlumnoXCurso negAlumXCurso = new NegocioimplAlumnoXCurso();
 		ArrayList<AlumnosXCursos> alumnosxcursos = (ArrayList<AlumnosXCursos>)negAlumXCurso.readAll();
-		request.setAttribute("alumxcursos", alumnosxcursos);
+		if(request.getParameter("materia")!=null) {
+			int aprobados = 0;
+			int desaprobados = 0;
+			int materia = Integer.parseInt(request.getParameter("materia"));
+			NegocioimplMaterias negMateria = new NegocioimplMaterias();
+			for(AlumnosXCursos alumxcur:alumnosxcursos){
+				if(alumxcur.getCurso().getMateria().getID()==materia) {
+					if(alumxcur.getSituacion().equals("Regular")){
+						aprobados++;
+					}else{
+						desaprobados++;
+					}
+				}
+			}
+			System.out.println(negMateria.obtenerMateria(materia).getDescripcion());
+			System.out.println(aprobados);
+			System.out.println(desaprobados);
+			request.setAttribute("nombre", negMateria.obtenerMateria(materia).getDescripcion());
+			request.setAttribute("aprobados", aprobados);
+			request.setAttribute("desaprobados", desaprobados);
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
         rd.forward(request, response);
 	}
