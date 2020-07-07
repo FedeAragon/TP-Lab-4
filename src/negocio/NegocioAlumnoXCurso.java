@@ -10,4 +10,7 @@ public interface NegocioAlumnoXCurso {
 	public boolean spAgregarAlumnoXCurso(AlumnosXCursos alumXCurso);
 	public boolean spAgregarNotas(AlumnosXCursos alumXCurso);
 	public List<AlumnosXCursos> readAll();
+	public List ObtenerAños();
+	public List ObtenerAprobados();
+	public List ObtenerDesaprobados();
 }

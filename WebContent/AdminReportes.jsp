@@ -3,7 +3,7 @@
     <%@ page import="entidad.Cursos" %> 
     <%@ page import="entidad.AlumnosXCursos" %> 
     <%@ page import="entidad.Materias" %> 
-    <%@ page import="java.util.List"%>  
+    <%@ page import="java.util.*"%>  
     <%@page import="negocioimpl.NegocioimplMaterias"%>
     
     
@@ -17,24 +17,37 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
 		<%
-   		int aprobados =0;
-		int desaprobados=0;
-		String nombre = "";
-		if(request.getAttribute("aprobados")!=null){
-			aprobados = (Integer)request.getAttribute("aprobados");
+   		int aprobadosXmateria =0;
+		int desaprobadosXmateria=0;
+		ArrayList años = new ArrayList();;
+		ArrayList aprobados = new ArrayList();
+		ArrayList desaprobados = new ArrayList();;
+		String materia = "";
+		
+		if(request.getAttribute("aprobadosXmateria")!=null){
+			aprobadosXmateria = (Integer)request.getAttribute("aprobadosXmateria");
 			
 		}
-		if(request.getAttribute("desaprobados")!=null){
-			desaprobados =(Integer)request.getAttribute("desaprobados");
+		if(request.getAttribute("desaprobadosXmateria")!=null){
+			desaprobadosXmateria =(Integer)request.getAttribute("desaprobadosXmateria");
 		}
 		
-		if(request.getAttribute("nombre")!=null){
-			nombre = request.getAttribute("nombre").toString();
+		if(request.getAttribute("materia")!=null){
+			materia = request.getAttribute("materia").toString();
 		}
-
-		System.out.println(nombre);
-        System.out.println(aprobados);
-        System.out.println(desaprobados);
+		
+		if(request.getAttribute("años")!=null){
+			años = (ArrayList)request.getAttribute("años");
+			
+		}
+		if(request.getAttribute("aprobados")!=null){
+			aprobados =(ArrayList)request.getAttribute("aprobados");
+		}
+		
+		if(request.getAttribute("desaprobados")!=null){
+			desaprobados = (ArrayList)request.getAttribute("desaprobados");
+		}
+		
      	%>
 		
 	</head>
@@ -65,18 +78,11 @@
 						</form>
 					</div>
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<select></select> 
-						<div id="curve_chart" style="height: 300px;"></div>
 					</div>
 				</div>
 				<div style="display:flex; flex-direction:row;">
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<select></select> 
-						<div id="chart_div" style="height: 300px;"></div>
-					</div>
-					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<select></select> 
-						<div id="barchart_material" style="height: 300px;"></div>
+						<div id="columnchart_material" style="height: 300px;"></div>
 					</div>
 				</div>
 			</div>
@@ -89,29 +95,60 @@
 		<script type="text/javascript">
 	
 		google.charts.load("current", {'packages':["corechart"]});
+		google.charts.load('current', {'packages':['bar']});
 	    google.charts.setOnLoadCallback(drawChartTorta);
+	    google.charts.setOnLoadCallback(drawChartBar);
 	    	
       	function drawChartTorta() {
 	    	var data = new google.visualization.DataTable();
 			data.addColumn('string','Estado');
 			data.addColumn('number','Cantidad');
 	              
-            data.addRow(['Aprobados', <%=aprobados%> ]);
-            data.addRow(['Desaprobados', <%=desaprobados%> ]);
+            data.addRow(['Aprobados', <%=aprobadosXmateria%> ]);
+            data.addRow(['Desaprobados', <%=desaprobadosXmateria%> ]);
 	        
-	        <% if(aprobados==0 && desaprobados==0){
-	        	nombre="No se encontraron calificaciones de " + nombre;
+	        <% if(aprobadosXmateria==0 && desaprobadosXmateria==0){
+	        	materia="No se encontraron calificaciones de " + materia;
 	        }%>
 	        
 	        var options = {
-	          title: '<%=nombre%>' ,
+	          title: '<%=materia%>' ,
 	          is3D: true,
+	          chart: {
+	        	  title:"Aprobados y Desaprobados por Materia",
+	          }
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
 	        chart.draw(data, options);
 	      }
-	
+			
+        function drawChartBar() {
+        	var data = new google.visualization.DataTable();
+			data.addColumn('date','Año');
+			data.addColumn('number','Aprobados');
+			data.addColumn('number','Desaprobados');
+			
+			<%
+			for(i = 0; i < años.size(); i++ ){
+				%> 
+				data.addRow([new Date(<%= (Integer)años.get(i) %>,1,1),<%= (Integer)aprobados.get(i) %>,<%= (Integer)desaprobados.get(i) %>]);
+				<%
+			}
+			
+			
+			%>
+			
+          var options = {
+            chart: {
+              title: 'Aprobados y Desaproados por año',
+            }
+          };
+
+          var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+          chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
    		 </script>
 		
 	</body>

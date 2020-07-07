@@ -27,4 +27,13 @@ public class NegocioimplAlumnoXCurso implements NegocioAlumnoXCurso {
 	public List<AlumnosXCursos> readAll(){
 		return daoAlumXCurso.readAll();
 	}
+	public List ObtenerAños() {
+		return daoAlumXCurso.ObtenerAños();
+	}
+	public List ObtenerAprobados() {
+		return daoAlumXCurso.ObtenerAprobados();
+	}
+	public List ObtenerDesaprobados() {
+		return daoAlumXCurso.ObtenerDesaprobados();
+	}
 }

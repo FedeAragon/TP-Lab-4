@@ -16,6 +16,94 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 	
 	private static final String AlumnosDelCurso = "SELECT Legajo_a, PrimerParcial_axc,SegundoParcial_axc,Recuperatorio1_axc,Recuperatorio2_axc , SituacionAlumno_axc FROM bdtpintegrador.alumnosxcurso inner join alumnos on Legajo_a=LegajoAlumno_axc where Estado_axc=1 and CodCurso_axc=?;";
 	private static final String readall = "SELECT * FROM alumnosxcurso where Estado_axc = 1; ";
+	private static final String AprobDesaprXaño="SELECT Año_c," + 
+			"sum(case when SituacionAlumno_axc = 'Regular' then 1 else 0 end) AS Aprobados," + 
+			"sum(case when SituacionAlumno_axc = 'Libre' then 1 else 0 end) AS Desaprobados " + 
+			"FROM alumnosxcurso INNER JOIN cursos ON CodCurso_c = CodCurso_axc GROUP BY Año_c";
+	
+	public List ObtenerAños() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList años = new ArrayList();
+		PreparedStatement statement;
+		ResultSet resultSet; 
+		Conexion conexion = Conexion.getConexion();
+		
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				años.add(resultSet.getInt(1));
+			}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace(); 
+		}
+		return años;
+	}
+	
+	public List ObtenerAprobados() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList Aprobados = new ArrayList();
+		PreparedStatement statement;
+		ResultSet resultSet; 
+		Conexion conexion = Conexion.getConexion();
+		
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				Aprobados.add(resultSet.getInt(2));
+			}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace(); 
+		}
+		return Aprobados;
+	}
+	
+	public List ObtenerDesaprobados() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList Desaprobados = new ArrayList();
+		PreparedStatement statement;
+		ResultSet resultSet; 
+		Conexion conexion = Conexion.getConexion();
+		
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+				Desaprobados.add(resultSet.getInt(3));
+			}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace(); 
+		}
+		return Desaprobados;
+	}
 	
 	public List<AlumnosXCursos> readAll() {
 		
