@@ -17,7 +17,7 @@
   <hr>
   <br>
   <label id ="lblUsuario">
-  Numero de Usuario</label>
+  Nombre de Usuario</label>
   <br>
   <input type="text" name="txtUsuario" class= "texts" style="width: 400px; " required >
   <br>
