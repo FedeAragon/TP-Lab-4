@@ -13,4 +13,5 @@ public interface DaoProfesores {
 	public Docente obtenerProfesor(int leg_profesor);
 	public int obtenerLegProfesor();
 	public boolean sPModificarUsuario(String Email,String contraseñanueva);
+	public boolean comprobarEmail(String email);
 }

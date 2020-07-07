@@ -4,8 +4,9 @@ import java.util.List;
 
 import daoimpl.DaoimplProfesores;
 import entidad.Docente;
+import negocio.NegocioProfesores;
 
-public class NegocioimplProfesores {
+public class NegocioimplProfesores implements NegocioProfesores {
 
 	DaoimplProfesores daoprofesor = new DaoimplProfesores();
 	
@@ -43,8 +44,14 @@ public class NegocioimplProfesores {
 		return daoprofesor.obtenerLegProfesor();
 	}
 	
-	public boolean sPModificarUsuario(String Email,String contraseñanueva) {
+	public boolean sPModificarUsuario(String Email,String contraseñanueva)
+    {
 		return daoprofesor.sPModificarUsuario(Email, contraseñanueva);
+	}
+	
+	public boolean comprobarEmail(String email)
+	{
+		return daoprofesor.comprobarEmail(email);
 	}
 	
 }

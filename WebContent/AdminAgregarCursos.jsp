@@ -34,22 +34,25 @@
   <form class="contenido" method="get" action="ServletAdminAgregarCursos">
   <label id ="lblCodCurso" class="subtitulos">CodCurso</label>
   <%
-  NegocioimplCursos negcurso = new NegocioimplCursos();
-  int ultcodcurso = negcurso.ObtenerCodCurso() + 1;
-  %>
+  if(request.getAttribute("ultcod")!= null)
+  {
+   int ultcodcurso = (int) request.getAttribute("ultcod");
+ %>
   <input type="text" name="txtCodCurso" class= "texts" readonly="readonly" value=<%=ultcodcurso %>>
+  <% }  %>
  <label id ="lblMateria" class="subtitulos">Materia</label>
  <select name="ddlMaterias" class = "Ddls" required>
  <option value="0" >Seleccione una Materia</option>
 						
-						<%
-							NegocioimplMaterias negMateria = new NegocioimplMaterias();
-							List<Materias> mat =  negMateria.readAll();
-							for(Materias m : mat){
+						<%  if(request.getAttribute("mat")!= null)
+						{
+							List<Materias> mat = (List<Materias>) request.getAttribute("mat"); 
+							for(Materias m : mat){ 
 								%> <option value="<%=m.getID() %>"
 								> <%=m.getDescripcion()  %></option> <%
 							}
 						%>
+					<%} %>							
  </select> 
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
  <select name="ddlCuatrimestre" class = "Ddls" required>
@@ -64,14 +67,15 @@
    <select name="ddlDocentes" class = "Ddls" required>
    <option value="0" >Seleccione un Docente</option>
 						
-						<%
-							NegocioimplProfesores negProfesores = new NegocioimplProfesores();
-							List<Docente> doc =  negProfesores.readAll();
+						<%  if(request.getAttribute("doc")!= null)
+						{
+							List<Docente> doc = (List<Docente>)request.getAttribute("doc");
 							for(Docente d : doc){
 								%> <option value="<%=d.getLegajo() %>"
 								> <%=d.getLegajo()+"-"+d.getNombreyAp()  %></option> <%
 							}
 						%>
+						<%} %>	
  </select> 
   <br>
   <input type="submit" name="btnAgregar" value="Agregar Curso" class= "botones">

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidad.Provincias"%>
 <%@page import="entidad.Localidades"%>
+<%@page import="entidad.Docente"%>
 <%@page import="negocio.NegocioProvincias"%>
 <%@page import="negocioimpl.NegocioimplProvincias"%>
 <%@page import="negocioimpl.NegocioimplLocalidades"%>
@@ -44,21 +45,25 @@
   <br>
   <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
- <% NegocioimplProfesores negprofes = new NegocioimplProfesores();
-   int ultlegajo = negprofes.obtenerLegProfesor() + 1;
-  %>
-  <input type="text" name="txtLegajo" class= "texts" readonly="readonly" value=<%= ultlegajo %>>
+<%
+ if(request.getAttribute("ultlegajo") != null)
+ {
+   int ultlegajo =(int)request.getAttribute("ultlegajo");
+%>
+  <input type="text" name="txtLegajo" class= "texts" readonly="readonly"  value=<%= ultlegajo %>>
+  <%} %>   
   <label id ="lblDNI" class="subtitulos">DNI </label>
-  <input type="text" id="txtDNI" name="txtDNI" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="8"  >
+  <input type="text" id="txtDNI" name="txtDNI" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="8">
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
-  <input type="text" id="txtDireccion" name="txtDireccion" class= "texts" required  >
+  <input type="text" id="txtDireccion" name="txtDireccion" class= "texts" required>
   <label id ="lblProvincia" class="subtitulos">Provincia</label>
  <select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
  						<option value="0">Seleccione una provincia</option>
 						
-						<%
-							NegocioimplProvincias negProv = new NegocioimplProvincias();
-							List<Provincias> provincias =  negProv.readAll();
+						<%if(request.getAttribute("provincias")!=null)
+						{
+
+							List<Provincias> provincias =  (List<Provincias>)request.getAttribute("provincias");
 							for(Provincias prov : provincias){
 								%> <option value="<%=prov.getCodProvincia() %>"
 								
@@ -79,6 +84,8 @@
 								> <%=prov.getNombreProvincia()  %></option> <%
 							}
 						%>
+							
+						<%} %>
  </select> 
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
     <input type="text" id="txtTelefono" name="txtTelefono" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="10">
@@ -217,7 +224,11 @@
  <input type ="submit" name = "btnAgregar" value = "Agregar" class = "botones">
  </div>
   <% 
-  		if(request.getAttribute("funco")!=null){ 
+  if(request.getAttribute("repetido")!= null)
+	 { %>
+		 <label>El email ya se encuentra registrado</label>
+	<% } 
+  else if(request.getAttribute("funco")!=null){ 
   			 if((Boolean)request.getAttribute("funco")==true){	 
   			%>
   			<label>El Profesor se agrego con exito</label>
@@ -227,9 +238,7 @@
   			 <%
   		} %>	 
   		
-  <% }%>
-  
-
+  <% } %>
 </form>
  
     </div>

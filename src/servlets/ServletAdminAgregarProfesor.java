@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidad.Alumno;
 import entidad.Docente;
+import entidad.Provincias;
 import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplLocalidades;
 import negocioimpl.NegocioimplProfesores;
@@ -34,6 +36,17 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		NegocioimplProfesores negprofes = new NegocioimplProfesores();
+		NegocioimplProvincias negProv = new NegocioimplProvincias();
+		
+		int ultlegajo = negprofes.obtenerLegProfesor() + 1;
+		List<Provincias> provincias =  negProv.readAll();
+		
+		request.setAttribute("provincias", provincias); 
+		request.setAttribute("ultlegajo", ultlegajo);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
+        rd.forward(request, response);
 	}
 
 	
@@ -62,14 +75,33 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
        d.setLocalidad(negocioloca.obtenerLocalidad(request.getParameter("ddlLocalidades").toString()));
        d.setProvincia(negocioprov.obtenerProvincia(request.getParameter("provincia").toString()));
        d.setFechaNacimiento(sqlDate);
-      	d.setNombreyAp(request.getParameter("txtNombre").toString());
+       d.setNombreyAp(request.getParameter("txtNombre").toString());
        d.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
-      	d.setEmail(request.getParameter("txtEmail").toString());
-      	 funco = negocioprofe.spAgregarProfesor(d);
-	          }
-		request.setAttribute("funco", funco);
+       d.setEmail(request.getParameter("txtEmail").toString());
+      
+       if(negocioprofe.comprobarEmail(request.getParameter("txtEmail").toString()))
+       {
+    	  int repetido = 1;  
+       	  request.setAttribute("repetido", repetido);
+       }
+       else 
+       {
+    	 funco = negocioprofe.spAgregarProfesor(d); 
+       }    
+      
+		List<Provincias> provincias =  negocioprov.readAll();
+ 	    int ultlegajo = negocioprofe.obtenerLegProfesor() + 1;
+ 	    
+ 	    request.setAttribute("provincias", provincias); 
+        request.setAttribute("ultlegajo", ultlegajo);
+        request.setAttribute("doc", d); 
+      	request.setAttribute("funco", funco);
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
         rd.forward(request, response);
-        
+	          }		
+		else 
+		{
+			doGet(request, response);
+		}
 	}
 }

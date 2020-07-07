@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidad.Alumno;
 import entidad.Docente;
+import entidad.Provincias;
 import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplLocalidades;
 import negocioimpl.NegocioimplProfesores;
@@ -39,19 +41,19 @@ public class ServletAdminModificarAlumno extends HttpServlet {
 		Alumno alumno = new Alumno();
 		if(request.getParameter("btnModificar")!=null)
 		{   
+			NegocioimplProvincias negProv = new NegocioimplProvincias();
+			List<Provincias> provincias =  negProv.readAll();
 			
 			if(request.getParameter("LegajoAlu") != null) {
 				
 			  alumno = negocioalumno.obtenerAlumno(Integer.parseInt(request.getParameter("LegajoAlu")));
 		}
+			request.setAttribute("provincias", provincias); 
+			request.setAttribute("alumno", alumno);
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarAlumno.jsp");   
+	        rd.forward(request, response);
 	}
-		
-		request.setAttribute("alumno", alumno);
-		RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarAlumno.jsp");   
-        rd.forward(request, response);
-		
 	
-		
 	}
 
 	

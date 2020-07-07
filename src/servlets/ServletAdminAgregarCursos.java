@@ -20,25 +20,17 @@ import entidad.Materias;
 import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplCursos;
+import negocioimpl.NegocioimplMaterias;
+import negocioimpl.NegocioimplProfesores;
 
-/**
- * Servlet implementation class ServletAdminAgregarCursos
- */
 @WebServlet("/ServletAdminAgregarCursos")
 public class ServletAdminAgregarCursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ServletAdminAgregarCursos() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		boolean anduvo=false;
@@ -53,6 +45,8 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			c.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
 			d.setLegajo(Integer.parseInt(request.getParameter("ddlDocentes")));
 			c.setDocente(d);
+			NegocioimplMaterias negMateria = new NegocioimplMaterias();
+			NegocioimplProfesores negProfesores = new NegocioimplProfesores();
 			NegocioimplCursos negCurso = new NegocioimplCursos();
 			if(negCurso.obtenerCurso(c)) 
 			{
@@ -66,6 +60,13 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			
 			if(repetido == true)
 			{
+				int ultcodcurso = negCurso.ObtenerCodCurso() + 1;
+				List<Materias> mat =  negMateria.readAll();
+				List<Docente> doc =  negProfesores.readAll();
+				
+				request.setAttribute("doc", doc);
+				request.setAttribute("mat", mat);
+				request.setAttribute("ultcod", ultcodcurso);
 				request.setAttribute("repetido", repetido);
 				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
 				rd.forward(request, response);
@@ -75,12 +76,20 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 				NegocioimplAlumnos negAlu = new NegocioimplAlumnos();
 				c.setCodCurso(negCurso.ObtenerCodCurso());
 				List<Alumno> alumnos = (List<Alumno>) negAlu.AlumnosAgregar(c);
+				
 				request.setAttribute("alumnos", alumnos);
 				request.setAttribute("curso",c);
 				
 			rd = request.getRequestDispatcher("/AdminAgregarAlumnoXCurso.jsp");
 			rd.forward(request, response);
 			}else {
+				int ultcodcurso = negCurso.ObtenerCodCurso() + 1;
+				List<Materias> mat =  negMateria.readAll();
+				List<Docente> doc =  negProfesores.readAll();
+				
+				request.setAttribute("doc", doc);
+				request.setAttribute("mat", mat);
+				request.setAttribute("ultcod", ultcodcurso); 
 				request.setAttribute("anduvo", anduvo);
 				rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
 				rd.forward(request, response);
@@ -88,14 +97,25 @@ public class ServletAdminAgregarCursos extends HttpServlet {
 			}
 			
 		}
+		else doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+ 
+		NegocioimplCursos negcurso = new NegocioimplCursos();
+		NegocioimplMaterias negMateria = new NegocioimplMaterias();
+		NegocioimplProfesores negProfesores = new NegocioimplProfesores();
+			
+		int ultcodcurso = negcurso.ObtenerCodCurso() + 1;
+		List<Materias> mat =  negMateria.readAll();
+		List<Docente> doc =  negProfesores.readAll();
+		
+		request.setAttribute("doc", doc);
+		request.setAttribute("mat", mat);
+		request.setAttribute("ultcod", ultcodcurso);
+		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarCursos.jsp");
+		rd.forward(request, response); 
 	}
 
 }

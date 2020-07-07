@@ -14,27 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import negocioimpl.NegocioimplAlumnoXCurso;
 import negocioimpl.NegocioimplMaterias;
 import entidad.AlumnosXCursos;
+import entidad.Materias;
 
-/**
- * Servlet implementation class ServletAdminReportes
- */
 @WebServlet("/ServletAdminReportes")
 public class ServletAdminReportes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletAdminReportes() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NegocioimplAlumnoXCurso negAlumXCurso = new NegocioimplAlumnoXCurso();
+		NegocioimplAlumnoXCurso negAlumXCurso = new NegocioimplAlumnoXCurso();		
 		ArrayList<AlumnosXCursos> alumnosxcursos = (ArrayList<AlumnosXCursos>)negAlumXCurso.readAll();
 		
 		if(request.getParameter("ddlMaterias")!=null) { // APROBADOS Y DESAPROBADOS POR MATERIA
@@ -74,10 +66,13 @@ public class ServletAdminReportes extends HttpServlet {
 			
 			
 		}
+		NegocioimplMaterias negMateria = new NegocioimplMaterias();
+		List<Materias> mat =  negMateria.readAll();
 		List años = negAlumXCurso.ObtenerAños();
 		List aprobados = negAlumXCurso.ObtenerAprobados();
 		List desaprobados = negAlumXCurso.ObtenerDesaprobados();
 		
+		request.setAttribute("mat", mat);
 		request.setAttribute("años", años);
 		request.setAttribute("aprobados", aprobados);
 		request.setAttribute("desaprobados", desaprobados);
@@ -86,11 +81,8 @@ public class ServletAdminReportes extends HttpServlet {
         rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

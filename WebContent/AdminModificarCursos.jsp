@@ -45,9 +45,9 @@
  <select name="ddlMaterias" class = "Ddls">
  <option value="0" >Seleccione una Materia</option>
 						
-						<%
-							NegocioimplMaterias negMateria = new NegocioimplMaterias();
-							List<Materias> mat =  negMateria.readAll();
+						<%if(request.getAttribute("mat")!= null)
+						{
+							List<Materias> mat =  (List<Materias>)request.getAttribute("mat");
 							for(Materias m : mat){
 								%> <option value="<%=m.getID() %>"
 								
@@ -63,6 +63,7 @@
 								> <%=m.getDescripcion()  %></option> <%
 							}
 						%>
+						<% } %>						
  </select> 
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
  <select name="ddlCuatrimestre" class = "Ddls"> 
@@ -95,9 +96,9 @@
    <select name="ddlDocentes" class = "Ddls">
    <option value="0" >Seleccione un Docente</option>
 						
-						<%
-							NegocioimplProfesores negProfesores = new NegocioimplProfesores();
-							List<Docente> doc =  negProfesores.readAll();
+						<%if(request.getAttribute("doc")!=null)
+						{
+							List<Docente> doc =  (List<Docente>)request.getAttribute("doc"); 
 							for(Docente d : doc){
 								%> <option value="<%=d.getLegajo() %>"
 																						 
@@ -109,11 +110,12 @@
 							     	}
 			
 						       %>
-								
-								
+															
 								> <%=d.getLegajo()+"-"+d.getNombreyAp()  %></option> <%
 							}
 						%>
+					<%} %>	
+							
  </select> 
   <br>
   <input type="submit" name="btnModificar" value="Modificar Curso" class= "botones">

@@ -63,15 +63,16 @@
 					<div style="margin: 10px 10px 10px 10px;width:100%;">
 						<form method="get" action="ServletAdminReportes">
 							<select name="ddlMaterias" required >
-								<%
-								NegocioimplMaterias negMateria = new NegocioimplMaterias();
-								List<Materias> mat =  negMateria.readAll();
-								int i = 0;
-								for(Materias m : mat){
-									%> <option value="<%=m.getID() %>" 
-									> <%=m.getDescripcion()  %></option> <%
-								}
-								%>
+								<%if(request.getAttribute("mat")!=null)
+								{
+									List<Materias> mat = (List<Materias>)request.getAttribute("mat");
+									int i = 0;
+									for(Materias m : mat){
+										%> <option value="<%=m.getID() %>" 
+										> <%=m.getDescripcion()  %></option> <%
+									}
+									%>
+						    	<% } %>																	
 							</select> 
 							<input type="submit" id="btnAceptar" value="Aceptar" class="botones" style="width: auto; padding:10px 10px 10px 10px; margin:5px 5px 5px 5px;">
 							<div id="piechart_3d" style="height: 300px;"></div>
@@ -130,7 +131,7 @@
 			data.addColumn('number','Desaprobados');
 			
 			<%
-			for(i = 0; i < años.size(); i++ ){
+			for(int i = 0; i < años.size(); i++ ){
 				%> 
 				data.addRow([new Date(<%= (Integer)años.get(i) %>,1,1),<%= (Integer)aprobados.get(i) %>,<%= (Integer)desaprobados.get(i) %>]);
 				<%

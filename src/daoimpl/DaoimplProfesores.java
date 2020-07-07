@@ -18,6 +18,39 @@ public class DaoimplProfesores implements DaoProfesores {
 	private static final String readall = "Select * from profesores inner join usuarios on usuarios.Usuario = profesores.Email_p where TipoCuenta = false and Estado_p = true ";
 	private static final String obtenerprofesor ="Select * from profesores where legajo_p = ? and Estado_p = true";
 	private static final String obtenerLegProfesor = "SELECT MAX(Legajo_p) from profesores";
+	private static final String comprobarEmail = "SELECT * from profesores WHERE Email_p = ?";
+	
+	public boolean comprobarEmail(String email) {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		   PreparedStatement statement;
+		   ResultSet resultSet; 
+		   Conexion conexion = Conexion.getConexion();
+		   try{
+				
+				statement = conexion.getSQLConexion().prepareStatement(comprobarEmail);
+				statement.setString(1,email); 
+				
+				resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{ 
+                 return true;
+				}
+
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace(); 
+			}
+		
+		  
+		return false;
+	}
+	
 	
 	public int obtenerLegProfesor() {
 			

@@ -24,7 +24,7 @@
 	            {
 	            	text: '<i class="material-icons" style="font-size:36px; color:green;">person_add</i>',
 	            	action: function(){
-	            		 location.href="AdminAgregarProfesor.jsp";
+	            		 location.href="ServletAdminAgregarProfesor";
 	            	}
 	            }
 	        ]

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entidad.Docente;
+import entidad.Provincias;
 import negocioimpl.NegocioimplLocalidades;
 import negocioimpl.NegocioimplProfesores;
 import negocioimpl.NegocioimplProvincias;
@@ -38,16 +40,20 @@ public class ServletAdminModificarProfesor extends HttpServlet {
 		Docente docente = new Docente();
 		if(request.getParameter("btnModificar")!=null)
 		{   
+			NegocioimplProvincias negProv = new NegocioimplProvincias();
+			List<Provincias> provincias =  negProv.readAll();
 			
-			if(request.getParameter("LegajoProfe") != null) {
+			if(request.getParameter("LegajoProfe") != null) 
+			{
 				
 			  docente = negocioprofesores.obtenerProfesor(Integer.parseInt(request.getParameter("LegajoProfe")));
-		}
-	}
+		    }
+			request.setAttribute("provincias", provincias);
+			request.setAttribute("docente", docente);
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarProfesor.jsp");   
+	        rd.forward(request, response);
+	   }
 		
-		request.setAttribute("docente", docente);
-		RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarProfesor.jsp");   
-        rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

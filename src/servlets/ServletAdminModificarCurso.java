@@ -47,11 +47,17 @@ public class ServletAdminModificarCurso extends HttpServlet {
 	    		  
 	    		  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
 	    		  NegocioimplMaterias negocioMateria = new NegocioimplMaterias();
-	    		  
+	    		  NegocioimplMaterias negMateria = new NegocioimplMaterias();
+	    		  NegocioimplProfesores negProfesores = new NegocioimplProfesores();
+	    				
+	    		  List<Materias> mat =  negMateria.readAll();
+	    		  List<Docente> doc =  negProfesores.readAll();	    				    		    		  
 	    		  Docente docente = negocioProfe.obtenerProfesor(legDocente);
 	    		  Materias materia = negocioMateria.obtenerMateria(codMate);
 	    		  Cursos curso = new Cursos(CodCurso, materia, codCuatri, anio, docente, 1);   	
 	    		  
+	    		request.setAttribute("doc", doc);
+	    		request.setAttribute("mat", mat);  
 	    		request.setAttribute("Curso", curso);
 	    	    RequestDispatcher rd= request.getRequestDispatcher("/AdminModificarCursos.jsp");
 	  			rd.forward(request, response);			  

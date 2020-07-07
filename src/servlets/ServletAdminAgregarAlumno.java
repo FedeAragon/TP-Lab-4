@@ -16,6 +16,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import entidad.Alumno;
 import entidad.Localidades;
+import entidad.Provincias;
 import negocioimpl.NegocioimplAlumnos;
 import negocioimpl.NegocioimplLocalidades;
 import negocioimpl.NegocioimplProvincias;
@@ -34,6 +35,17 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		NegocioimplAlumnos negalu = new NegocioimplAlumnos();
+		NegocioimplProvincias negProv = new NegocioimplProvincias();
+		
+		int ultlegajo = negalu.obtenerLegAlumno() + 1;
+		List<Provincias> provincias =  negProv.readAll();
+		
+		request.setAttribute("ultLegajo", ultlegajo);
+		request.setAttribute("provincias", provincias);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
+ 	    rd.forward(request, response);
 		
 	}
 
@@ -65,11 +77,22 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 	       	alu.setNombreyAp(request.getParameter("txtNombre").toString());
 	        alu.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
 	       	alu.setEmail(request.getParameter("txtEmail").toString());
-	       	 funco = negocioalu.spAgregarAlumno(alu);
+	        funco = negocioalu.spAgregarAlumno(alu);
+	       	 
+	        int ultlegajo = negocioalu.obtenerLegAlumno() + 1;
+			List<Provincias> provincias =  negocioprov.readAll();
+			
+			request.setAttribute("ultLegajo", ultlegajo);
+			request.setAttribute("provincias", provincias);
+	 		request.setAttribute("funco", funco);	
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
+	 	    rd.forward(request, response);
    	          }
-		request.setAttribute("funco", funco);	
-		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarAlumno.jsp");   
- 	        rd.forward(request, response);
+		else
+		{
+			doGet(request, response);
+		}
+
 	         
 		}
 

@@ -79,9 +79,9 @@
  </script>
 <select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
  					
-						<%
-							NegocioimplProvincias negProv = new NegocioimplProvincias();
-							List<Provincias> provincias =  negProv.readAll();
+						<%if(request.getAttribute("provincias") != null)
+						{
+							List<Provincias> provincias = (List<Provincias>)request.getAttribute("provincias");
 							for(Provincias prov : provincias){
 								
 								if( alu.getProvincia().getCodProvincia() != prov.getCodProvincia()){
@@ -101,6 +101,7 @@
 									> <%=prov.getNombreProvincia()  %></option> <%
 								}}
 						%>
+					<% } %>	 						
  </select> 
  
   

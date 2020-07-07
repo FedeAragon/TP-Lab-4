@@ -44,10 +44,13 @@
   <br>
   <div class="contenido">
   <label id ="lblLegajo" class="subtitulos">Numero de legajo</label>
-  <%NegocioimplAlumnos negalu = new NegocioimplAlumnos();
-   int ultlegajo = negalu.obtenerLegAlumno() + 1;
-  %>
+  <%
+ if(request.getAttribute("ultLegajo") != null)
+ {
+   int ultlegajo =(int)request.getAttribute("ultLegajo");
+%>
   <input type="text" name="txtLegajo" class= "texts" readonly="readonly"  value=<%= ultlegajo %>>
+  <%} %>   
   <label id ="lblDNI" class="subtitulos" type="number">DNI </label>
   <input type="text" id="txtDNI" name="txtDNI" class= "texts" required onkeypress="return isNumberKey(event)" maxlength="8">
   <label id ="lblDireccion" class="subtitulos">Direccion</label>
@@ -78,9 +81,10 @@
  <select id="provincia" name="provincia" class = "Ddls" onchange="CargarLocalidades()"  required>
  						<option value="0">Seleccione una provincia</option>
 						
-						<%
-							NegocioimplProvincias negProv = new NegocioimplProvincias();
-							List<Provincias> provincias =  negProv.readAll();
+						<%if(request.getAttribute("provincias")!=null)
+						{
+
+							List<Provincias> provincias =  (List<Provincias>)request.getAttribute("provincias");
 							for(Provincias prov : provincias){
 								%> <option value="<%=prov.getCodProvincia() %>"
 								
@@ -101,6 +105,9 @@
 								> <%=prov.getNombreProvincia()  %></option> <%
 							}
 						%>
+							
+						<%} %>
+							
  </select>
     <label id ="lblTelefono" class="subtitulos">Telefono</label>
     <input type="text" id="txtTelefono" name="txtTelefono" class= "texts" onkeypress="return isNumberKey(event)" required maxlength="11">
