@@ -147,24 +147,23 @@
 			
         function drawChartBar() {
         	var data = new google.visualization.DataTable();
-			data.addColumn('date','Año');
+			data.addColumn('number','Año');
 			data.addColumn('number','Aprobados');
 			data.addColumn('number','Desaprobados');
 			
 			<%
 			for(int i = 0; i < años.size(); i++ ){
 				%> 
-				data.addRow([new Date(<%= (Integer)años.get(i) %>,1,1),<%= (Integer)aprobados.get(i) %>,<%= (Integer)desaprobados.get(i) %>]);
+				data.addRow([<%= (Integer)años.get(i) %>,<%= (Integer)aprobados.get(i) %>,<%= (Integer)desaprobados.get(i) %>]);
 				<%
 			}
-			
-			
 			%>
 			
           var options = {
             chart: {
               title: 'Aprobados y Desaproados por año',
-            }
+            },
+            hAxis: { format:"####"} 
           };
 
           var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
