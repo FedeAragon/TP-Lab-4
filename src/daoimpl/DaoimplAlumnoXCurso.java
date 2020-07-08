@@ -16,12 +16,13 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 	
 	private static final String AlumnosDelCurso = "SELECT Legajo_a, PrimerParcial_axc,SegundoParcial_axc,Recuperatorio1_axc,Recuperatorio2_axc , SituacionAlumno_axc FROM bdtpintegrador.alumnosxcurso inner join alumnos on Legajo_a=LegajoAlumno_axc where Estado_axc=1 and CodCurso_axc=?;";
 	private static final String readall = "SELECT * FROM alumnosxcurso where Estado_axc = 1; ";
-	private static final String AprobDesaprXaño="SELECT Año_c," + 
-			"sum(case when SituacionAlumno_axc = 'Regular' then 1 else 0 end) AS Aprobados," + 
-			"sum(case when SituacionAlumno_axc = 'Libre' then 1 else 0 end) AS Desaprobados " + 
-			"FROM alumnosxcurso INNER JOIN cursos ON CodCurso_c = CodCurso_axc GROUP BY Año_c";
+	private static final String AprobDesaprXaño="SELECT Año_c, \r\n" + 
+			"sum(case when SituacionAlumno_axc = 'Regular' then 1 else 0 end) AS Aprobados,\r\n" + 
+			"sum(case when SituacionAlumno_axc = 'Libre' then 1 else 0 end) AS Desaprobados\r\n" + 
+			"FROM alumnosxcurso INNER JOIN cursos ON CodCurso_c = CodCurso_axc \r\n" + 
+			"WHERE Año_c >= ? AND Año_c <= ? GROUP BY Año_c";
 	
-	public List ObtenerAños() {
+	public List ObtenerAños(int inicio , int fin) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -36,6 +37,8 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			statement.setInt(1, inicio);
+			statement.setInt(2, fin); 
 			resultSet = statement.executeQuery();
 			while(resultSet.next())
 			{
@@ -49,7 +52,7 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		return años;
 	}
 	
-	public List ObtenerAprobados() {
+	public List ObtenerAprobados(int inicio , int fin) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -64,6 +67,8 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			statement.setInt(1, inicio);
+			statement.setInt(2, fin); 
 			resultSet = statement.executeQuery();
 			while(resultSet.next())
 			{
@@ -77,7 +82,7 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		return Aprobados;
 	}
 	
-	public List ObtenerDesaprobados() {
+	public List ObtenerDesaprobados(int inicio , int fin) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -92,6 +97,8 @@ public class DaoimplAlumnoXCurso implements DaoAlumnoXCurso {
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(AprobDesaprXaño);
+			statement.setInt(1, inicio);
+			statement.setInt(2, fin); 
 			resultSet = statement.executeQuery();
 			while(resultSet.next())
 			{

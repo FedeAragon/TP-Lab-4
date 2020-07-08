@@ -12,6 +12,20 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Reportes</title>
+		
+		 <SCRIPT >
+     
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+      
+   </SCRIPT>
+		
 		<link rel="stylesheet" type="text/css" href="css/Estilos.css">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -81,9 +95,16 @@
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
 					</div>
 				</div>
-				<div style="display:flex; flex-direction:row;">
+				<div style="display:flex; flex-direction:row;">				
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
+					 Año inicial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					 Año final <br>
+					 <form method="post" action="ServletAdminReportes">
+					<input type ="text" name ="txtInicio" style="width: 99px;"required onkeypress="return isNumberKey(event)">&nbsp;&nbsp;
+					<input type ="text" name ="txtFinal" style="width: 99px;"required onkeypress="return isNumberKey(event)"> &nbsp;&nbsp;
+					<input type="submit" name="btnAceptar2" value="Aceptar" class="botones" style="height: 29px; ">
 						<div id="columnchart_material" style="height: 300px;"></div>
+					</form>
 					</div>
 				</div>
 			</div>

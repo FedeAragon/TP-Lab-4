@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,16 +67,22 @@ public class ServletAdminReportes extends HttpServlet {
 			
 			
 		}
-		NegocioimplMaterias negMateria = new NegocioimplMaterias();
-		List<Materias> mat =  negMateria.readAll();
-		List años = negAlumXCurso.ObtenerAños();
-		List aprobados = negAlumXCurso.ObtenerAprobados();
-		List desaprobados = negAlumXCurso.ObtenerDesaprobados();
+		if(request.getParameter("btnAceptar2")!= null)
+		{
+			int inicio = Integer.parseInt(request.getParameter("txtInicio"));
+			int fin = Integer.parseInt(request.getParameter("txtFinal"));
 		
+			List años = negAlumXCurso.ObtenerAños(inicio , fin);
+			List aprobados = negAlumXCurso.ObtenerAprobados(inicio , fin);
+			List desaprobados = negAlumXCurso.ObtenerDesaprobados(inicio , fin);
+			request.setAttribute("años", años);
+			request.setAttribute("aprobados", aprobados);
+			request.setAttribute("desaprobados", desaprobados);
+		}
+		
+		NegocioimplMaterias negMateria = new NegocioimplMaterias();
+		List<Materias> mat =  negMateria.readAll();		
 		request.setAttribute("mat", mat);
-		request.setAttribute("años", años);
-		request.setAttribute("aprobados", aprobados);
-		request.setAttribute("desaprobados", desaprobados);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminReportes.jsp");   
         rd.forward(request, response);

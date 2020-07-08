@@ -27,13 +27,13 @@ public class NegocioimplAlumnoXCurso implements NegocioAlumnoXCurso {
 	public List<AlumnosXCursos> readAll(){
 		return daoAlumXCurso.readAll();
 	}
-	public List ObtenerAños() {
-		return daoAlumXCurso.ObtenerAños();
+	public List ObtenerAños(int inicio , int fin) {
+		return daoAlumXCurso.ObtenerAños(inicio , fin);
 	}
-	public List ObtenerAprobados() {
-		return daoAlumXCurso.ObtenerAprobados();
+	public List ObtenerAprobados(int inicio , int fin) {
+		return daoAlumXCurso.ObtenerAprobados(inicio , fin);
 	}
-	public List ObtenerDesaprobados() {
-		return daoAlumXCurso.ObtenerDesaprobados();
+	public List ObtenerDesaprobados(int inicio , int fin) {
+		return daoAlumXCurso.ObtenerDesaprobados(inicio , fin); 
 	}
 }
