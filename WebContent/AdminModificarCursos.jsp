@@ -43,7 +43,6 @@
   <input type="text" name="txtCodCurso" class= "texts" readonly="readonly" value=<%=curso.getCodCurso() %>>
  <label id ="lblMateria" class="subtitulos">Materia</label>
  <select name="ddlMaterias" class = "Ddls">
- <option value="0" >Seleccione una Materia</option>
 						
 						<%if(request.getAttribute("mat")!= null)
 						{
@@ -67,7 +66,6 @@
  </select> 
  <label id ="lblCuatrimestre" class="subtitulos">Cuatrimestre</label>
  <select name="ddlCuatrimestre" class = "Ddls"> 
- 						<option value="0">Seleccione un cuatrimestre</option>
                         <option value="1"
                           <%
 		
@@ -90,11 +88,11 @@
 						>Segundo Cuatrimestre</option>
  </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
- <input type="number" name="txtAnio" class= "texts" min="2000" max="2070" value=<%=curso.getAnio() %> >
+ <input type="number" name="txtAnio" class= "texts" min="1995" max="2020"  value=<%=curso.getAnio() %> >
  <input type="hidden" name="CodCurso" value="<%=curso.getCodCurso()%>">
   <label id ="lblDocente" class="subtitulos">Docente</label>
    <select name="ddlDocentes" class = "Ddls">
-   <option value="0" >Seleccione un Docente</option>
+
 						
 						<%if(request.getAttribute("doc")!=null)
 						{

@@ -16,7 +16,7 @@ import entidad.Provincias;
 public class DaoimplProfesores implements DaoProfesores {
 	
 	private static final String readall = "Select * from profesores inner join usuarios on usuarios.Usuario = profesores.Email_p where TipoCuenta = false and Estado_p = true ";
-	private static final String obtenerprofesor ="Select * from profesores where legajo_p = ? and Estado_p = true";
+	private static final String obtenerprofesor ="Select * from profesores where legajo_p = ?";
 	private static final String obtenerLegProfesor = "SELECT MAX(Legajo_p) from profesores";
 	private static final String comprobarEmail = "SELECT * from profesores WHERE Email_p = ?";
 	

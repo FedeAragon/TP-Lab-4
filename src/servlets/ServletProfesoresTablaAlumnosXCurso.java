@@ -32,8 +32,8 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		System.out.println(Integer.parseInt(request.getParameter("vueltas")));
+		System.out.println("dopost");
 		if(request.getParameter("btnConfirmar")!=null)
 	      {
 		int vueltas = Integer.parseInt(request.getParameter("vueltas"));	
@@ -43,9 +43,8 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 		String[] notaRecuperatorio2 = request.getParameterValues("txtRec2");
 		String[] Situacion = request.getParameterValues("estado");
 		String[] legAlumno =request.getParameterValues("legAlumno"); 
-		int codCurso = Integer.parseInt(request.getParameter("CodCurso").trim());		
+		int codCurso = Integer.parseInt(request.getParameter("CodCurso").trim());	
 		NegocioimplAlumnoXCurso negaluxcurso = new NegocioimplAlumnoXCurso();
-		
 		int parc1[] = new int[vueltas];
 		int parc2[] = new int[vueltas];
 		int rec1[] = new int [vueltas];
@@ -113,9 +112,8 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 			boolean funco =negaluxcurso.spAgregarNotas(axc);
 			request.setAttribute("funco",funco);
 		}
-
-		Cursos cu = new Cursos();
-		cu.setCodCurso(codCurso);
+	    NegocioimplCursos negCursos = new NegocioimplCursos();
+		Cursos cu = negCursos.saberCurso(codCurso);
 		ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
 		alumsXCursos =(ArrayList<AlumnosXCursos>)negaluxcurso.AlumnosdelCurso(cu);
 				

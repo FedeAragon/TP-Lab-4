@@ -48,7 +48,7 @@
 		        <tr>
 		            <th>Materia</th>
 		            <th>Cuatrimestre</th>
-		            <th>Aï¿½o</th>
+		            <th>Año</th>
 		            <th>Alumnos</th>    
 		       </tr>
 		 </thead>

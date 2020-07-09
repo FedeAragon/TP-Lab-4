@@ -72,7 +72,7 @@ public class ServletAdminEliminarAlumnoXCurso extends HttpServlet {
 	    			alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
 	    			
 	    	    request.setAttribute("funco", funco);
-	    		request.setAttribute("CodCurso", CodCurso);
+	    		request.setAttribute("curso", c);
 	    		request.setAttribute("alumnos", alumsXCursos);
 	  			RequestDispatcher rd = request.getRequestDispatcher("/AdminEliminarAlumnoXCurso.jsp");   
 	  	        rd.forward(request, response);

@@ -97,8 +97,6 @@ public class ServletAdminModificarCurso extends HttpServlet {
   		    else
   		    {
   		        funco = negocioCurso.spModificarCurso(curso);
-  	  		    System.out.println(curso);
-  	  		    System.out.println(funco);
   	  		    request.setAttribute("funco", funco);
   	  		    NegocioimplCursos negocioCursos = new NegocioimplCursos();
   			    List<Cursos> cursos = (List<Cursos>) negocioCursos.readAll();

@@ -61,7 +61,7 @@
 						<option value="2">Segundo Cuatrimestre</option>
  </select> 
  <label id ="lblAnio" class="subtitulos">Año</label>
- <input type="number" name="txtAnio" class= "texts" min="2000" max="2070" required>
+ <input type="number" name="txtAnio" class= "texts" min="1995" max="2020" required>
   
   <label id ="lblDocente" class="subtitulos">Docente</label>
    <select name="ddlDocentes" class = "Ddls" required>
