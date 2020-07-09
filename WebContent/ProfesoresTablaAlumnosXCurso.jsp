@@ -62,8 +62,11 @@
 	            			<input type ="submit" name = "btnAgregar" value = "Agregar Alumnos" class = "botones" >
 	            			<input type="hidden" name="CodCurso" value=" <%= c %> ">
 	            			</form>
-	            		
 	            			
+	            			<form method="get" action="ServletAdminEliminarAlumnoXCurso" style="margin-right:8px;">
+	            			<input type ="submit" name = "btnEliminar" value = "Eliminar Alumnos" class = "botones" >
+	            			<input type="hidden" name="CodCurso" value=" <%= c %> ">
+	            			</form>
 	            			<%
 	            			}
 	            		}
@@ -84,9 +87,6 @@
 		            <th>Recuperatorio 1</th>
 		            <th>Recuperatorio 2</th>
 		            <th>Situacion</th>
-		            <% if(user.getTipoCuenta()==1){ %>
-		             <th>Eliminar</th>
-		             <%} %>
 		       
 		         
 		        </tr>
@@ -133,21 +133,6 @@
 		            		>Libre</option>
 		            </select>
 		            </td>
-		            	
-		            <% if(user.getTipoCuenta()==1){
-		            
-		            		
-				           %>
-				         
-		            <td>
-		            	<button type="submit" value="Eliminar" name="btnEliminar" >
-			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
-			            </button>
-			            </td>
-			           <%
-			           }
-		            	
-		            %> 
 		                                 
 		        </tr>	  
 		        <%
@@ -191,7 +176,6 @@
 	 			  data: {
 	 				 CodCurso:Codigo,
 	 				 LegajoAlu:Legajo,
-	 				 
 	 				 btnEliminar: true
 	 			  },
 	 			  type:"POST",
