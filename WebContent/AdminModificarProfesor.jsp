@@ -111,7 +111,7 @@
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
   <input type="text" name="txtNombre" class="texts" value="<%= doc.getNombreyAp() %>" required >
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <input type="date" name="DateNacimiento" value="<%= doc.getFechaNacimiento() %>" required min="1960-01-01" max="2005-01-01">
+  <input type="date" name="DateNacimiento" value="<%= doc.getFechaNacimiento() %>" required min="1960-01-01" max="<%= request.getAttribute("today").toString() %>">
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
   <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
   

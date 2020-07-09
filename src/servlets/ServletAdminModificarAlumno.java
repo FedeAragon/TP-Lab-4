@@ -1,9 +1,12 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +42,11 @@ public class ServletAdminModificarAlumno extends HttpServlet {
 		
 		NegocioimplAlumnos negocioalumno = new NegocioimplAlumnos();
 		Alumno alumno = new Alumno();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        String todaysdate = dateFormat.format(date);
+        request.setAttribute("today", todaysdate);
 		if(request.getParameter("btnModificar")!=null)
 		{   
 			NegocioimplProvincias negProv = new NegocioimplProvincias();
@@ -47,12 +55,12 @@ public class ServletAdminModificarAlumno extends HttpServlet {
 			if(request.getParameter("LegajoAlu") != null) {
 				
 			  alumno = negocioalumno.obtenerAlumno(Integer.parseInt(request.getParameter("LegajoAlu")));
-		}
+			}
 			request.setAttribute("provincias", provincias); 
 			request.setAttribute("alumno", alumno);
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminModificarAlumno.jsp");   
 	        rd.forward(request, response);
-	}
+		}
 	
 	}
 

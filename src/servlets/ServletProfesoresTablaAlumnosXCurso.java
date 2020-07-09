@@ -41,12 +41,10 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	    		 
 	    		  
 	    		  int Legajo = Integer.parseInt(request.getParameter("legAlumno").trim());
-	    		  System.out.println(Legajo);
 	    		  NegocioimplAlumnoXCurso negocioaxc = new NegocioimplAlumnoXCurso();
 	    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
 	    		  NegocioimplCursos negcursos = new NegocioimplCursos();
 	    		   Cursos c = negcursos.saberCurso(CodCurso);
-	    		   System.out.println(CodCurso);
 	    		  NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
 	    		  negAluXCurso.spEliminarAlumnoXCurso(CodCurso, Legajo);
 	    			ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();

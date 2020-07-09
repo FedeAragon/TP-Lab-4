@@ -16,8 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Modificar Alumno</title>
-<SCRIPT >
-     
+<script >
       function isNumberKey(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
@@ -26,8 +25,7 @@
 
          return true;
       }
-      
-   </SCRIPT>
+   </script>
 </head>
 <body onload="CargarLocalidades()">
 <jsp:include page="Menu.jsp"></jsp:include>
@@ -114,7 +112,7 @@
   <label id ="lblNombreyap" class="subtitulos">Nombre y Apellido</label>
   <input type="text" id="txtNombre" name="txtNombre" class="texts" value="<%= alu.getNombreyAp() %>" required >
   <label id ="lblNacimiento" class = "subtitulos">Fecha de nacimiento</label>
-  <input type="date" name="DateNacimiento" value="<%= alu.getFechaNacimiento() %>" required min="1960-01-01" max="2005-01-01">
+  <input type="date" name="DateNacimiento" id="DateNacimiento" value="<%= alu.getFechaNacimiento() %>" required min="1899-01-01" max="<%= request.getAttribute("today").toString() %>">
   <label id ="lblLocalidad" class="subtitulos">Localidad</label>
    <select name="ddlLocalidades" id="ddlLocalidades" class="Ddls" required>
   

@@ -89,10 +89,12 @@
 						    	<% } %>																	
 							</select> 
 							<input type="submit" id="btnAceptar" value="Aceptar" class="botones" style="width: auto; padding:10px 10px 10px 10px; margin:5px 5px 5px 5px;">
+							<h5>Aprobados y Desaprobados por año</h5>
 							<div id="piechart_3d" style="height: 300px;"></div>
 						</form>
 					</div>
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
+						<div id="areaChart" style="height: 300px;"></div>
 					</div>
 				</div>
 				<div style="display:flex; flex-direction:row;">				
@@ -120,6 +122,7 @@
 		google.charts.load('current', {'packages':['bar']});
 	    google.charts.setOnLoadCallback(drawChartTorta);
 	    google.charts.setOnLoadCallback(drawChartBar);
+	    google.charts.setOnLoadCallback(drawChartArea);
 	    	
       	function drawChartTorta() {
 	    	var data = new google.visualization.DataTable();
@@ -135,10 +138,7 @@
 	        
 	        var options = {
 	          title: '<%=materia%>' ,
-	          is3D: true,
-	          chart: {
-	        	  title:"Aprobados y Desaprobados por Materia",
-	          }
+	          is3D: true
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -170,6 +170,31 @@
 
           chart.draw(data, google.charts.Bar.convertOptions(options));
         }
+        
+        function drawChartArea() {
+        	var data = new google.visualization.DataTable();
+			data.addColumn('number','Año');
+			data.addColumn('number','Alumnos');
+			
+			<%
+			for(int i = 0; i < años.size(); i++ ){
+				%> 
+				data.addRow([<%= (Integer)años.get(i) %>,<%= (Integer)aprobados.get(i) + (Integer)desaprobados.get(i) %>]);
+				<%
+			}
+			%>
+			
+          var options = {
+            
+              title: 'Alumnos por año',
+            
+            hAxis: { format:"####"} 
+          };
+
+          var chart = new google.visualization.AreaChart(document.getElementById('areaChart'));
+          chart.draw(data, options);
+        }
+        
    		 </script>
 		
 	</body>

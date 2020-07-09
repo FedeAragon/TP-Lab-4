@@ -1,8 +1,11 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -44,6 +47,12 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
 		
 		request.setAttribute("provincias", provincias); 
 		request.setAttribute("ultlegajo", ultlegajo);
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        String todaysdate = dateFormat.format(date);
+        request.setAttribute("today", todaysdate);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/AdminAgregarProfesor.jsp");   
         rd.forward(request, response);
