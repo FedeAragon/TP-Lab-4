@@ -14,6 +14,7 @@ import entidad.Alumno;
 import entidad.AlumnosXCursos;
 import entidad.Cursos;
 import negocioimpl.NegocioimplAlumnoXCurso;
+import negocioimpl.NegocioimplCursos;
 
 
 @WebServlet("/ServletProfesoresTablaAlumnosXCurso")
@@ -31,7 +32,36 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
+		if(request.getParameter("btnEliminar")!=null)
+	      {
+			
+	    	  if( request.getParameter("CodCurso")!=null) 
+	    	  {    
+	    		 
+	    		  
+	    		  int Legajo = Integer.parseInt(request.getParameter("legAlumno").trim());
+	    		  System.out.println(Legajo);
+	    		  NegocioimplAlumnoXCurso negocioaxc = new NegocioimplAlumnoXCurso();
+	    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
+	    		  NegocioimplCursos negcursos = new NegocioimplCursos();
+	    		   Cursos c = negcursos.saberCurso(CodCurso);
+	    		   System.out.println(CodCurso);
+	    		  NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
+	    		  negAluXCurso.spEliminarAlumnoXCurso(CodCurso, Legajo);
+	    			ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
+	    			alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
+	    			
+	  			
+	    		request.setAttribute("CodCurso", CodCurso);
+	    		request.setAttribute("cursos",alumsXCursos);
+	  			RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
+	  	        rd.forward(request, response);
+	    		      			  
+	    	  } 
+	      }	
+		if(request.getParameter("btnConfirmar")!=null)
+	      {
 		int vueltas = Integer.parseInt(request.getParameter("vueltas"));	
 		String[] notaPrimerParcial = request.getParameterValues("txtParcial1");
 		String[] notaSegundoParcial = request.getParameterValues("txtParcial2");
@@ -118,7 +148,7 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 		request.setAttribute("CodCurso",codCurso); 
 		RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
         rd.forward(request, response);  					
-		
+	      }
 	}
 
 }

@@ -36,4 +36,9 @@ public class NegocioimplAlumnoXCurso implements NegocioAlumnoXCurso {
 	public List ObtenerDesaprobados(int inicio , int fin) {
 		return daoAlumXCurso.ObtenerDesaprobados(inicio , fin); 
 	}
+	@Override
+	public boolean spEliminarAlumnoXCurso(int CodCurso,int Legajo){
+		return daoAlumXCurso.spEliminarAlumnoXCurso(CodCurso,Legajo);
+		
+	}
 }

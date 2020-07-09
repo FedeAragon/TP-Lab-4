@@ -49,8 +49,9 @@
 	}
        
        %>
-       <% if(request.getSession().getAttribute("usuario")!=null){
-	            		Usuario user = (Usuario)session.getAttribute("usuario");
+       <%  Usuario user = new Usuario(); 
+       if(request.getSession().getAttribute("usuario")!=null){
+	            		 user = (Usuario)session.getAttribute("usuario");
 	            		if(user.getTipoCuenta()==1){
 	            			if(request.getAttribute("CodCurso")!=null){
 	            			int c = Integer.parseInt(request.getParameter("CodCurso").trim());
@@ -83,6 +84,10 @@
 		            <th>Recuperatorio 1</th>
 		            <th>Recuperatorio 2</th>
 		            <th>Situacion</th>
+		            <% if(user.getTipoCuenta()==1){ %>
+		             <th>Eliminar</th>
+		             <%} %>
+		       
 		         
 		        </tr>
 		    </thead>
@@ -127,14 +132,30 @@
 		               	     %>
 		            		>Libre</option>
 		            </select>
-		            </td>	                        
+		            </td>
+		            	
+		            <% if(user.getTipoCuenta()==1){
+		            
+		            		
+				           %>
+				         
+		            <td>
+		            	<button type="submit" value="Eliminar" name="btnEliminar" >
+			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
+			            </button>
+			            </td>
+			           <%
+			           }
+		            	
+		            %> 
+		                                 
 		        </tr>	  
 		        <%
 		        vueltas ++ ;
 		        } 
 		        %>   
 		         <tr>
-		         <td style="background-color: black"> <input  type ="submit" style="display:none;"></td>
+		         <td style="background-color: black"> <input  type ="submit" name="btnConfirmar" id="btnConfirmar" value="confimar" style="display:none;"></td>
 		          </tr>		
 		          
 		          <input type="hidden" name="vueltas" value="<%= vueltas %>">	           
@@ -144,7 +165,7 @@
           			%>	         
 		          <input type="hidden" name="CodCurso" value=" <%= c %> ">
 		          <%} %>		          
-		        </form>   
+		     </form>
 		    </tbody>
 		</table>
 		</div>
@@ -155,11 +176,32 @@
 	 <script type="text/javascript">
      $(document).ready(function() {
     $("#Confirmar").click(function(event) {
-      $("#AlumnosXCurso").submit();
+     document.getElementById("btnConfirmar").click();
     });
        });
 </script>
 	 	
+	<script type="text/javascript">
+	function mensaje(Legajo,Codigo){
+		var mensaje = confirm("Estas seguro que deseas eliminar este Curso?");
+		
+		if(mensaje){
+			$.ajax({
+	 			  url: "ServletEliminarAlumnoXCurso",
+	 			  data: {
+	 				 CodCurso:Codigo,
+	 				 LegajoAlu:Legajo,
+	 				 
+	 				 btnEliminar: true
+	 			  },
+	 			  type:"POST",
+	 			 success: function(){
+	  			    location.reload(true);
+	  			  }
+	 			});
+		}
+	}
+	</script>
 	
 	
 </body>

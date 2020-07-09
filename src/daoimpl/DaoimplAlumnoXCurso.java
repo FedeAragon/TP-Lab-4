@@ -261,5 +261,25 @@ public boolean spAgregarNotas(AlumnosXCursos alumXCurso) {
 	       }
 		return funco;
 	}
+
+@Override
+public boolean spEliminarAlumnoXCurso(int CodCurso,int Legajo) {
+	
+	Conexion conexion = Conexion.getConexion();
+	boolean funco = false;
+	
+	try {    	    
+            CallableStatement proc = conexion.getSQLConexion().prepareCall(" call spEliminarAlumnoXCurso(?,?) ");
+            proc.setInt(1, Legajo);
+            proc.setInt(2, CodCurso);
+            proc.execute();  
+            
+            funco = true;
+        } 
+       catch (Exception e) {                  
+            System.out.println(e);
+       }
+	return funco;
+}
 	
 }

@@ -15,4 +15,5 @@ public interface DaoAlumnoXCurso {
 	public List ObtenerAños(int inicio ,int fin);
 	public List ObtenerAprobados(int inicio , int fin);
 	public List ObtenerDesaprobados(int inicio , int fin);
+	public boolean spEliminarAlumnoXCurso(int CodCurso,int Legajo);
 }
