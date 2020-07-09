@@ -95,7 +95,7 @@ public class ServletAdminModificarAlumno extends HttpServlet {
         
       	alu.setEstado(1);
       	boolean funco = false;
-      	  funco = negocioalu.spModificarAlumno(alu);
+      	funco = negocioalu.spModificarAlumno(alu);
       	request.setAttribute("funco", funco);
 	          
         }

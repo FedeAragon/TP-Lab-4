@@ -135,7 +135,8 @@
 	 			  },
 	 			  type:"POST",
 	 			 success: function(){
-	  			    location.reload(true);
+		  			    location.reload(true);
+			  			alert("Se elimino con exito");
 	  			  }
 	 			});
 		}

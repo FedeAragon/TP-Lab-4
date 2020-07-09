@@ -53,9 +53,9 @@ public class ServletAdminTablaProfesores extends HttpServlet {
          {
        	  int legajo = Integer.parseInt(request.getParameter("LegajoProfe"));  
        	  NegocioimplProfesores negocioProfe = new NegocioimplProfesores();
-       	  negocioProfe.spEliminarProfesor(negocioProfe.obtenerProfesor(legajo));
+       	  boolean funco = negocioProfe.spEliminarProfesor(negocioProfe.obtenerProfesor(legajo));
           ArrayList<Docente> docentes = (ArrayList<Docente>) negocioProfe.readAll();
-       	   
+       	   	request.setAttribute("funco", funco);
             request.setAttribute("docentes", docentes);
  			RequestDispatcher rd = request.getRequestDispatcher("/AdminTablaProfesores.jsp");   
  	        rd.forward(request, response);

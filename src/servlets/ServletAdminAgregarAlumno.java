@@ -63,12 +63,19 @@ public class ServletAdminAgregarAlumno extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		boolean funco=false;
+       	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date fecha = cal.getTime();
+        String todaysdate = dateFormat.format(fecha);
+        
+        request.setAttribute("today", todaysdate);
 		if(request.getParameter("btnAgregar")!=null)
 	         {
 			  NegocioimplAlumnos negocioalu = new NegocioimplAlumnos();
 	       	  NegocioimplLocalidades negocioloca = new NegocioimplLocalidades();
 	       	  NegocioimplProvincias negocioprov = new NegocioimplProvincias();
 	       	  Alumno alu = new Alumno();
+	       	  
 	       	  	java.util.Date date = null;
 	       	try {
 				 date = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("DateNacimiento"));

@@ -62,6 +62,11 @@ public class ServletAdminAgregarProfesor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		boolean funco = false;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        Date fecha = cal.getTime();
+        String todaysdate = dateFormat.format(fecha);
+        request.setAttribute("today", todaysdate);
 		if(request.getParameter("btnAgregar")!=null)
         {
 		  NegocioimplProfesores negocioprofe = new NegocioimplProfesores();
