@@ -30,12 +30,6 @@ public class ServletProfesoresTablaCursos extends HttpServlet {
 		
 		Docente prof = new Docente();
 		prof =(Docente)request.getSession().getAttribute("profesor");
-		if (prof.getNombreyAp() == "admin") {
-			
-			
-			
-		}
-		
 			NegocioimplCursos negociocursos = new NegocioimplCursos();
 			
 			ArrayList<Cursos> curso = (ArrayList<Cursos>) negociocursos.CursosProfe(prof.getLegajo());
