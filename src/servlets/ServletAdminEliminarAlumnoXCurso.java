@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -51,12 +52,33 @@ public class ServletAdminEliminarAlumnoXCurso extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("btnEliminar")!=null)
+	      {
+			
+	    	  if( request.getParameter("CodCurso")!=null) 
+	    	  {    
+	    		 
+	    		  
+	    		  int Legajo = Integer.parseInt(request.getParameter("LegajoAlu").trim());
+	    		  NegocioimplAlumnoXCurso negocioaxc = new NegocioimplAlumnoXCurso();
+	    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
+	    		  NegocioimplCursos negcursos = new NegocioimplCursos();
+	    		   Cursos c = negcursos.saberCurso(CodCurso);
+	    		  NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
+	    		 boolean funco = negAluXCurso.spEliminarAlumnoXCurso(CodCurso, Legajo);
+	    			ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
+	    			alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
+	    			
+	    	    request.setAttribute("funco", funco);
+	    		request.setAttribute("CodCurso", CodCurso);
+	    		request.setAttribute("alumnos", alumsXCursos);
+	  			RequestDispatcher rd = request.getRequestDispatcher("/AdminEliminarAlumnoXCurso.jsp");   
+	  	        rd.forward(request, response);
+	    		      			  
+	    	  } 
+	      }	
 	}
 
 }

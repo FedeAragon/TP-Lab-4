@@ -33,31 +33,7 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getParameter("btnEliminar")!=null)
-	      {
-			
-	    	  if( request.getParameter("CodCurso")!=null) 
-	    	  {    
-	    		 
-	    		  
-	    		  int Legajo = Integer.parseInt(request.getParameter("legAlumno").trim());
-	    		  NegocioimplAlumnoXCurso negocioaxc = new NegocioimplAlumnoXCurso();
-	    		  int CodCurso = Integer.parseInt(request.getParameter("CodCurso").trim());
-	    		  NegocioimplCursos negcursos = new NegocioimplCursos();
-	    		   Cursos c = negcursos.saberCurso(CodCurso);
-	    		  NegocioimplAlumnoXCurso negAluXCurso = new NegocioimplAlumnoXCurso();
-	    		  negAluXCurso.spEliminarAlumnoXCurso(CodCurso, Legajo);
-	    			ArrayList<AlumnosXCursos> alumsXCursos = new ArrayList<AlumnosXCursos>();
-	    			alumsXCursos =(ArrayList<AlumnosXCursos>)negAluXCurso.AlumnosdelCurso(c);
-	    			
-	  			
-	    		request.setAttribute("CodCurso", CodCurso);
-	    		request.setAttribute("cursos",alumsXCursos);
-	  			RequestDispatcher rd = request.getRequestDispatcher("/ProfesoresTablaAlumnosXCurso.jsp");   
-	  	        rd.forward(request, response);
-	    		      			  
-	    	  } 
-	      }	
+		
 		if(request.getParameter("btnConfirmar")!=null)
 	      {
 		int vueltas = Integer.parseInt(request.getParameter("vueltas"));	
@@ -134,7 +110,8 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 			axc.setRecuperatorio2(rec2[i]);
 			axc.setSituacion(sit[i]);
 			
-			negaluxcurso.spAgregarNotas(axc);
+			boolean funco =negaluxcurso.spAgregarNotas(axc);
+			request.setAttribute("funco",funco);
 		}
 
 		Cursos cu = new Cursos();

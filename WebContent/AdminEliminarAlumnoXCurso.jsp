@@ -100,11 +100,8 @@
 			            <i class="material-icons" style="font-size:36px; color:red;">delete_forever</i>
 			            </button><th>
 		           <input type="hidden" name="LegajoAlu" value="<%= a.getAlumno().getLegajo()%>"> 
-		              <input type="hidden" name="Materia" value="<%= c.getMateria().getID()%>">
-		                <input type="hidden" name="Cuatri" value="<%= c.getCuatrimeste()%>">
-		                <input type="hidden" name="CodCurso" value="<%= c.getCodCurso() %>">
-		                <input type="hidden" name="Anio" value="<%= c.getAnio()%>">
-		                <input type="hidden" name="LegajoProf" value="<%= c.getDocente().getLegajo()%>">
+		             <input type="hidden" name="CodCurso" value="<%= c.getCodCurso() %>">
+		            
 		           
 		            
 		           

@@ -76,6 +76,18 @@
 	            		} %><input type ="button" name = "Confirmar" id="Confirmar"value = "Confirmar" class = "botones">
 	            		</div>
 			<table id="table_id" class="display" >
+			<% 
+  		if(request.getAttribute("funco")!=null){ 
+  			 if((Boolean)request.getAttribute("funco")==true){	 
+  			%>
+  			<label style= "display:flex;justify-content: center;">Las notas se cargaron correctament</label>
+  		<%} else{
+  			 %>
+  			<label style= "display:flex;justify-content: center;">No se pudo agregar las notas</label>
+  			 <%
+  		} %>	 
+  		
+  <% }%>
 		    <thead >
 		        <tr>
 		            <th>Nº Legajo</th>
