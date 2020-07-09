@@ -32,8 +32,7 @@ public class ServletProfesoresTablaAlumnosXCurso extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(Integer.parseInt(request.getParameter("vueltas")));
-		System.out.println("dopost");
+		
 		if(request.getParameter("btnConfirmar")!=null)
 	      {
 		int vueltas = Integer.parseInt(request.getParameter("vueltas"));	

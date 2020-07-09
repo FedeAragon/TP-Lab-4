@@ -80,7 +80,7 @@
   		if(request.getAttribute("funco")!=null){ 
   			 if((Boolean)request.getAttribute("funco")==true){	 
   			%>
-  			<label style= "display:flex;justify-content: center;">Las notas se cargaron correctament</label>
+  			<label style= "display:flex;justify-content: center;">Las notas se cargaron correctamente</label>
   		<%} else{
   			 %>
   			<label style= "display:flex;justify-content: center;">No se pudo agregar las notas</label>
@@ -116,10 +116,10 @@
 		            <td><%= axc.getAlumno().getDNI() %></td>
 		            <td><%= axc.getAlumno().getEmail() %></td>
 
-		            <td><input type="number" min="0" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<%= axc.getPrimerParcial() %>></td>
-		            <td><input type="number" min="0" max="10" name="txtParcial2" class="texts" style="width: 67px;" value =<%=axc.getSegundoParcial()%> ></td>
-		            <td><input type="number" min="0" max="10" name="txtRec1" class="texts" style="width: 67px;"     value =<%=axc.getRecuperatorio1()%> ></td>
-		            <td><input type="number" min="0" max="10" name="txtRec2" class="texts" style="width: 67px;"    value =<%=axc.getRecuperatorio2()%> ></td>
+		            <td><input type="number" min="0" max="10" name="txtParcial1" class="texts" style="width: 67px;" value =<%= axc.getPrimerParcial() %> required></td>
+		            <td><input type="number" min="0" max="10" name="txtParcial2" class="texts" style="width: 67px;" value =<%=axc.getSegundoParcial()%> required ></td>
+		            <td><input type="number" min="0" max="10" name="txtRec1" class="texts" style="width: 67px;"     value =<%=axc.getRecuperatorio1()%> required ></td>
+		            <td><input type="number" min="0" max="10" name="txtRec2" class="texts" style="width: 67px;"    value =<%=axc.getRecuperatorio2()%> required></td>
 		            <td><select name="estado" class="Ddls" style="width: 110px; ">
 		                    <option value="Cursando"
 		                    <% 
