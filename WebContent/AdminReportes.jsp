@@ -71,9 +71,9 @@
 		
 		<div class="contenedor">
 		
-		<div class="fondo" style="width:80%; height: 700px;">
+		<div class="fondo" style="width:80%; ">
 			<div style="display:flex; flex-direction:column;">
-				<div id="graficos" style="display:flex; flex-direction:row;">
+				<div id="graficos" style="display:flex; flex-direction:column;">
 					<div style="margin: 10px 10px 10px 10px;width:100%;">
 						<form method="get" action="ServletAdminReportes">
 							<select name="ddlMaterias" required >
@@ -90,26 +90,26 @@
 							</select> 
 							<input type="submit" id="btnAceptar" value="Aceptar" class="botones" style="width: auto; padding:10px 10px 10px 10px; margin:5px 5px 5px 5px;">
 							<h5>Aprobados y Desaprobados por año</h5>
-							<div id="piechart_3d" style="height: 300px;"></div>
+							<div id="piechart_3d" style="width: 99%"></div>
+						</form>
+					</div>			
+					<div style="margin: 10px 10px 10px 10px; width:100%;">
+						 Año inicial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						 Año final <br>
+						 <form method="post" action="ServletAdminReportes">
+							<input type ="text" name ="txtInicio" style="width: 99px;"required onkeypress="return isNumberKey(event)">&nbsp;&nbsp;
+							<input type ="text" name ="txtFinal" style="width: 99px;"required onkeypress="return isNumberKey(event)"> &nbsp;&nbsp;
+							<input type="submit" name="btnAceptar2" value="Aceptar" class="botones" style="height: 29px; ">
+							<div id="areaChart" style="width: 99%"></div>
 						</form>
 					</div>
 					<div style="margin: 10px 10px 10px 10px; width:100%;">
-						<div id="areaChart" style="height: 300px;"></div>
+						<div id="columnchart_material" style="width: 99%"></div>
 					</div>
 				</div>
-				<div style="display:flex; flex-direction:row;">				
-					<div style="margin: 10px 10px 10px 10px; width:100%;">
-					 Año inicial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					 Año final <br>
-					 <form method="post" action="ServletAdminReportes">
-					<input type ="text" name ="txtInicio" style="width: 99px;"required onkeypress="return isNumberKey(event)">&nbsp;&nbsp;
-					<input type ="text" name ="txtFinal" style="width: 99px;"required onkeypress="return isNumberKey(event)"> &nbsp;&nbsp;
-					<input type="submit" name="btnAceptar2" value="Aceptar" class="botones" style="height: 29px; ">
-						<div id="columnchart_material" style="height: 300px;"></div>
-					</form>
-					</div>
-				</div>
+				
 			</div>
+			
 		</div>
 		
 		</div>
